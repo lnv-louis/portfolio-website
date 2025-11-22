@@ -11,7 +11,7 @@ export function Contact() {
       {/* Dither Effect at the bottom/footer */}
       <Dither className="opacity-50" />
 
-      <div className="container mx-auto px-6 mb-12 md:mb-24 flex-grow flex flex-col justify-center">
+      <div className="container mx-auto px-6 mb-12 md:mb-24 grow flex flex-col justify-center">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
           <div className="space-y-6">
              <h2 className="text-4xl font-bold tracking-tighter text-white sm:text-6xl">
@@ -34,7 +34,7 @@ export function Contact() {
               className="group flex items-center space-x-4 text-2xl md:text-3xl font-bold text-white transition-colors hover:text-primary sm:text-4xl z-10 break-all"
             >
               <span>lelouis.lnv@gmail.com</span>
-              <ArrowUpRight className="h-8 w-8 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 flex-shrink-0" />
+              <ArrowUpRight className="h-8 w-8 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 shrink-0" />
             </a>
           </div>
         </div>
@@ -57,7 +57,7 @@ export function Contact() {
                     variableProximity={true}
                 />
            </div>
-           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent h-full pointer-events-none"></div>
+           <div className="absolute inset-0 bg-linear-to-t from-background via-transparent to-transparent h-full pointer-events-none"></div>
       </div>
 
       {/* Full Width Copyright Border */}

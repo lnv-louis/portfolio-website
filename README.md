@@ -46,4 +46,4 @@ A modern, high-performance developer portfolio website built with Next.js 14, sh
 
 ## License
 
-© 2024 Le Nguyen Vu. All rights reserved.
+© 2025 Le Nguyen Vu. All rights reserved.
