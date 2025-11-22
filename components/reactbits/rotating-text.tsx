@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, Transition } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface RotatingTextProps {
   texts: string[];
   className?: string;
-  transition?: { duration: number; ease: string };
+  transition?: Transition;
 }
 
 export default function RotatingText({
