@@ -21,7 +21,7 @@ const features = [
     cta: "View Code",
     background: (
       <div className="absolute inset-0 flex items-center justify-center opacity-80 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
-         <div className="relative flex h-full w-full max-w-[32rem] items-center justify-center overflow-hidden rounded-lg bg-background px-8 pb-8 pt-8 ">
+         <div className="relative flex h-full w-full max-w-lg items-center justify-center overflow-hidden rounded-lg bg-background px-8 pb-8 pt-8 ">
             <IconCloud iconSlugs={slugs} />
         </div>
       </div>
@@ -35,7 +35,7 @@ const features = [
     href: "#about",
     cta: "Learn more",
     background: (
-        <div className="absolute inset-0 flex items-center justify-center bg-neutral-900 [mask-image:linear-gradient(to_top,transparent_10%,black)]">
+        <div className="absolute inset-0 flex items-center justify-center bg-neutral-900 mask-[linear-gradient(to_top,transparent_10%,black)]">
            <div className="grid grid-cols-2 gap-4 p-8 opacity-40">
                 <div className="h-20 w-20 rounded-lg bg-neutral-800 animate-pulse"></div>
                 <div className="h-20 w-20 rounded-lg bg-primary/20 animate-pulse delay-75"></div>
@@ -53,7 +53,7 @@ const features = [
     href: "mailto:lelouis.lnv@gmail.com",
     cta: "Contact Me",
     background: (
-      <div className="absolute inset-0 bg-gradient-to-br from-neutral-900 to-black transition-all duration-300 group-hover:bg-neutral-800" />
+      <div className="absolute inset-0 bg-linear-to-br from-neutral-900 to-black transition-all duration-300 group-hover:bg-neutral-800" />
     ),
     className: "col-span-3 lg:col-span-1",
   },
