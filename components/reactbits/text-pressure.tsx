@@ -17,11 +17,12 @@ interface TextPressureProps {
   stroke?: boolean;
   scale?: boolean;
   minFontSize?: number;
+  variableProximity?: boolean; // Add prop for proximity effect
 }
 
 export default function TextPressure({
   text = "Compressa",
-  fontFamily = "Compressa VF", // Ensure you have a variable font loaded or use a system one
+  fontFamily = "Compressa VF",
   className = "",
   textColor = "#FFFFFF",
   strokeColor = "#FF0000",
@@ -33,10 +34,10 @@ export default function TextPressure({
   stroke = false,
   scale = false,
   minFontSize = 24,
+  variableProximity = false,
 }: TextPressureProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const [spans, setSpans] = useState<JSX.Element[]>([]);
 
   const mouseRef = useRef({ x: 0, y: 0 });
   const cursorRef = useRef({ x: 0, y: 0 });
@@ -54,6 +55,8 @@ export default function TextPressure({
   }, [scale, text, minFontSize]);
 
   useEffect(() => {
+    if (!variableProximity) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       mouseRef.current.x = e.clientX;
       mouseRef.current.y = e.clientY;
@@ -68,6 +71,30 @@ export default function TextPressure({
         const dy = mouseRef.current.y - cursorRef.current.y;
         cursorRef.current.x += dx * 0.1;
         cursorRef.current.y += dy * 0.1;
+
+        // Update Variable Font Settings based on proximity
+        if (containerRef.current) {
+             const spans = containerRef.current.querySelectorAll('span.char-span');
+             spans.forEach((span: Element) => {
+                 const rect = span.getBoundingClientRect();
+                 const spanX = rect.left + rect.width / 2;
+                 const spanY = rect.top + rect.height / 2;
+                 
+                 const dist = Math.sqrt(Math.pow(spanX - cursorRef.current.x, 2) + Math.pow(spanY - cursorRef.current.y, 2));
+                 const maxDist = 500;
+                 const proximity = Math.max(0, 1 - dist / maxDist);
+
+                 // Map proximity to variable font axes (weight, width)
+                 // wght: 100-900, wdth: 50-100
+                 const wght = 900 - (proximity * 800); // Gets thinner closer? Or bolder? Let's say thinner as "pressure"
+                 const wdth = 100 - (proximity * 50);
+                 
+                 // If we are just simulating using CSS transform for now as Impact doesn't have axes
+                 (span as HTMLElement).style.transform = `scale(${1 + proximity * 0.2})`;
+                 (span as HTMLElement).style.color = proximity > 0.5 ? strokeColor : textColor;
+             });
+        }
+
         rafId = requestAnimationFrame(loop);
     };
     loop();
@@ -76,43 +103,24 @@ export default function TextPressure({
         window.removeEventListener("mousemove", handleMouseMove);
         cancelAnimationFrame(rafId);
     };
-  }, []);
+  }, [variableProximity, strokeColor, textColor]);
 
-  useEffect(() => {
-    const chars = text.split("");
-    const spans = chars.map((char, i) => (
-      <span
-        key={i}
-        data-char={char}
-        className="inline-block transition-all duration-100 ease-linear"
-      >
-        {char}
-      </span>
-    ));
-    setSpans(spans);
-  }, [text]);
-  
-  // In a real ReactBits implementation, this would interactively distort variable fonts.
-  // Since we might not have a specific variable font loaded, we'll simulate pressure with standard CSS transforms for now
-  // or rely on the fact that if the font IS variable, it would work.
   
   return (
     <div ref={containerRef} className={cn("relative w-full h-full overflow-hidden", className)}>
       <h1
         ref={titleRef}
-        className={`text-center font-black uppercase leading-none ${
-          flex ? "flex justify-between" : ""
-        } ${stroke ? "stroke-text" : ""}`}
+        className={`text-center font-black uppercase leading-none w-full flex justify-between items-end h-full ${stroke ? "stroke-text" : ""}`}
         style={{
-            color: textColor, // Apply color directly here if stroke is false
+            color: textColor, 
             fontFamily,
-            fontSize: scale ? fontSize : undefined,
-            lineHeight: scale ? lineHeight : undefined,
-            // Mock variable font settings if supported by the font
-             fontVariationSettings: `"wdth" 100, "wght" 900`,
+            fontSize: "18vw", 
+            lineHeight: 0.8,
         }}
       >
-        {spans}
+        {text.split("").map((char, i) => (
+            <span key={i} className="block char-span transition-colors duration-75">{char}</span>
+        ))}
       </h1>
       <style jsx>{`
         .stroke-text {
@@ -123,4 +131,3 @@ export default function TextPressure({
     </div>
   );
 }
-

@@ -1,13 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import TextPressure from "@/components/reactbits/text-pressure";
 import Dither from "@/components/reactbits/dither";
 
 export function Contact() {
   return (
-    <footer id="contact" className="relative bg-background pt-24 overflow-hidden w-full h-full flex flex-col justify-between">
+    <footer id="contact" className="relative bg-background pt-24 overflow-hidden w-full h-full flex flex-col justify-between snap-section">
       {/* Dither Effect at the bottom/footer */}
       <Dither className="opacity-50" />
 
@@ -25,7 +25,6 @@ export function Contact() {
                 <SocialLink href="https://github.com/lnv-louis" label="GitHub" />
                 <SocialLink href="https://linkedin.com/in/le-nguyen-vu" label="LinkedIn" />
                 <SocialLink href="https://x.com/ixvlora" label="X (Twitter)" />
-                <SocialLink href="mailto:lelouis.lnv@gmail.com" label="Email" />
              </div>
           </div>
 
@@ -55,6 +54,7 @@ export function Contact() {
                     textColor="#ef4444" 
                     fontFamily="Impact, sans-serif"
                     minFontSize={40}
+                    variableProximity={true}
                 />
            </div>
            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent h-full pointer-events-none"></div>

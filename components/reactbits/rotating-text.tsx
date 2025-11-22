@@ -26,19 +26,22 @@ export default function RotatingText({
   }, [texts.length]);
 
   return (
-    <div className={cn("relative inline-flex h-[1.2em] overflow-hidden w-full justify-center md:justify-start", className)}>
-      <AnimatePresence mode="wait">
-        <motion.span
-          key={index}
-          initial={{ y: "100%" }}
-          animate={{ y: "0%" }}
-          exit={{ y: "-100%" }}
-          transition={transition}
-          className="absolute"
-        >
-          {texts[index]}
-        </motion.span>
-      </AnimatePresence>
+    <div className={cn("relative flex items-center text-lg md:text-3xl font-mono text-neutral-400 h-12", className)}>
+      <span className="whitespace-nowrap mr-2 text-primary font-bold">
+        <AnimatePresence mode="wait">
+            <motion.span
+            key={index}
+            initial={{ y: "100%", opacity: 0, filter: "blur(10px)" }}
+            animate={{ y: "0%", opacity: 1, filter: "blur(0px)" }}
+            exit={{ y: "-100%", opacity: 0, filter: "blur(10px)" }}
+            transition={transition}
+            className="inline-block"
+            >
+            {texts[index]}
+            </motion.span>
+        </AnimatePresence>
+      </span>
+      <span className="whitespace-nowrap">Software Engineer</span>
     </div>
   );
 }

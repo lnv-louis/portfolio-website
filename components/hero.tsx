@@ -20,12 +20,12 @@ export function Hero() {
 
       <div className="z-10 grid max-w-7xl grid-cols-1 gap-8 md:gap-12 md:grid-cols-2 items-center h-full">
         
-         {/* Left: Image/Visual - With Pop Up Animation */}
+         {/* Left: Image/Visual - Pop Up Animation */}
         <motion.div
           initial={{ y: "100vh", opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }} // Pop up from bottom
-          className="relative mx-auto flex aspect-[3/4] w-[280px] md:w-full max-w-md items-center justify-center order-1 md:order-1"
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+          className="relative mx-auto flex aspect-3/4 w-[280px] md:w-full max-w-md items-center justify-center order-1 md:order-1"
         >
             {/* Red Blur Glow */}
             <div className="absolute inset-0 -z-10 bg-primary/30 blur-[60px] md:blur-[100px] rounded-full transform scale-75"></div>
@@ -48,18 +48,20 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 1.4, duration: 0.8 }} // Delay until image is up
+            transition={{ delay: 1.4, duration: 0.8 }}
           >
              <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white md:text-7xl lg:text-8xl leading-tight">
-                Im <span className="text-primary inline-block"><HyperText text="Vu Le" /></span>
+                I am &nbsp;<span className="text-primary inline-block"><HyperText text="Vu N. Le" /></span>
             </h1>
             
-            <div className="mt-2 md:mt-4 text-lg md:text-3xl font-mono text-neutral-400 h-12 flex items-center justify-center md:justify-start">
+            {/* Rotating Text */}
+            <div className="mt-2 md:mt-4 flex items-center justify-center md:justify-start">
                  <RotatingText 
-                    texts={["AI-focused Software Engineer", "Full-Stack Software Engineer"]} 
-                    className="text-primary"
+                    texts={["AI-focused", "Full-Stack"]} 
+                    className=""
                  />
             </div>
+            
             <div className="text-sm md:text-lg text-neutral-500 font-medium uppercase tracking-wider mt-2">
                 University College London (UCL)
             </div>
@@ -81,7 +83,7 @@ export function Hero() {
             className="flex flex-wrap justify-center gap-4 md:gap-6 md:justify-start items-center"
           >
             <Link href="#projects">
-                 <InteractiveHoverButton text="My Projects" className="w-40" />
+                 <InteractiveHoverButton text="My Projects" className="w-48" />
             </Link>
             
             <Button size="lg" variant="outline" className="rounded-full border-white/20 hover:bg-white/10 hover:text-white px-8" asChild>

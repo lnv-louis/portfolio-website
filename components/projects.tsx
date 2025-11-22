@@ -4,8 +4,15 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SpotlightCard from "@/components/reactbits/spotlight-card";
-import { Lens } from "@/components/magicui/lens";
 import Link from "next/link";
+
+// Helper to properly format R2 URLs
+const getR2UrlRoot = (filename: string) => {
+    const baseUrl = process.env.NEXT_PUBLIC_R2_BUCKET_URL;
+    if (!baseUrl) return `/${filename}`;
+    const cleanBase = baseUrl.replace(/\/$/, "");
+    return `${cleanBase}/${encodeURIComponent(filename)}`;
+};
 
 const projects = [
   {
@@ -13,7 +20,7 @@ const projects = [
     category: "AI Fact-Checking Platform",
     description:
       "1st Place Winner, Lovable Hackathon. Multi-stage prompt chain with Perplexity’s Sonar Pro Model to recursively trace claims through citation hierarchies.",
-    video: "/Grounded Lovable Demo.mp4",
+    video: getR2UrlRoot("Grounded Lovable Demo.mp4"),
     tags: ["React", "Supabase", "Deno Edge Functions", "AI"],
     href: "https://github.com/lnv-louis/grounded-fact-checking",
   },
@@ -22,7 +29,7 @@ const projects = [
     category: "Live Facial Recognition",
     description:
       "Real-time facial recognition data pipeline to identify event attendees in <5 seconds. Scraped Luma & LinkedIn, implemented Facenet512 & RetinaFace.",
-    video: "/Dex Cursor Demo.mp4",
+    video: getR2UrlRoot("Dex Cursor Demo.mp4"),
     tags: ["Python", "Facenet512", "Chrome Extension", "Convex"],
     href: "https://github.com/lnv-louis/dex-face-recognition",
   },
@@ -31,7 +38,7 @@ const projects = [
     category: "AI Property Search",
     description:
       "Intuitive property search tool using Perplexity’s Sonar Pro model. Infinite canvas UI displaying insights as modular widgets.",
-    video: "/Homiq Perplexity Demo.mp4",
+    video: getR2UrlRoot("Homiq Perplexity Demo.mp4"),
     tags: ["Next.js", "Tailwind", "Perplexity API", "React Flow"],
     href: "https://github.com/lnv-louis/homiq-property-search-engine",
   },
@@ -40,7 +47,7 @@ const projects = [
 export function Projects() {
   return (
     <div id="projects" className="flex flex-col w-full">
-      {/* Intro Section - Optional or merged with first project */}
+      {/* Intro Section */}
       <section className="snap-section flex items-center justify-center min-h-[50vh] md:min-h-[60vh]">
          <div className="container mx-auto px-6 text-center">
             <h2 className="text-4xl font-bold tracking-tighter text-white sm:text-5xl font-mono">
@@ -53,13 +60,13 @@ export function Projects() {
       </section>
 
       {projects.map((project, index) => (
-        <section key={index} className="snap-section w-full flex items-center justify-center py-12 md:py-0">
+        <section key={index} className="snap-section w-full flex items-center justify-center py-24 md:py-32">
           <div className="container mx-auto px-6">
             <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                viewport={{ once: false, amount: 0.3 }} // Re-animate on scroll
+                viewport={{ once: false, amount: 0.3 }}
                 className="w-full"
             >
                 <SpotlightCard className="w-full overflow-hidden rounded-3xl border-neutral-800 bg-neutral-900/50 p-0 shadow-2xl" spotlightColor="rgba(239, 68, 68, 0.15)">
@@ -75,9 +82,6 @@ export function Projects() {
                                 playsInline
                                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                             />
-                            {/* Lens Effect over video - tricky with video but works for interactions */}
-                            {/* Actually Lens over video might be performance heavy or buggy with z-index. Let's stick to simple hover scale for video or use Lens cautiously. */}
-                            {/* Overlay Gradient */}
                             <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-neutral-900/90 pointer-events-none"></div>
                         </div>
 

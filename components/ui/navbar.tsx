@@ -39,6 +39,9 @@ export function Navbar() {
   }, []);
 
   const toggleMenu = () => setIsOpen(!isOpen);
+  
+  // Close menu when a link is clicked
+  const handleLinkClick = () => setIsOpen(false);
 
   return (
     <>
@@ -52,7 +55,7 @@ export function Navbar() {
         )}
       >
         {/* Logo */}
-        <Link href="/" className="relative z-50 flex items-center justify-center h-10 w-10 overflow-hidden rounded-md">
+        <Link href="/" className="relative z-50 flex items-center justify-center h-10 w-10 overflow-hidden rounded-md" onClick={handleLinkClick}>
             <Image 
                 src="/favicon2.png" 
                 alt="Logo" 
@@ -85,7 +88,7 @@ export function Navbar() {
           >
              <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
              
-             <div className="relative z-10 w-full max-w-screen-xl">
+             <div className="relative z-10 w-full max-w-screen-xl" onClick={handleLinkClick}>
                 <FlowingMenu items={navItems} />
              </div>
           </motion.div>

@@ -2,45 +2,15 @@
 
 import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
 import { IconCloud } from "@/components/magicui/icon-cloud";
-import { Code2, Palette, Share2, Terminal, Database, Cpu } from "lucide-react";
+import { Code2, Palette, Share2, Database, Cpu } from "lucide-react";
 
 const slugs = [
-  "typescript",
-  "javascript",
-  "react",
-  "html5",
-  "css3",
-  "nodedotjs",
-  "express",
-  "nextdotjs",
-  "prisma",
-  "amazonaws",
-  "postgresql",
-  "firebase",
-  "nginx",
-  "vercel",
-  "testinglibrary",
-  "jest",
-  "cypress",
-  "docker",
-  "git",
-  "jira",
-  "github",
-  "gitlab",
-  "visualstudiocode",
-  "androidstudio",
-  "sonarqube",
-  "figma",
-  "python",
-  "tensorflow",
-  "keras",
-  "scikitlearn",
-  "pandas",
-  "numpy",
-  "supabase",
-  "deno",
+  "typescript", "javascript", "react", "html5", "css3", "nodedotjs", "express",
+  "nextdotjs", "prisma", "amazonaws", "postgresql", "firebase", "nginx", "vercel",
+  "testinglibrary", "jest", "cypress", "docker", "git", "jira", "github", "gitlab",
+  "visualstudiocode", "androidstudio", "sonarqube", "figma", "python", "tensorflow",
+  "keras", "scikitlearn", "pandas", "numpy", "supabase", "deno",
 ];
-
 
 const features = [
   {
@@ -108,21 +78,24 @@ const features = [
 ];
 
 export function BentoGridSection() {
+  // Reverted to standard design without complex color transitions as requested.
   return (
-    <section id="about" className="container mx-auto px-6 py-20">
-        <div className="mb-12 flex flex-col items-center text-center">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">
-            Focusing on the <span className="text-primary inline-block">Best</span>
-            </h2>
-            <p className="mt-4 max-w-[700px] text-neutral-400">
-                My toolkit for building scalable, high-performance applications.
-            </p>
+    <section id="about" className="snap-section relative container mx-auto px-6 py-20 flex flex-col justify-center min-h-screen bg-black">
+        <div className="w-full h-full flex flex-col justify-center z-10">
+            <div className="mb-12 flex flex-col items-center text-center">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">
+                Focusing on the <span className="text-primary inline-block">Best</span>
+                </h2>
+                <p className="mt-4 max-w-[700px] text-neutral-400">
+                    My toolkit for building scalable, high-performance applications.
+                </p>
+            </div>
+            <BentoGrid className="lg:grid-rows-2">
+                {features.map((feature) => (
+                <BentoCard key={feature.name} {...feature} />
+                ))}
+            </BentoGrid>
         </div>
-      <BentoGrid className="lg:grid-rows-2">
-        {features.map((feature) => (
-          <BentoCard key={feature.name} {...feature} />
-        ))}
-      </BentoGrid>
     </section>
   );
 }

@@ -5,6 +5,7 @@ import { Navbar } from "@/components/ui/navbar";
 import { Hero } from "@/components/hero";
 import { BentoGridSection } from "@/components/bento";
 import { Projects } from "@/components/projects";
+import { Research } from "@/components/research";
 import { Contact } from "@/components/contact";
 import { Loader } from "@/components/loader";
 import TargetCursor from "@/components/reactbits/target-cursor";
@@ -42,6 +43,11 @@ export default function Home() {
               {/* Projects Showcase */}
               <section className="snap-start w-full min-h-screen flex flex-col justify-center">
                 <Projects />
+              </section>
+
+              {/* Research Papers */}
+              <section className="snap-start w-full min-h-screen flex items-center justify-center">
+                <Research />
               </section>
               
               {/* Contact & Footer */}
