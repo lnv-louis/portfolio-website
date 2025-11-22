@@ -20,7 +20,7 @@ const papers = [
     subtitle: "Random Forest and RBF-SVM",
     description:
       "Developed and benchmarked Random Forest and RBF-SVM models to classify Acute Myeloid Leukaemia subtypes from high-dimensional gene expression data. Achieved 82% accuracy with the tuned RBF-SVM model.",
-    pdf: getR2UrlRoot("AML-Classification-Research-Manuscript.pdf"),
+    pdf: getR2UrlRoot("ML-classification-leukaemia.pdf"),
     tags: ["Python", "Scikit-learn", "Pandas", "NumPy"],
   },
   {
@@ -37,7 +37,7 @@ export function Research() {
   const [previewPdf, setPreviewPdf] = useState<{ url: string; title: string } | null>(null);
 
   return (
-    <section className="snap-section bg-black flex items-center justify-center py-24">
+    <section id="research" className="snap-section bg-black flex items-center justify-center py-24">
       <div className="container mx-auto px-6">
         <div className="mb-16 text-center">
           <h2 className="text-4xl font-bold tracking-tighter text-white sm:text-5xl font-mono">

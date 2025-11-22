@@ -42,20 +42,13 @@ export function PDFPreview({ pdfUrl, title, isOpen, onClose }: PDFPreviewProps) 
             </div>
 
             {/* PDF Viewer Container */}
-            <div className="relative flex-grow bg-neutral-800 overflow-hidden select-none" onContextMenu={(e) => e.preventDefault()}>
+            <div className="relative grow bg-neutral-800 overflow-hidden select-none" onContextMenu={(e) => e.preventDefault()}>
                 {/* Iframe with toolbar disabled */}
                 <iframe 
                     src={`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=0`}
-                    className="w-full h-full border-0"
+                    className="w-full h-full border-0 cursor-auto"
                     title={title}
                 />
-                
-                {/* Watermark Overlay */}
-                <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-10 z-10 overflow-hidden">
-                     <div className="text-9xl font-black text-white -rotate-45 whitespace-nowrap select-none">
-                        VU LE PREVIEW
-                     </div>
-                </div>
                 
                 {/* Transparent click shield to prevent saving if needed, but might block scrolling */}
                 {/* <div className="absolute inset-0 bg-transparent" onContextMenu={(e) => e.preventDefault()} /> */}

@@ -96,10 +96,15 @@
   }
 }
 
-/* Hide default cursor for desktop */
+/* Hide default cursor for desktop, except for PDF preview */
 @media (min-width: 768px) {
-  body, a, button, [role="button"] {
+  body:not(:has(iframe)), a:not(:has(iframe)), button:not(:has(iframe)), [role="button"]:not(:has(iframe)) {
     cursor: none !important;
+  }
+  
+  /* Ensure iframe allows default cursor */
+  iframe {
+    cursor: auto !important;
   }
 }
 
