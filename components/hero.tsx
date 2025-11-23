@@ -11,6 +11,14 @@ import { BorderBeam } from "@/components/magicui/border-beam";
 import Dither from "@/components/reactbits/dither";
 import RotatingText from "@/components/reactbits/rotating-text";
 
+// Helper to properly format R2 URLs
+const getR2UrlRoot = (filename: string) => {
+    const baseUrl = process.env.NEXT_PUBLIC_R2_BUCKET_URL;
+    if (!baseUrl) return `/${filename}`;
+    const cleanBase = baseUrl.replace(/\/$/, "");
+    return `${cleanBase}/${encodeURIComponent(filename)}`;
+};
+
 export function Hero() {
   return (
     <section className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-background px-6 py-10 md:py-20 md:flex-row md:px-12">
@@ -87,7 +95,7 @@ export function Hero() {
             </Link>
             
             <Button size="lg" variant="outline" className="rounded-full border-white/20 hover:bg-white/10 hover:text-white px-8" asChild>
-              <a href="/Vu_Nguyen_Le_CV_UCL.pdf" download>
+              <a href={getR2UrlRoot("Vu_Nguyen_Le_CV_UCL.pdf")} download>
                 Resume <FileText className="ml-2 h-4 w-4" />
               </a>
             </Button>

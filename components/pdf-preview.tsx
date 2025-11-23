@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { X, ZoomIn, ZoomOut, Maximize2 } from "lucide-react";
+import { X, Loader2 } from "lucide-react";
 
 interface PDFPreviewProps {
   pdfUrl: string;
@@ -13,12 +13,15 @@ interface PDFPreviewProps {
 }
 
 export function PDFPreview({ pdfUrl, title, isOpen, onClose }: PDFPreviewProps) {
-  // If we can't use a robust PDF library, we can use an iframe with #toolbar=0
-  // But browsers might ignore this.
-  // To prevent download, we can render it as images using pdf.js, but that requires adding pdf.js
-  // For now, we will use an iframe with #toolbar=0 and overlay a watermark div.
-  // And disable right click.
-  
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Reset loading state when opening new PDF
+  useEffect(() => {
+    if (isOpen) {
+      setIsLoading(true);
+    }
+  }, [isOpen, pdfUrl]);
+
   if (!isOpen) return null;
 
   return (
@@ -43,15 +46,24 @@ export function PDFPreview({ pdfUrl, title, isOpen, onClose }: PDFPreviewProps) 
 
             {/* PDF Viewer Container */}
             <div className="relative grow bg-neutral-800 overflow-hidden select-none" onContextMenu={(e) => e.preventDefault()}>
+                
+                {/* Loading Indicator */}
+                {isLoading && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-neutral-900 z-10">
+                    <div className="flex flex-col items-center gap-2 text-neutral-400">
+                      <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                      <p className="text-sm font-mono">Loading PDF...</p>
+                    </div>
+                  </div>
+                )}
+
                 {/* Iframe with toolbar disabled */}
                 <iframe 
                     src={`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=0`}
                     className="w-full h-full border-0 cursor-auto"
                     title={title}
+                    onLoad={() => setIsLoading(false)}
                 />
-                
-                {/* Transparent click shield to prevent saving if needed, but might block scrolling */}
-                {/* <div className="absolute inset-0 bg-transparent" onContextMenu={(e) => e.preventDefault()} /> */}
             </div>
         </div>
     </motion.div>

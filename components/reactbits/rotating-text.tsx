@@ -26,14 +26,14 @@ export default function RotatingText({
   }, [texts.length]);
 
   return (
-    <div className={cn("relative flex items-center text-lg md:text-3xl font-mono text-neutral-400 h-12", className)}>
-      <span className="whitespace-nowrap mr-2 text-primary font-bold">
+    <div className={cn("relative flex flex-wrap justify-center md:justify-start items-center text-xl sm:text-2xl md:text-3xl font-mono text-neutral-400 min-h-[3rem]", className)}>
+      <span className="mr-2 text-primary font-bold">
         <AnimatePresence mode="wait">
             <motion.span
             key={index}
-            initial={{ y: "100%", opacity: 0, filter: "blur(10px)" }}
-            animate={{ y: "0%", opacity: 1, filter: "blur(0px)" }}
-            exit={{ y: "-100%", opacity: 0, filter: "blur(10px)" }}
+            initial={{ y: 10, opacity: 0, filter: "blur(4px)" }}
+            animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+            exit={{ y: -10, opacity: 0, filter: "blur(4px)" }}
             transition={transition}
             className="inline-block"
             >
