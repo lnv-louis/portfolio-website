@@ -58,8 +58,8 @@ export function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1.4, duration: 0.8 }}
           >
-             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white md:text-7xl lg:text-8xl leading-tight">
-                I am &nbsp;<span className="text-primary inline-block"><HyperText text="Vu N. Le" /></span>
+             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white md:text-6xl lg:text-7xl leading-tight">
+                I am &nbsp;<span className="text-primary inline-block"><HyperText text="Vu Nguyen Le" /></span>
             </h1>
             
             {/* Rotating Text */}
