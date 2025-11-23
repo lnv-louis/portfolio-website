@@ -41,7 +41,7 @@ export function Hero() {
             {/* Image Container */}
             <div className="relative h-full w-full overflow-hidden rounded-2xl border border-white/10 bg-neutral-900/50">
                 <Image 
-                    src="/me.png" 
+                    src="/le-nguyen-vu.png" 
                     alt="Le Nguyen Vu" 
                     fill
                     className="object-cover object-center hover:scale-105 transition-transform duration-700"
