@@ -18,8 +18,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Vu Le",
-  description: "AI-focused Full-Stack Software Engineer specializing in scalable web apps and ML pipelines.",
+  title: "Louis Le",
+  description: "AI infrastructure engineer specializing in multi-agent orchestration and LLM-powered financial systems.",
 };
 
 export default function RootLayout({
@@ -31,8 +31,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-background text-foreground`}
+        suppressHydrationWarning
       >
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange={false}>
         {children}
           <SpeedInsights />
           <Analytics />

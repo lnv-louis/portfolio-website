@@ -26,8 +26,8 @@ export default function RotatingText({
   }, [texts.length]);
 
   return (
-    <div className={cn("relative flex flex-wrap justify-center md:justify-start items-center text-xl sm:text-2xl md:text-3xl font-mono text-neutral-400 min-h-[3rem]", className)}>
-      <span className="mr-2 text-primary font-bold">
+    <div className={cn("relative flex flex-nowrap justify-center md:justify-start items-baseline text-xl sm:text-2xl md:text-3xl font-mono text-muted-foreground", className)}>
+      <span className="mr-2 text-primary font-bold inline-flex" style={{ minWidth: `${Math.max(...texts.map(t => t.length))}ch` }}>
         <AnimatePresence mode="wait">
             <motion.span
             key={index}
@@ -35,7 +35,7 @@ export default function RotatingText({
             animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
             exit={{ y: -10, opacity: 0, filter: "blur(4px)" }}
             transition={transition}
-            className="inline-block"
+            className="inline-block whitespace-nowrap"
             >
             {texts[index]}
             </motion.span>

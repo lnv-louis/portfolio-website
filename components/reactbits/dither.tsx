@@ -2,25 +2,17 @@ import { cn } from "@/lib/utils";
 
 interface DitherProps {
   className?: string;
-  waveAmplitude?: number;
-  waveFrequency?: number;
-  waveSpeed?: number;
-  enableMouseInteraction?: boolean;
-  mouseRadius?: number;
 }
 
-export default function Dither({
-    className,
-    waveAmplitude = 10,
-    waveFrequency = 5,
-    waveSpeed = 0.05,
-    enableMouseInteraction = true,
-    mouseRadius = 1,
-}: DitherProps) {
+export default function Dither({ className }: DitherProps) {
     return (
         <div className={cn("absolute inset-0 -z-10 pointer-events-none", className)}>
-             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
-             {/* Gradient Overlay for depth */}
+             <svg className="absolute inset-0 w-full h-full opacity-20 mix-blend-overlay" xmlns="http://www.w3.org/2000/svg">
+               <filter id="noise">
+                 <feTurbulence type="fractalNoise" baseFrequency="0.80" numOctaves="4" stitchTiles="stitch" />
+               </filter>
+               <rect width="100%" height="100%" filter="url(#noise)" />
+             </svg>
              <div className="absolute inset-0 bg-linear-to-b from-transparent via-background/50 to-background"></div>
         </div>
     );

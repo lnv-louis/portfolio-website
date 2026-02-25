@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { FileText, Eye } from "lucide-react";
 import { PDFPreview } from "@/components/pdf-preview";
 
-// R2 URL Helper
 const getR2UrlRoot = (filename: string) => {
     const baseUrl = process.env.NEXT_PUBLIC_R2_BUCKET_URL;
     if (!baseUrl) return `/${filename}`;
@@ -16,20 +15,20 @@ const getR2UrlRoot = (filename: string) => {
 
 const papers = [
   {
-    title: "ML: Cancer Subtype Classification",
+    title: "cancer subtype classification",
     subtitle: "Random Forest and RBF-SVM",
     description:
-      "Developed and benchmarked Random Forest and RBF-SVM models to classify Acute Myeloid Leukaemia subtypes from high-dimensional gene expression data. Achieved 82% accuracy with the tuned RBF-SVM model.",
+      "Classified AML subtypes on the GSE13159 clinical genomics dataset. Used LASSO for feature selection, compared 4 model variants including tuned RF and RBF-SVM. Best model achieved 82% accuracy.",
     pdf: getR2UrlRoot("ML-classification-leukaemia.pdf"),
-    tags: ["Python", "Scikit-learn", "Pandas", "NumPy"],
+    tags: ["R", "glmnet", "caret", "e1071", "GEOquery"],
   },
   {
-    title: "ML: Comparative Sentiment Analysis",
+    title: "comparative sentiment analysis",
     subtitle: "Bidirectional LSTM vs LinearSVC",
     description:
-      "Implemented and compared a Bidirectional LSTM (Keras) and a LinearSVC model (Scikit-Learn) for sentiment classification on financial news. The LinearSVC achieved an F1 score of 0.74, outperforming the Bi-LSTM.",
+      "Built a full NLP preprocessing pipeline on the FinancialPhraseBank dataset. Compared Bidirectional LSTM against LinearSVC with TF-IDF. LinearSVC achieved F1 of 0.74, outperforming by 7.8%.",
     pdf: getR2UrlRoot("ML-sentiment-analysis.pdf"),
-    tags: ["Python", "Keras", "NLTK", "TensorFlow"],
+    tags: ["Python", "TensorFlow/Keras", "Scikit-learn", "NLTK"],
   },
 ];
 
@@ -37,14 +36,14 @@ export function Research() {
   const [previewPdf, setPreviewPdf] = useState<{ url: string; title: string } | null>(null);
 
   return (
-    <section id="research" className="snap-section bg-black flex items-center justify-center py-24">
+    <section id="research" className="bg-background flex items-center justify-center py-24">
       <div className="container mx-auto px-6">
         <div className="mb-16 text-center">
-          <h2 className="text-4xl font-bold tracking-tighter text-white sm:text-5xl font-mono">
-            Research <span className="text-primary">Manuscripts</span>
+          <h2 className="text-4xl font-light tracking-tighter text-foreground sm:text-5xl" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+            research <span className="text-primary">manuscripts</span>
           </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-neutral-400">
-            Academic research in Machine Learning and Natural Language Processing.
+          <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
+            Machine learning research in clinical genomics and financial NLP.
           </p>
         </div>
 
@@ -52,22 +51,22 @@ export function Research() {
           {papers.map((paper, index) => (
             <div
               key={index}
-              className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-neutral-800 bg-neutral-900/30 p-8 transition-all hover:border-primary/50 hover:bg-neutral-900/50"
+              className="group relative flex flex-col justify-between overflow-hidden border border-border bg-card/30 p-8 transition-all hover:border-primary/50 hover:bg-card/50"
             >
               <div>
                 <div className="mb-4 flex flex-wrap gap-2">
                   {paper.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-neutral-300"
+                      className="inline-flex items-center border border-border bg-secondary px-3 py-1 text-xs font-medium text-muted-foreground"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-1">{paper.title}</h3>
+                <h3 className="text-2xl font-bold text-foreground mb-1">{paper.title}</h3>
                 <p className="text-primary font-mono text-sm mb-4">{paper.subtitle}</p>
-                <p className="text-neutral-400 leading-relaxed mb-8">
+                <p className="text-muted-foreground leading-relaxed mb-8">
                   {paper.description}
                 </p>
               </div>
@@ -75,19 +74,19 @@ export function Research() {
               <div className="mt-auto flex gap-4">
                 <Button
                   variant="outline"
-                  className="flex-1 rounded-full border-neutral-700 bg-transparent text-white hover:bg-primary hover:text-white hover:border-primary transition-all"
+                  className="flex-1 border-border bg-transparent text-foreground hover:bg-primary/90 hover:text-primary-foreground hover:border-primary transition-all"
                   onClick={() => setPreviewPdf({ url: paper.pdf, title: paper.title })}
                 >
-                   Preview <Eye className="ml-2 h-4 w-4" />
+                   preview <Eye className="ml-2 h-4 w-4" />
                 </Button>
-                
+
                 <Button
                   variant="outline"
-                  className="flex-1 rounded-full border-neutral-700 bg-transparent text-white hover:bg-primary hover:text-white hover:border-primary transition-all"
+                  className="flex-1 border-border bg-transparent text-foreground hover:bg-primary/90 hover:text-primary-foreground hover:border-primary transition-all"
                   asChild
                 >
                   <Link href={paper.pdf} target="_blank">
-                    Download <FileText className="ml-2 h-4 w-4" />
+                    download <FileText className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
               </div>
@@ -96,7 +95,7 @@ export function Research() {
         </div>
       </div>
 
-      <PDFPreview 
+      <PDFPreview
         isOpen={!!previewPdf}
         pdfUrl={previewPdf?.url || ""}
         title={previewPdf?.title || ""}

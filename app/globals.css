@@ -1,35 +1,69 @@
 @import "tailwindcss";
 
+/* Light mode (default) */
 :root {
-  --background: #0a0a0a;
-  --foreground: #ffffff;
-  
-  --card: #121212;
-  --card-foreground: #ffffff;
- 
-  --popover: #121212;
-  --popover-foreground: #ffffff;
- 
-  --primary: #ef4444;
+  --background: #fafafa;
+  --foreground: #0a0a0a;
+
+  --card: #ffffff;
+  --card-foreground: #0a0a0a;
+
+  --popover: #ffffff;
+  --popover-foreground: #0a0a0a;
+
+  --primary: #dc2626;
   --primary-foreground: #ffffff;
- 
-  --secondary: #27272a;
-  --secondary-foreground: #ffffff;
- 
-  --muted: #27272a;
-  --muted-foreground: #a1a1aa;
- 
+
+  --secondary: #fef2f2;
+  --secondary-foreground: #991b1b;
+
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+
   --accent: #ef4444;
   --accent-foreground: #ffffff;
- 
-  --destructive: #ef4444;
+
+  --destructive: #b91c1c;
+  --destructive-foreground: #ffffff;
+
+  --border: #e4e4e7;
+  --input: #e4e4e7;
+  --ring: #ef4444;
+
+  --radius: 0px;
+}
+
+/* Dark mode */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #e4e4e7;
+
+  --card: #121212;
+  --card-foreground: #e4e4e7;
+
+  --popover: #121212;
+  --popover-foreground: #e4e4e7;
+
+  --primary: #ef4444;
+  --primary-foreground: #ffffff;
+
+  --secondary: #1a1a1a;
+  --secondary-foreground: #e4e4e7;
+
+  --muted: #27272a;
+  --muted-foreground: #a1a1aa;
+
+  --accent: #ef4444;
+  --accent-foreground: #ffffff;
+
+  --destructive: #dc2626;
   --destructive-foreground: #ffffff;
 
   --border: #27272a;
   --input: #27272a;
   --ring: #ef4444;
-  
-  --radius: 0.5rem;
+
+  --radius: 0px;
 }
 
 @theme inline {
@@ -52,10 +86,10 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius));
+  --radius-md: calc(var(--radius));
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius));
 
   --animate-orbit: orbit calc(var(--duration)*1s) linear infinite;
   --animate-border-beam: border-beam calc(var(--duration)*1s) infinite linear;
@@ -96,13 +130,12 @@
   }
 }
 
-/* Hide default cursor for desktop, except for PDF preview */
+/* Hide default cursor for desktop */
 @media (min-width: 768px) {
   body:not(:has(iframe)), a:not(:has(iframe)), button:not(:has(iframe)), [role="button"]:not(:has(iframe)) {
     cursor: none !important;
   }
-  
-  /* Ensure iframe allows default cursor */
+
   iframe {
     cursor: auto !important;
   }
@@ -112,11 +145,19 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   antialiased: antialiased;
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-x: hidden;
 }
 
-.bg-grid-white\/\[0\.02\] {
+/* Subtle grid for dark mode */
+.dark .bg-grid-pattern {
   background-size: 40px 40px;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-image: linear-gradient(to right, rgba(239, 68, 68, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(239, 68, 68, 0.03) 1px, transparent 1px);
+}
+
+/* Light mode grid */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, rgba(220, 38, 38, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(220, 38, 38, 0.04) 1px, transparent 1px);
 }

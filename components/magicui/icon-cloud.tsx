@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useTheme } from "next-themes";
 import { Cloud, fetchSimpleIcons, renderSimpleIcon } from "react-icon-cloud";
 
-export const cloudProps: Omit<React.ComponentProps<typeof Cloud>, "children"> = {
+const cloudProps: Omit<React.ComponentProps<typeof Cloud>, "children"> = {
   containerProps: {
     style: {
       display: "flex",
@@ -31,7 +31,7 @@ export const cloudProps: Omit<React.ComponentProps<typeof Cloud>, "children"> = 
   },
 };
 
-export const renderCustomIcon = (icon: any, theme: string) => {
+const renderCustomIcon = (icon: any, theme: string) => {
   const bgHex = theme === "light" ? "#f3f2ef" : "#080510";
   const fallbackHex = theme === "light" ? "#6e6e73" : "#ffffff";
   const minContrastRatio = theme === "dark" ? 2 : 1.2;
@@ -51,11 +51,7 @@ export const renderCustomIcon = (icon: any, theme: string) => {
   });
 };
 
-export type IconCloudProps = {
-  iconSlugs: string[];
-};
-
-export function IconCloud({ iconSlugs }: IconCloudProps) {
+export function IconCloud({ iconSlugs }: { iconSlugs: string[] }) {
   const [data, setData] = useState<any>(null);
   const { theme } = useTheme();
 

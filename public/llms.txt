@@ -1,0 +1,22 @@
+# Louis Le
+
+> AI infrastructure engineer specializing in multi-agent orchestration and LLM-powered financial systems. UCL Computer Science.
+
+Louis Le is a software engineer based in London. He builds production systems at the intersection of AI and finance. Currently co-founder and CTO of cf0.ai, a financial intelligence platform with multi-agent orchestration across 31 financial APIs.
+
+## Projects
+
+- [Grounded](https://github.com/lnv-louis/grounded-fact-checking): AI fact-checking platform. 1st place Lovable Hackathon. Multi-stage prompt chain with Perplexity Sonar Pro tracing claims through citation hierarchies.
+- [Dex](https://github.com/lnv-louis/dex-face-recognition): Live facial recognition for networking events. Facenet512 embeddings with RetinaFace detection. Sub-2-second identification.
+- [Homiq](https://github.com/lnv-louis/homiq-property-search-engine): AI property search engine. Infinite zoomable canvas with server-side streaming from Perplexity Sonar Pro.
+
+## Research
+
+- [Cancer Subtype Classification](https://lenguyenvu.com/#research): Random Forest and RBF-SVM models on the GSE13159 clinical genomics dataset. 82% accuracy.
+- [Comparative Sentiment Analysis](https://lenguyenvu.com/#research): Bidirectional LSTM vs LinearSVC on FinancialPhraseBank. LinearSVC achieved F1 of 0.74.
+
+## Links
+
+- [GitHub](https://github.com/lnv-louis)
+- [LinkedIn](https://linkedin.com/in/le-nguyen-vu)
+- [Email](mailto:lelouis.lnv@gmail.com)
