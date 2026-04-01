@@ -1,8 +1,5 @@
 import React, { useRef } from 'react';
-import { gsap } from 'gsap';
 import Link from 'next/link';
-import Image from 'next/image';
-import { cn } from '@/lib/utils';
 
 interface FlowingMenuProps {
   items: {
@@ -19,40 +16,27 @@ export default function FlowingMenu({ items = [] }: FlowingMenuProps) {
 
   const handleMouseEnter = (image: string) => {
     if (revealImgRef.current && revealRef.current) {
-      gsap.to(revealRef.current, {
-        opacity: 1,
-        duration: 0.3,
-        ease: "power2.out"
-      });
+      revealRef.current.style.opacity = '1';
       revealImgRef.current.style.backgroundImage = `url(${image})`;
     }
   };
 
   const handleMouseLeave = () => {
      if (revealRef.current) {
-        gsap.to(revealRef.current, {
-            opacity: 0,
-            duration: 0.3,
-            ease: "power2.out"
-        });
+        revealRef.current.style.opacity = '0';
     }
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (revealRef.current) {
         const { clientX, clientY } = e;
-        gsap.to(revealRef.current, {
-            x: clientX - 150, // center the 300px wide div
-            y: clientY - 200, // center vertically somewhat
-            duration: 0.5,
-            ease: "power3.out"
-        });
+        revealRef.current.style.transform = `translate(${clientX - 150}px, ${clientY - 200}px)`;
     }
   };
 
   return (
-    <div 
-        ref={menuRef} 
+    <div
+        ref={menuRef}
         className="relative flex flex-col items-center justify-center space-y-4 py-10 md:py-20 min-h-screen md:min-h-0"
         onMouseMove={handleMouseMove}
     >
@@ -78,7 +62,10 @@ export default function FlowingMenu({ items = [] }: FlowingMenuProps) {
       <div
         ref={revealRef}
         className="pointer-events-none fixed top-0 left-0 z-0 h-[300px] w-[200px] md:h-[400px] md:w-[300px] overflow-hidden rounded-lg opacity-0 hidden md:block"
-        style={{ transform: 'translate(-50%, -50%)' }}
+        style={{
+          transition: 'opacity 0.3s cubic-bezier(0.33, 1, 0.68, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)',
+          willChange: 'transform, opacity',
+        }}
       >
         <div
           ref={revealImgRef}

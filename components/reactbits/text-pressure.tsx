@@ -57,42 +57,47 @@ export default function TextPressure({
   useEffect(() => {
     if (!variableProximity) return;
 
+    const container = containerRef.current;
+    if (!container) return;
+
+    // Only run expensive RAF loop when the component is visible
+    let isVisible = false;
+    const observer = new IntersectionObserver(
+      ([entry]) => { isVisible = entry.isIntersecting; },
+      { threshold: 0, rootMargin: '100px' }
+    );
+    observer.observe(container);
+
     const handleMouseMove = (e: MouseEvent) => {
       mouseRef.current.x = e.clientX;
       mouseRef.current.y = e.clientY;
     };
-    
+
     window.addEventListener("mousemove", handleMouseMove);
 
-    // RAF loop for smooth cursor interpolation
     let rafId: number;
     const loop = () => {
-        const dx = mouseRef.current.x - cursorRef.current.x;
-        const dy = mouseRef.current.y - cursorRef.current.y;
-        cursorRef.current.x += dx * 0.1;
-        cursorRef.current.y += dy * 0.1;
+        if (isVisible) {
+            const dx = mouseRef.current.x - cursorRef.current.x;
+            const dy = mouseRef.current.y - cursorRef.current.y;
+            cursorRef.current.x += dx * 0.1;
+            cursorRef.current.y += dy * 0.1;
 
-        // Update Variable Font Settings based on proximity
-        if (containerRef.current) {
-             const spans = containerRef.current.querySelectorAll('span.char-span');
-             spans.forEach((span: Element) => {
-                 const rect = span.getBoundingClientRect();
-                 const spanX = rect.left + rect.width / 2;
-                 const spanY = rect.top + rect.height / 2;
-                 
-                 const dist = Math.sqrt(Math.pow(spanX - cursorRef.current.x, 2) + Math.pow(spanY - cursorRef.current.y, 2));
-                 const maxDist = 500;
-                 const proximity = Math.max(0, 1 - dist / maxDist);
+            if (containerRef.current) {
+                 const spans = containerRef.current.querySelectorAll('span.char-span');
+                 spans.forEach((span: Element) => {
+                     const rect = span.getBoundingClientRect();
+                     const spanX = rect.left + rect.width / 2;
+                     const spanY = rect.top + rect.height / 2;
 
-                 // Map proximity to variable font axes (weight, width)
-                 // wght: 100-900, wdth: 50-100
-                 const wght = 900 - (proximity * 800); // Gets thinner closer? Or bolder? Let's say thinner as "pressure"
-                 const wdth = 100 - (proximity * 50);
-                 
-                 // If we are just simulating using CSS transform for now as Impact doesn't have axes
-                 (span as HTMLElement).style.transform = `scale(${1 + proximity * 0.2})`;
-                 (span as HTMLElement).style.color = proximity > 0.5 ? strokeColor : textColor;
-             });
+                     const dist = Math.sqrt(Math.pow(spanX - cursorRef.current.x, 2) + Math.pow(spanY - cursorRef.current.y, 2));
+                     const maxDist = 500;
+                     const proximity = Math.max(0, 1 - dist / maxDist);
+
+                     (span as HTMLElement).style.transform = `scale(${1 + proximity * 0.2})`;
+                     (span as HTMLElement).style.color = proximity > 0.5 ? strokeColor : textColor;
+                 });
+            }
         }
 
         rafId = requestAnimationFrame(loop);
@@ -102,6 +107,7 @@ export default function TextPressure({
     return () => {
         window.removeEventListener("mousemove", handleMouseMove);
         cancelAnimationFrame(rafId);
+        observer.disconnect();
     };
   }, [variableProximity, strokeColor, textColor]);
 

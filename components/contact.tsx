@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect } from "react";
-import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import { ArrowUpRight } from "lucide-react";
-import TextPressure from "@/components/reactbits/text-pressure";
 import Dither from "@/components/reactbits/dither";
+
+const TextPressure = dynamic(() => import("@/components/reactbits/text-pressure"), { ssr: false });
 
 export function Contact() {
   useEffect(() => {

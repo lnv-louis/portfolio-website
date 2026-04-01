@@ -23,7 +23,7 @@ const nextConfig: NextConfig = {
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://app.cal.com https://vercel.live https://*.vercel-insights.com https://*.vercel-analytics.com",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com data:",
-              "img-src 'self' data: blob: https://*.githubusercontent.com",
+              "img-src 'self' data: blob: https://*.githubusercontent.com https://cdn.simpleicons.org",
               "media-src 'self' https://*.r2.cloudflarestorage.com https://*.r2.dev",
               "connect-src 'self' https://app.cal.com https://*.vercel-insights.com https://*.vercel-analytics.com https://*.r2.cloudflarestorage.com https://*.r2.dev",
               "frame-src https://app.cal.com",

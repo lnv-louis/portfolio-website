@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,6 +9,8 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import FlowingMenu from "@/components/reactbits/flowing-menu";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+
+const TargetCursor = dynamic(() => import("@/components/reactbits/target-cursor"), { ssr: false });
 
 const navItems = [
   {
@@ -49,6 +52,7 @@ export function Navbar() {
 
   return (
     <>
+      <TargetCursor />
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}

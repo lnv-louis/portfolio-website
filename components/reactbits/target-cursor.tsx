@@ -8,6 +8,9 @@ export default function TargetCursor() {
   const rafRef = useRef<number>(0);
 
   useEffect(() => {
+    // Skip RAF on mobile/tablet where custom cursor is hidden
+    if (window.matchMedia('(max-width: 767px)').matches) return;
+
     const cursor = cursorRef.current;
     if (!cursor) return;
 
