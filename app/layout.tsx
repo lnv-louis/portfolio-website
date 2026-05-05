@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Louis Le | AI Infrastructure Engineer",
     description: "Building production multi-agent orchestration systems and LLM-powered financial infrastructure.",
-    creator: "@ixvlora",
+    creator: "@lnv007",
   },
   robots: {
     index: true,
@@ -64,7 +64,7 @@ export default function RootLayout({
               sameAs: [
                 "https://github.com/lnv-louis",
                 "https://linkedin.com/in/le-nguyen-vu",
-                "https://x.com/ixvlora",
+                "https://x.com/lnv007",
               ],
             }),
           }}

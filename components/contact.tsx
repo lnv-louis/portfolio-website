@@ -37,7 +37,7 @@ export function Contact() {
              <div className="flex gap-4 pt-4">
                 <SocialLink href="https://github.com/lnv-louis" label="GitHub" />
                 <SocialLink href="https://linkedin.com/in/le-nguyen-vu" label="LinkedIn" />
-                <SocialLink href="https://x.com/ixvlora" label="X" />
+                <SocialLink href="https://x.com/lnv007" label="X" />
              </div>
           </div>
 
