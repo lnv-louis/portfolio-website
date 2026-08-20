@@ -1,13 +1,11 @@
 "use client";
 
 import { HugeiconsIcon } from "@hugeicons/react";
-import {
-  PauseIcon,
-  PlayIcon,
-  VolumeHighIcon,
-  VolumeLowIcon,
-  VolumeMute01Icon,
-} from "@hugeicons/core-free-icons";
+import PauseIcon from "@hugeicons/core-free-icons/PauseIcon";
+import PlayIcon from "@hugeicons/core-free-icons/PlayIcon";
+import VolumeHighIcon from "@hugeicons/core-free-icons/VolumeHighIcon";
+import VolumeLowIcon from "@hugeicons/core-free-icons/VolumeLowIcon";
+import VolumeMute01Icon from "@hugeicons/core-free-icons/VolumeMute01Icon";
 import * as stylex from "@stylexjs/stylex";
 import { AnimatePresence, m, useInView } from "motion/react";
 import { useRef, useState } from "react";
