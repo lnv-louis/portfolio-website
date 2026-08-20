@@ -79,10 +79,6 @@ export const navStyles = stylex.create({
     display: 'inline-block',
     fontSize: text.sizeBodySm,
     fontWeight: text.weightMedium,
-    opacity: {
-      default: '1',
-      ':hover': '0.9',
-    },
     paddingBlock: space.xs,
     paddingInline: space.md,
     position: 'relative',
@@ -92,10 +88,13 @@ export const navStyles = stylex.create({
       ':active': 'scale(0.98)',
     },
     transitionDuration: '200ms',
-    transitionProperty: 'opacity, transform',
+    transitionProperty: 'background-color, transform',
   },
   buttonPrimary: {
-    backgroundColor: color.primary,
+    backgroundColor: {
+      default: color.primary,
+      ':hover': color.primaryActive,
+    },
     color: color.onPrimary,
   },
 })

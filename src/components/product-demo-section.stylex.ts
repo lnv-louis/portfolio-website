@@ -3,6 +3,13 @@ import * as stylex from '@stylexjs/stylex'
 import { color, layout, motion, overlay, radius, shadow, space, text } from '@/tokens/token-consts.stylex'
 
 export const productDemoStyles = stylex.create({
+  section: {
+    paddingBlock: space.x5xl,
+    paddingInline: {
+      default: space.xl,
+      '@media (min-width: 1200px)': space.x4xl,
+    },
+  },
   frame: {
     aspectRatio: '16 / 9',
     backgroundColor: color.surfaceSoft,
@@ -38,7 +45,7 @@ export const productDemoStyles = stylex.create({
     cursor: 'pointer',
   },
   controls: {
-    backdropFilter: 'blur(8px)',
+    backdropFilter: 'blur(12px)',
     backgroundColor: overlay.scrim,
     borderRadius: radius.lg,
     insetBlockEnd: space.sm,

@@ -18,8 +18,6 @@ export function ContactSection() {
             <img
               src="https://media.lenguyenvu.com/contact-photo.webp"
               alt=""
-              width={320}
-              height={320}
               loading="lazy"
               decoding="async"
               {...stylex.props(contactStyles.objectCover)}

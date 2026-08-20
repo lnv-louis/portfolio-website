@@ -15,6 +15,12 @@ import { productDemoStyles as styles } from "@/components/product-demo-section.s
 const PRODUCT_DEMO_VIDEO_SRC = "https://files.cf0.ai/website/cf0-product-demo.mp4";
 const PRODUCT_DEMO_VIDEO_POSTER = "https://files.cf0.ai/website/cf0-product-demo-poster.jpg";
 
+const cardEnter = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
+};
+
 const PLAYBACK_SPEEDS = [0.5, 1, 1.5, 2] as const;
 
 function formatTime(seconds: number): string {
@@ -153,19 +159,21 @@ export function ProductDemoSection() {
   else if (volume <= 0.5) volumeIcon = VolumeLowIcon;
 
   return (
-    <m.div
-      ref={frameRef}
-      {...stylex.props(styles.frame)}
-      onMouseEnter={() => setShowControls(true)}
-      onMouseLeave={() => setShowControls(false)}
-      onFocus={() => setShowControls(true)}
-      onBlur={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget as Node)) {
-          setShowControls(false);
-        }
-      }}
-      onTouchStart={() => setShowControls(true)}
-    >
+    <section {...stylex.props(styles.section)}>
+      <m.div
+        ref={frameRef}
+        {...cardEnter}
+        {...stylex.props(styles.frame)}
+        onMouseEnter={() => setShowControls(true)}
+        onMouseLeave={() => setShowControls(false)}
+        onFocus={() => setShowControls(true)}
+        onBlur={(event) => {
+          if (!event.currentTarget.contains(event.relatedTarget as Node)) {
+            setShowControls(false);
+          }
+        }}
+        onTouchStart={() => setShowControls(true)}
+      >
         <img
           src={PRODUCT_DEMO_VIDEO_POSTER}
           alt="cf0 product preview"
@@ -259,5 +267,6 @@ export function ProductDemoSection() {
           )}
         </AnimatePresence>
       </m.div>
+    </section>
   );
 }

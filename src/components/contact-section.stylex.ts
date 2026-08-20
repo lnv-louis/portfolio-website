@@ -48,8 +48,11 @@ export const contactStyles = stylex.create({
     maxWidth: '100%',
   },
   objectCover: {
+    display: 'block',
+    height: '100%',
     objectFit: 'cover',
     objectPosition: 'center',
+    width: '100%',
   },
   textCol: {
     display: 'flex',
