@@ -93,7 +93,10 @@ export const heroStyles = stylex.create({
   subheadingLink: {
     color: color.ink,
     textDecoration: 'underline',
-    textDecorationColor: color.hairline,
+    textDecorationColor: {
+      default: color.meta,
+      ':hover': color.primary,
+    },
     textDecorationThickness: '1px',
     textUnderlineOffset: '3px',
     transitionProperty: 'text-decoration-color',

@@ -101,6 +101,7 @@ export function HeroSection() {
               <span key={item.id}>
                 <Tooltip>
                   <TooltipTrigger
+                    delay={300}
                     render={
                       <a
                         href={item.href}
