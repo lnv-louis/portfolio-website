@@ -99,6 +99,12 @@ export const heroStyles = stylex.create({
     transitionProperty: 'text-decoration-color',
     transitionDuration: '150ms',
   },
+  tooltipLink: {
+    color: 'inherit',
+    textDecoration: 'underline',
+    textDecorationColor: 'color-mix(in srgb, currentcolor 50%, transparent)',
+    textUnderlineOffset: '2px',
+  },
   socials: {
     alignItems: 'center',
     display: 'flex',

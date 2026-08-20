@@ -71,7 +71,7 @@ export const contactStyles = stylex.create({
       default: text.sizeDisplayLg,
       '@media (min-width: 960px)': text.sizeDisplayXl,
     },
-    fontWeight: text.weightRegular,
+    fontWeight: text.weightSemibold,
     letterSpacing: {
       default: text.trackingDisplayLg,
       '@media (min-width: 960px)': text.trackingDisplayXl,

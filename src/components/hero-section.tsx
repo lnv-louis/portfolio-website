@@ -10,11 +10,46 @@ import {
   StaggerRevealHeadline,
   StaggerRevealItem,
 } from '@/components/stagger-reveal'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 
 const SOCIALS = [
   { label: 'GitHub', href: 'https://github.com/lnv-louis', icon: 'github' },
   { label: 'LinkedIn', href: 'https://linkedin.com/in/le-nguyen-vu', icon: 'linkedin' },
   { label: 'X', href: 'https://x.com/lnv007', icon: 'x' },
+]
+
+const CURRENT_WORK = [
+  {
+    id: 'cf0',
+    href: 'https://cf0.ai/',
+    label: 'Currently building cf0.ai',
+    tooltip: <>The AI brain for funds and family offices.</>,
+  },
+  {
+    id: 'hack-collective',
+    href: 'https://luma.com/thehackcollective',
+    label: 'Currently building The Hack Collective',
+    tooltip: <>A London hackathon community with 1,000+ members.</>,
+  },
+  {
+    id: 'devin',
+    href: 'https://devin.ai/',
+    label: 'Currently a Devin AI Ambassador.',
+    tooltip: (
+      <>
+        Frontier AI built by{' '}
+        <a
+          href="https://cognition.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          {...stylex.props(heroStyles.tooltipLink)}
+        >
+          Cognition AI
+        </a>
+        .
+      </>
+    ),
+  },
 ]
 
 function XIcon() {
@@ -55,35 +90,26 @@ export function HeroSection() {
             as="p"
             className={stylex.props(heroStyles.subheading).className}
           >
-            <a
-              href="https://cf0.ai/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="cf0.ai"
-              {...stylex.props(heroStyles.subheadingLink)}
-            >
-              Currently building cf0.ai
-            </a>
-            <br />
-            <a
-              href="https://luma.com/thehackcollective"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="a hackathon community of 1,000+ builders in London"
-              {...stylex.props(heroStyles.subheadingLink)}
-            >
-              Currently building The Hack Collective
-            </a>
-            <br />
-            <a
-              href="https://devin.ai/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Devin AI"
-              {...stylex.props(heroStyles.subheadingLink)}
-            >
-              Currently a Devin AI Ambassador.
-            </a>
+            {CURRENT_WORK.map((item, i) => (
+              <span key={item.id}>
+                <Tooltip>
+                  <TooltipTrigger
+                    render={
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        {...stylex.props(heroStyles.subheadingLink)}
+                      />
+                    }
+                  >
+                    {item.label}
+                  </TooltipTrigger>
+                  <TooltipContent>{item.tooltip}</TooltipContent>
+                </Tooltip>
+                {i < CURRENT_WORK.length - 1 && <br />}
+              </span>
+            ))}
           </StaggerRevealItem>
 
           <StaggerRevealItem className={stylex.props(heroStyles.socials).className}>

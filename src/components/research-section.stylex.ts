@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
 
-import { color, layout, space, text } from '@/tokens/token-consts.stylex'
+import { color, layout, radius, space, text } from '@/tokens/token-consts.stylex'
 
 export const researchStyles = stylex.create({
   section: {
@@ -37,13 +37,48 @@ export const researchStyles = stylex.create({
   },
   viewerCol: {
     display: 'flex',
+    flexDirection: 'column',
+    gap: space.md,
     flex: '1',
-    height: {
-      default: '600px',
-      '@media (min-width: 960px)': '800px',
-    },
+    justifyContent: 'center',
     minHeight: 0,
-    position: 'relative',
+  },
+  pdfEntry: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: space.sm,
+  },
+  pdfCard: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: space.sm,
+    backgroundColor: color.surfaceCard,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: color.hairline,
+    borderRadius: radius.card,
+    paddingBlock: space.x2xl,
+    paddingInline: space.x2xl,
+    textDecoration: 'none',
+    transitionProperty: 'border-color, background-color',
+    transitionDuration: '150ms',
+    ':hover': {
+      borderColor: color.hairlineStrong,
+      backgroundColor: color.surfaceHover,
+    },
+  },
+  pdfCardTitle: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: space.xs,
+    color: color.ink,
+    fontFamily: text.fontMono,
+    fontSize: text.sizeBodySm,
+  },
+  pdfCardMeta: {
+    color: color.meta,
+    fontFamily: text.fontSans,
+    fontSize: text.sizeBodySm,
   },
   heading: {
     color: color.ink,

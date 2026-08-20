@@ -17,7 +17,7 @@ export function ContactSection() {
         <div {...stylex.props(contactStyles.imageCol)}>
           <div {...stylex.props(contactStyles.imageFrame)}>
             <Image
-              src="https://media.lenguyenvu.com/contact/09115e6bbea1454f.webp"
+              src="https://media.lenguyenvu.com/contact-photo.webp"
               alt=""
               fill
               sizes="320px"
