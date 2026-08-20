@@ -50,6 +50,12 @@ const CURRENT_WORK = [
       </>
     ),
   },
+  {
+    id: 'eurotech',
+    href: 'https://www.eurotech-federation.com/',
+    label: 'Currently a EuroTech Fellow',
+    tooltip: <>Batch 2 Fellow at EuroTech Federation.</>,
+  },
 ]
 
 function XIcon() {

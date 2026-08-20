@@ -42,7 +42,7 @@ function SmoothScroll({ children }: { children: ReactNode }) {
   }
 
   return (
-    <ReactLenis root options={{ autoRaf: false }} ref={lenisRef}>
+    <ReactLenis root options={{ autoRaf: false, anchors: true }} ref={lenisRef}>
       {children}
     </ReactLenis>
   );
