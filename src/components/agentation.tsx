@@ -1,15 +1,15 @@
-"use client";
+import { lazy, Suspense } from "react";
 
-import dynamic from "next/dynamic";
-
-const Agentation = dynamic(
-  () =>
-    process.env.NODE_ENV !== "production"
-      ? import("agentation").then((m) => m.Agentation)
-      : Promise.resolve((() => null) as React.ComponentType),
-  { ssr: false, loading: () => null },
+const Agentation = lazy(() =>
+  import("agentation").then((m) => ({ default: m.Agentation })),
 );
 
 export function AgentationToolbar() {
-  return <Agentation />;
+  if (import.meta.env.PROD) return null;
+
+  return (
+    <Suspense fallback={null}>
+      <Agentation />
+    </Suspense>
+  );
 }

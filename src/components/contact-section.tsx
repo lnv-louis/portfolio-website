@@ -1,5 +1,4 @@
 import * as stylex from '@stylexjs/stylex'
-import Image from 'next/image'
 
 import { contactStyles } from '@/components/contact-section.stylex'
 
@@ -16,11 +15,13 @@ export function ContactSection() {
       <div {...stylex.props(contactStyles.grid)}>
         <div {...stylex.props(contactStyles.imageCol)}>
           <div {...stylex.props(contactStyles.imageFrame)}>
-            <Image
+            <img
               src="https://media.lenguyenvu.com/contact-photo.webp"
               alt=""
-              fill
-              sizes="320px"
+              width={320}
+              height={320}
+              loading="lazy"
+              decoding="async"
               {...stylex.props(contactStyles.objectCover)}
             />
           </div>

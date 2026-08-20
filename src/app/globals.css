@@ -1,4 +1,4 @@
-@import "../src/tokens/design-tokens.css";
+@import "../tokens/design-tokens.css";
 @import "lenis/dist/lenis.css";
 
 @layer base, priority1, priority2, priority3, priority4;

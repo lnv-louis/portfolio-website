@@ -1,6 +1,4 @@
 import * as stylex from '@stylexjs/stylex'
-import Image from 'next/image'
-import Link from 'next/link'
 
 import { navStyles } from '@/components/site-nav.stylex'
 
@@ -29,15 +27,15 @@ export function SiteNav() {
 
       <div {...stylex.props(navStyles.navBody)}>
         <div {...stylex.props(navStyles.bar)}>
-          <Link href="/" {...stylex.props(navStyles.wordmark)} aria-label="Louis Le home">
-            <Image
+          <a href="/" {...stylex.props(navStyles.wordmark)} aria-label="Louis Le home">
+            <img
               src="/favicon2.png"
               alt="Louis Le"
               width={28}
               height={28}
               {...stylex.props(navStyles.wordmarkLogo)}
             />
-          </Link>
+          </a>
 
           <div {...stylex.props(navStyles.actions)}>
             <a
