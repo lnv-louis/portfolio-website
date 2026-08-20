@@ -41,9 +41,7 @@ export function SiteNav() {
 
           <div {...stylex.props(navStyles.actions)}>
             <a
-              href="https://x.com/lnv007"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#contact"
               {...stylex.props(navStyles.buttonBase, navStyles.buttonPrimary)}
             >
               Get in touch
