@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { LazyMotion, domAnimation } from "motion/react";
 import { AgentationToolbar } from "@/components/agentation";
 import { LenisProvider } from "@/components/lenis-provider";
 
@@ -80,10 +81,12 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <LenisProvider>
-          {children}
-          <AgentationToolbar />
-        </LenisProvider>
+        <LazyMotion features={domAnimation} strict>
+          <LenisProvider>
+            {children}
+            <AgentationToolbar />
+          </LenisProvider>
+        </LazyMotion>
       </body>
     </html>
   );
