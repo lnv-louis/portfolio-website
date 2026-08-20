@@ -1,39 +1,28 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "next-themes";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/react";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  display: "swap",
-});
+import { AgentationToolbar } from "@/components/agentation";
+import { LenisProvider } from "@/components/lenis-provider";
 
 export const metadata: Metadata = {
   title: {
-    default: "Louis Le | AI Infrastructure Engineer",
+    default: "Louis Le",
     template: "%s | Louis Le",
   },
-  description: "AI infrastructure engineer specializing in multi-agent orchestration, Claude Agent SDK, and LLM-powered financial systems.",
+  description:
+    "Co-Founder & CTO at cf0.ai. Building production multi-agent orchestration systems and LLM-powered financial infrastructure.",
   metadataBase: new URL("https://lenguyenvu.com"),
   openGraph: {
     title: "Louis Le | AI Infrastructure Engineer",
-    description: "Building production multi-agent orchestration systems and LLM-powered financial infrastructure.",
+    description:
+      "Co-Founder & CTO at cf0.ai. Building production multi-agent orchestration systems and LLM-powered financial infrastructure.",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
     title: "Louis Le | AI Infrastructure Engineer",
-    description: "Building production multi-agent orchestration systems and LLM-powered financial infrastructure.",
+    description:
+      "Co-Founder & CTO at cf0.ai. Building production multi-agent orchestration systems and LLM-powered financial infrastructure.",
     creator: "@lnv007",
   },
   robots: {
@@ -49,8 +38,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          as="style"
+          href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -59,8 +63,13 @@ export default function RootLayout({
               "@type": "Person",
               name: "Louis Le",
               url: "https://lenguyenvu.com",
-              jobTitle: "AI Infrastructure Engineer",
-              knowsAbout: ["Multi-agent orchestration", "LLM systems", "Financial infrastructure", "Claude Agent SDK"],
+              jobTitle: "Co-Founder & CTO, cf0.ai",
+              knowsAbout: [
+                "Multi-agent orchestration",
+                "LLM systems",
+                "Financial infrastructure",
+                "Claude Agent SDK",
+              ],
               sameAs: [
                 "https://github.com/lnv-louis",
                 "https://linkedin.com/in/le-nguyen-vu",
@@ -70,15 +79,11 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body
-        className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-background text-foreground`}
-        suppressHydrationWarning
-      >
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange={false}>
-        {children}
-          <SpeedInsights />
-          <Analytics />
-        </ThemeProvider>
+      <body>
+        <LenisProvider>
+          {children}
+          <AgentationToolbar />
+        </LenisProvider>
       </body>
     </html>
   );

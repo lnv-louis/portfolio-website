@@ -1,0 +1,101 @@
+import * as stylex from '@stylexjs/stylex'
+
+import { color, radius, space, text } from '@/tokens/token-consts.stylex'
+
+export const navStyles = stylex.create({
+  navbar: {
+    insetBlockStart: 0,
+    insetInline: 0,
+    position: 'fixed',
+    width: '100%',
+    zIndex: 40,
+  },
+  navBody: {
+    alignSelf: 'flex-start',
+    alignItems: 'center',
+    display: {
+      default: 'none',
+      '@media (min-width: 1024px)': 'flex',
+    },
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginInline: 'auto',
+    marginTop: space.x2xl,
+    maxWidth: '48rem',
+    padding: space.xs,
+    position: 'relative',
+    width: '100%',
+    zIndex: 60,
+    '::before': {
+      backdropFilter: 'blur(12px)',
+      borderRadius: radius.lg,
+      content: '""',
+      filter: 'url(#nav-glass-distortion)',
+      inset: 0,
+      pointerEvents: 'none',
+      position: 'absolute',
+      zIndex: -2,
+    },
+    '::after': {
+      backgroundColor: color.surfaceNav,
+      borderRadius: radius.lg,
+      content: '""',
+      inset: 0,
+      pointerEvents: 'none',
+      position: 'absolute',
+      zIndex: -1,
+    },
+  },
+  bar: {
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'space-between',
+    paddingBlock: space.xs,
+    paddingInline: space.md,
+    position: 'relative',
+    width: '100%',
+    zIndex: 10,
+  },
+  wordmark: {
+    alignItems: 'center',
+    display: 'flex',
+    flexShrink: 0,
+    gap: space.xs,
+  },
+  wordmarkLogo: {
+    borderRadius: radius.full,
+    height: '1.75rem',
+    objectFit: 'cover',
+    width: '1.75rem',
+  },
+  actions: {
+    alignItems: 'center',
+    display: 'flex',
+    gap: space.xs,
+  },
+  buttonBase: {
+    borderRadius: radius.pill,
+    cursor: 'pointer',
+    display: 'inline-block',
+    fontSize: text.sizeBodySm,
+    fontWeight: text.weightMedium,
+    opacity: {
+      default: '1',
+      ':hover': '0.9',
+    },
+    paddingBlock: space.xs,
+    paddingInline: space.md,
+    position: 'relative',
+    textAlign: 'center',
+    transform: {
+      default: 'none',
+      ':active': 'scale(0.98)',
+    },
+    transitionDuration: '200ms',
+    transitionProperty: 'opacity, transform',
+  },
+  buttonPrimary: {
+    backgroundColor: color.primary,
+    color: color.onPrimary,
+  },
+})

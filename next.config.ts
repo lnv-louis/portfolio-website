@@ -1,10 +1,17 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  cacheComponents: true,
+  partialPrefetching: true,
   compress: true,
   images: {
     formats: ['image/avif', 'image/webp'],
-    remotePatterns: [],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'media.lenguyenvu.com',
+      },
+    ],
   },
   async headers() {
     return [
@@ -20,13 +27,15 @@ const nextConfig: NextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://app.cal.com https://vercel.live https://*.vercel-insights.com https://*.vercel-analytics.com https://static.cloudflareinsights.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.vercel-insights.com https://*.vercel-analytics.com",
+              "worker-src 'self' blob:",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com data:",
-              "img-src 'self' data: blob: https://*.githubusercontent.com https://cdn.simpleicons.org",
-              "media-src 'self' https://*.r2.cloudflarestorage.com https://*.r2.dev https://media.lenguyenvu.com",
-              "connect-src 'self' https://app.cal.com https://*.vercel-insights.com https://*.vercel-analytics.com https://*.r2.cloudflarestorage.com https://*.r2.dev https://static.cloudflareinsights.com https://cdn.jsdelivr.net https://raw.githubusercontent.com",
-              "frame-src https://app.cal.com https://vercel.live",
+              "img-src 'self' data: blob: https://*.githubusercontent.com https://media.lenguyenvu.com https://files.cf0.ai",
+              "media-src 'self' https://media.lenguyenvu.com https://files.cf0.ai",
+              "connect-src 'self' https://*.vercel-insights.com https://*.vercel-analytics.com https://media.lenguyenvu.com",
+              "frame-src 'self' https://media.lenguyenvu.com",
+              "object-src 'self' https://media.lenguyenvu.com",
             ].join('; '),
           },
           { key: 'Strict-Transport-Security', value: 'max-age=31536000; includeSubDomains; preload' },

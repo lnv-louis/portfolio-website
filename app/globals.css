@@ -1,182 +1,113 @@
-@import "tailwindcss";
+@import "../src/tokens/design-tokens.css";
+@import "lenis/dist/lenis.css";
 
-/* Light mode (default) */
-:root {
-  --background: #fafafa;
-  --foreground: #0a0a0a;
+@layer base, priority1, priority2, priority3, priority4;
 
-  --card: #ffffff;
-  --card-foreground: #0a0a0a;
+@stylex;
 
-  --popover: #ffffff;
-  --popover-foreground: #0a0a0a;
-
-  --primary: #dc2626;
-  --primary-foreground: #ffffff;
-
-  --secondary: #fef2f2;
-  --secondary-foreground: #991b1b;
-
-  --muted: #f4f4f5;
-  --muted-foreground: #71717a;
-
-  --accent: #ef4444;
-  --accent-foreground: #ffffff;
-
-  --destructive: #b91c1c;
-  --destructive-foreground: #ffffff;
-
-  --border: #e4e4e7;
-  --input: #e4e4e7;
-  --ring: #ef4444;
-
-  --radius: 0px;
-}
-
-/* Dark mode */
-.dark {
-  --background: #0a0a0a;
-  --foreground: #e4e4e7;
-
-  --card: #121212;
-  --card-foreground: #e4e4e7;
-
-  --popover: #121212;
-  --popover-foreground: #e4e4e7;
-
-  --primary: #ef4444;
-  --primary-foreground: #ffffff;
-
-  --secondary: #1a1a1a;
-  --secondary-foreground: #e4e4e7;
-
-  --muted: #27272a;
-  --muted-foreground: #a1a1aa;
-
-  --accent: #ef4444;
-  --accent-foreground: #ffffff;
-
-  --destructive: #dc2626;
-  --destructive-foreground: #ffffff;
-
-  --border: #27272a;
-  --input: #27272a;
-  --ring: #ef4444;
-
-  --radius: 0px;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --radius-sm: calc(var(--radius));
-  --radius-md: calc(var(--radius));
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius));
-
-  --animate-orbit: orbit calc(var(--duration)*1s) linear infinite;
-  --animate-border-beam: border-beam calc(var(--duration)*1s) infinite linear;
-  --animate-marquee: marquee var(--duration) linear infinite;
-  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
-
-  @keyframes orbit {
-      0% {
-          transform: rotate(0deg) translateY(calc(var(--radius) * 1px)) rotate(0deg);
-      }
-      100% {
-          transform: rotate(360deg) translateY(calc(var(--radius) * 1px)) rotate(-360deg);
-      }
+@layer base {
+  html {
+    font-family: var(--portfolio-font-sans);
   }
 
-  @keyframes border-beam {
-      100% {
-          offset-distance: 100%;
-      }
+  body {
+    background-color: var(--portfolio-canvas);
+    color: var(--portfolio-ink);
+    font-family: var(--portfolio-font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
 
-  @keyframes marquee {
-      from {
-          transform: translateX(0);
-      }
-      to {
-          transform: translateX(calc(-100% - var(--gap)));
-      }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--portfolio-font-display);
   }
 
-  @keyframes marquee-vertical {
-      from {
-          transform: translateY(0);
-      }
-      to {
-          transform: translateY(calc(-100% - var(--gap)));
-      }
+  code, pre, kbd, samp {
+    font-family: var(--portfolio-font-mono);
   }
 
-  --animate-fade-in-up: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
-  --animate-fade-in-right: fade-in-right 0.5s ease-out both;
-  --animate-fade-in: fade-in 0.5s ease-out both;
-
-  @keyframes fade-in-up {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes fade-in-right {
-      from { opacity: 0; transform: translateX(20px); }
-      to { opacity: 1; transform: translateX(0); }
-  }
-
-  @keyframes fade-in {
-      from { opacity: 0; }
-      to { opacity: 1; }
+  a {
+    color: inherit;
+    text-decoration: none;
   }
 }
 
-/* Hide default cursor for desktop */
-@media (min-width: 768px) {
-  body:not(:has(iframe)), a:not(:has(iframe)), button:not(:has(iframe)), [role="button"]:not(:has(iframe)) {
-    cursor: none !important;
-  }
+/* ---------------------------------------------------------------------------
+   UI component data-state styles
+   StyleX cannot target data-attribute selectors, so these rules live here
+   and apply via Radix's data-state attributes on the rendered elements.
+   --------------------------------------------------------------------------- */
 
-  iframe {
-    cursor: auto !important;
-  }
+/* Toggle: data-state=on */
+[data-slot="toggle"][data-state="on"] {
+  background-color: var(--portfolio-surface-hover);
+  color: var(--portfolio-ink);
 }
 
-body {
-  background-color: var(--background);
-  color: var(--foreground);
-  antialiased: antialiased;
-  overflow-x: hidden;
+/* Dropdown menu / select item: focus + data-highlighted */
+[data-slot="dropdown-menu-item"][data-highlighted],
+[data-slot="dropdown-menu-checkbox-item"][data-highlighted],
+[data-slot="dropdown-menu-radio-item"][data-highlighted],
+[data-slot="dropdown-menu-sub-trigger"][data-state="open"] {
+  background-color: var(--portfolio-surface-hover);
+  color: var(--portfolio-ink);
+  outline: none;
 }
 
-/* Subtle grid for dark mode */
-.dark .bg-grid-pattern {
-  background-size: 40px 40px;
-  background-image: linear-gradient(to right, rgba(239, 68, 68, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(239, 68, 68, 0.03) 1px, transparent 1px);
+[data-slot="dropdown-menu-item"][data-variant="destructive"][data-highlighted] {
+  background-color: color-mix(in srgb, var(--portfolio-negative) 10%, transparent);
+  color: var(--portfolio-negative);
 }
 
-/* Light mode grid */
-.bg-grid-pattern {
-  background-size: 40px 40px;
-  background-image: linear-gradient(to right, rgba(220, 38, 38, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(220, 38, 38, 0.04) 1px, transparent 1px);
+/* Select item highlighted */
+[data-slot="select-item"][data-highlighted] {
+  background-color: var(--portfolio-surface-hover);
+  color: var(--portfolio-ink);
+  outline: none;
+}
+
+/* Select trigger placeholder */
+[data-slot="select-trigger"][data-placeholder] {
+  color: var(--portfolio-meta);
+}
+
+/* Disabled states for menu items */
+[data-slot="dropdown-menu-item"][data-disabled],
+[data-slot="dropdown-menu-checkbox-item"][data-disabled],
+[data-slot="dropdown-menu-radio-item"][data-disabled],
+[data-slot="select-item"][data-disabled] {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Focus-visible ring for interactive elements */
+[data-slot="button"]:focus-visible,
+[data-slot="input"]:focus-visible,
+[data-slot="select-trigger"]:focus-visible,
+[data-slot="toggle"]:focus-visible {
+  border-color: var(--portfolio-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--portfolio-primary) 50%, transparent);
+  outline: none;
+}
+
+/* Disabled button / input / select-trigger */
+[data-slot="button"]:disabled,
+[data-slot="input"]:disabled,
+[data-slot="select-trigger"]:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Input aria-invalid */
+[data-slot="input"][aria-invalid="true"] {
+  border-color: var(--portfolio-negative);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--portfolio-negative) 20%, transparent);
+}
+
+/* Select trigger aria-invalid */
+[data-slot="select-trigger"][aria-invalid="true"] {
+  border-color: var(--portfolio-negative);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--portfolio-negative) 20%, transparent);
 }
