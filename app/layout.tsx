@@ -47,6 +47,8 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+        <link rel="preconnect" href="https://media.lenguyenvu.com" />
+        <link rel="preconnect" href="https://files.cf0.ai" />
         <link
           rel="preload"
           as="style"
