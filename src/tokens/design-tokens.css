@@ -1,0 +1,145 @@
+:root {
+  --portfolio-brand-50: #fef2f2;
+  --portfolio-brand-600: #dc2626;
+  --portfolio-brand-700: #ef4444;
+  --portfolio-brand-800: #b91c1c;
+  --portfolio-brand-900: #7f1d1d;
+
+  --portfolio-gray-50: #fafafa;
+  --portfolio-gray-100: #f4f4f5;
+  --portfolio-gray-200: #e4e4e7;
+  --portfolio-gray-300: #d4d4d8;
+  --portfolio-gray-400: #a1a1aa;
+  --portfolio-gray-500: #71717a;
+  --portfolio-gray-600: #52525b;
+  --portfolio-gray-700: #3f3f46;
+  --portfolio-gray-800: #27272a;
+  --portfolio-gray-900: #18181b;
+  --portfolio-gray-950: #09090b;
+
+  --portfolio-primary: var(--portfolio-brand-700);
+  --portfolio-primary-active: var(--portfolio-brand-600);
+  --portfolio-primary-tint: var(--portfolio-brand-50);
+  --portfolio-primary-deep: var(--portfolio-brand-900);
+  --portfolio-on-primary: #ffffff;
+
+  --portfolio-canvas: #f5f5f5;
+  --portfolio-surface-card: #ffffff;
+  --portfolio-surface-soft: #fafafa;
+  --portfolio-surface-hover: #f0f0f0;
+  --portfolio-surface-nav: rgba(24, 24, 27, 0.06);
+
+  --portfolio-overlay-scrim: rgba(17, 17, 17, 0.72);
+  --portfolio-overlay-ink: #ffffff;
+  --portfolio-overlay-muted: rgba(255, 255, 255, 0.7);
+  --portfolio-overlay-hover: rgba(255, 255, 255, 0.16);
+  --portfolio-overlay-track: rgba(255, 255, 255, 0.24);
+
+  --portfolio-ink: rgba(24, 24, 27, 0.96);
+  --portfolio-body-strong: rgba(24, 24, 27, 0.90);
+  --portfolio-body: rgba(24, 24, 27, 0.82);
+  --portfolio-meta: rgba(24, 24, 27, 0.68);
+  --portfolio-caption-ink: rgba(24, 24, 27, 0.62);
+
+  --portfolio-hairline: #e4e4e7;
+  --portfolio-hairline-strong: #d4d4d8;
+  --portfolio-input-border: #8a8a93;
+
+  --portfolio-positive: #10b981;
+  --portfolio-negative: #dc2626;
+  --portfolio-warning: #f59e0b;
+  --portfolio-neutral-flat: #9ca3af;
+
+  --portfolio-font-display: "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --portfolio-font-sans: "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --portfolio-font-mono: "Geist Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+  --portfolio-size-display-xl: 44px;
+  --portfolio-size-display-lg: 40px;
+  --portfolio-size-display-md: 32px;
+  --portfolio-size-display-sm: 22px;
+  --portfolio-size-display-xs: 18px;
+  --portfolio-size-body-lg: 18px;
+  --portfolio-size-body-md: 16px;
+  --portfolio-size-body-sm: 14px;
+  --portfolio-size-caption: 12px;
+  --portfolio-size-micro: 11px;
+  --portfolio-size-code: 13px;
+
+  --portfolio-leading-display-xl: 48px;
+  --portfolio-leading-display-lg: 44px;
+  --portfolio-leading-display-md: 40px;
+  --portfolio-leading-display-sm: 28px;
+  --portfolio-leading-display-xs: 24px;
+  --portfolio-leading-body-lg: 28px;
+  --portfolio-leading-body-md: 24px;
+  --portfolio-leading-body-sm: 20px;
+  --portfolio-leading-caption: 16px;
+  --portfolio-leading-micro: 16px;
+  --portfolio-leading-code: 20px;
+
+  --portfolio-tracking-display-xl: -0.03em;
+  --portfolio-tracking-display-lg: -0.028em;
+  --portfolio-tracking-display-md: -0.025em;
+  --portfolio-tracking-display-sm: -0.02em;
+  --portfolio-tracking-display-xs: -0.015em;
+  --portfolio-tracking-body: 0em;
+  --portfolio-tracking-body-sm: -0.01em;
+  --portfolio-tracking-label: 0.04em;
+  --portfolio-tracking-eyebrow: 0.12em;
+  --portfolio-tracking-allcaps: 0.2em;
+
+  --portfolio-weight-regular: 400;
+  --portfolio-weight-medium: 500;
+  --portfolio-weight-semibold: 600;
+
+  --portfolio-space-xxs: 4px;
+  --portfolio-space-xs: 8px;
+  --portfolio-space-sm: 12px;
+  --portfolio-space-md: 16px;
+  --portfolio-space-lg: 24px;
+  --portfolio-space-xl: 32px;
+  --portfolio-space-2xl: 40px;
+  --portfolio-space-3xl: 48px;
+  --portfolio-space-4xl: 64px;
+  --portfolio-space-5xl: 96px;
+  --portfolio-space-6xl: 128px;
+  --portfolio-space-section: 192px;
+
+  --portfolio-radius-none: 0px;
+  --portfolio-radius-xs: 4px;
+  --portfolio-radius-sm: 6px;
+  --portfolio-radius-md: 8px;
+  --portfolio-radius-lg: 12px;
+  --portfolio-radius-xl: 16px;
+  --portfolio-radius-pill-sm: 64px;
+  --portfolio-radius-pill: 100px;
+  --portfolio-radius-full: 9999px;
+  --portfolio-radius-card: var(--portfolio-radius-md);
+  --portfolio-radius-input: var(--portfolio-radius-sm);
+  --portfolio-radius-action: var(--portfolio-radius-none);
+  --portfolio-radius-pulse: var(--portfolio-radius-full);
+
+  --portfolio-shadow-0: none;
+  --portfolio-shadow-1: 0 0 0 1px #00000014 inset;
+  --portfolio-shadow-2: 0 1px 1px #00000005, 0 2px 2px #0000000a, var(--portfolio-shadow-1);
+  --portfolio-shadow-3: 0 2px 2px #0000000a, 0 8px 8px -8px #0000000a, var(--portfolio-shadow-1);
+  --portfolio-shadow-4: 0 2px 2px #0000000a, 0 8px 16px -4px #0000000a, var(--portfolio-shadow-1);
+  --portfolio-shadow-5: 0 1px 1px #00000005, 0 8px 16px -4px #0000000a, 0 24px 32px -8px #0000000f, var(--portfolio-shadow-1);
+  --portfolio-shadow-float: var(--portfolio-shadow-4);
+  --portfolio-shadow-modal: var(--portfolio-shadow-5);
+
+  --portfolio-ease: cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  --portfolio-ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --portfolio-ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --portfolio-duration-fast: 150ms;
+  --portfolio-duration-medium: 200ms;
+  --portfolio-duration-slow: 300ms;
+
+  --portfolio-container-max: 1200px;
+  --portfolio-container-wide: 1400px;
+  --portfolio-prose-max: 680px;
+  --portfolio-measure-prose: 65ch;
+  --portfolio-side-panel-max: 34rem;
+  --portfolio-focus-ring: 0 0 0 2px var(--portfolio-canvas), 0 0 0 4px var(--portfolio-primary);
+}
