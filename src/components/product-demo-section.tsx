@@ -181,7 +181,7 @@ export function ProductDemoSection() {
             muted
             loop
             playsInline
-            preload="auto"
+            preload="metadata"
             onCanPlay={() => setIsReady(true)}
             onTimeUpdate={handleTimeUpdate}
             onPlay={() => setIsPlaying(true)}
