@@ -2,7 +2,7 @@ import * as stylex from '@stylexjs/stylex'
 import { HugeiconsIcon } from '@hugeicons/react'
 import Github01Icon from '@hugeicons/core-free-icons/Github01Icon'
 import Linkedin01Icon from '@hugeicons/core-free-icons/Linkedin01Icon'
-import Image from 'next/image'
+
 
 import { heroStyles } from '@/components/hero-section.stylex'
 import {
@@ -72,13 +72,14 @@ export function HeroSection() {
       <div {...stylex.props(heroStyles.wrapper)}>
         <div {...stylex.props(heroStyles.portrait)}>
           <div {...stylex.props(heroStyles.portraitFrame)}>
-            <Image
+            <img
               src="/le-nguyen-vu.png"
               alt="Louis Le"
-              fill
-              sizes="(max-width: 960px) 240px, 360px"
+              width={360}
+              height={480}
+              decoding="async"
+              fetchPriority="high"
               {...stylex.props(heroStyles.objectCover)}
-              priority
             />
           </div>
         </div>
