@@ -73,7 +73,7 @@ export function HeroSection() {
         <div {...stylex.props(heroStyles.portrait)}>
           <div {...stylex.props(heroStyles.portraitFrame)}>
             <img
-              src="/le-nguyen-vu.png"
+              src="/le-nguyen-vu.webp"
               alt="Louis Le"
               width={360}
               height={480}

@@ -12,8 +12,17 @@ import { useRef, useState } from "react";
 
 import { productDemoStyles as styles } from "@/components/product-demo-section.stylex";
 
-const PRODUCT_DEMO_VIDEO_SRC = "https://files.cf0.ai/website/cf0-product-demo.mp4";
-const PRODUCT_DEMO_VIDEO_POSTER = "https://files.cf0.ai/website/cf0-product-demo-poster.jpg";
+const PRODUCT_DEMO_VIDEO_SOURCES = [
+  {
+    src: "https://media.cf0.ai/film/zero-product-film-720.av1.44cfcd5249.mp4",
+    type: 'video/mp4; codecs="av01.0.05M.08"',
+  },
+  {
+    src: "https://media.cf0.ai/film/zero-product-film-720.h264.3ebe5c5cac.mp4",
+    type: 'video/mp4; codecs="avc1.64001f"',
+  },
+];
+const PRODUCT_DEMO_VIDEO_POSTER = "https://media.cf0.ai/film/zero-product-film-poster.jpg";
 
 const cardEnter = {
   initial: { opacity: 0, y: 20 },
@@ -183,7 +192,6 @@ export function ProductDemoSection() {
           <video
             ref={videoRef}
             {...stylex.props(styles.media, styles.videoClickable)}
-            src={PRODUCT_DEMO_VIDEO_SRC}
             poster={PRODUCT_DEMO_VIDEO_POSTER}
             autoPlay
             muted
@@ -195,7 +203,11 @@ export function ProductDemoSection() {
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
             onClick={togglePlay}
-          />
+          >
+            {PRODUCT_DEMO_VIDEO_SOURCES.map((source) => (
+              <source key={source.type} src={source.src} type={source.type} />
+            ))}
+          </video>
         )}
 
         <AnimatePresence>
