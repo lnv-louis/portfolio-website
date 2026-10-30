@@ -16,6 +16,17 @@
 @layer base {
   html {
     font-family: var(--portfolio-font-sans);
+    -webkit-text-size-adjust: 100%;
+    font-synthesis: none;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--portfolio-ink);
+    outline-offset: 2px;
+  }
+
+  button, a, [role="button"] {
+    touch-action: manipulation;
   }
 
   body {

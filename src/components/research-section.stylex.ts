@@ -52,20 +52,22 @@ export const researchStyles = stylex.create({
     display: 'flex',
     flexDirection: 'column',
     gap: space.sm,
-    backgroundColor: color.surfaceCard,
+    backgroundColor: {
+      default: color.surfaceCard,
+      ':hover': { default: null, '@media (hover: hover) and (pointer: fine)': color.surfaceHover },
+    },
     borderWidth: 1,
     borderStyle: 'solid',
-    borderColor: color.hairline,
+    borderColor: {
+      default: color.hairline,
+      ':hover': { default: null, '@media (hover: hover) and (pointer: fine)': color.hairlineStrong },
+    },
     borderRadius: radius.card,
     paddingBlock: space.x2xl,
     paddingInline: space.x2xl,
     textDecoration: 'none',
     transitionProperty: 'border-color, background-color',
     transitionDuration: '150ms',
-    ':hover': {
-      borderColor: color.hairlineStrong,
-      backgroundColor: color.surfaceHover,
-    },
   },
   pdfCardTitle: {
     display: 'flex',

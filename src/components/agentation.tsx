@@ -1,11 +1,12 @@
 import { lazy, Suspense } from "react";
 
-const Agentation = lazy(() =>
-  import("agentation").then((m) => ({ default: m.Agentation })),
-);
+// Gate the import itself so production builds never emit the agentation chunk.
+const Agentation = import.meta.env.DEV
+  ? lazy(() => import("agentation").then((m) => ({ default: m.Agentation })))
+  : null;
 
 export function AgentationToolbar() {
-  if (import.meta.env.PROD) return null;
+  if (!Agentation) return null;
 
   return (
     <Suspense fallback={null}>

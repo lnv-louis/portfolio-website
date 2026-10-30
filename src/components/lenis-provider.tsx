@@ -1,5 +1,3 @@
-"use client";
-
 import { ReactLenis, useLenis, type LenisRef } from "lenis/react";
 import { useReducedMotion } from "motion/react";
 import { useEffect, useRef, type ReactNode } from "react";

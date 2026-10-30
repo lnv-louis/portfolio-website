@@ -95,18 +95,12 @@ export const heroStyles = stylex.create({
     textDecoration: 'underline',
     textDecorationColor: {
       default: color.meta,
-      ':hover': color.primary,
+      ':hover': { default: null, '@media (hover: hover) and (pointer: fine)': color.primary },
     },
     textDecorationThickness: '1px',
     textUnderlineOffset: '3px',
     transitionProperty: 'text-decoration-color',
     transitionDuration: '150ms',
-  },
-  tooltipLink: {
-    color: 'inherit',
-    textDecoration: 'underline',
-    textDecorationColor: 'color-mix(in srgb, currentcolor 50%, transparent)',
-    textUnderlineOffset: '2px',
   },
   socials: {
     alignItems: 'center',

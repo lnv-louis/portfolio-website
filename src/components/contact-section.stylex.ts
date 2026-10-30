@@ -122,13 +122,13 @@ export const contactStyles = stylex.create({
   contactLink: {
     color: {
       default: color.ink,
-      ':hover': color.primary,
+      ':hover': { default: null, '@media (hover: hover) and (pointer: fine)': color.primary },
     },
     textDecorationLine: 'underline',
     textUnderlineOffset: '3px',
     textDecorationColor: {
       default: color.hairline,
-      ':hover': color.primary,
+      ':hover': { default: null, '@media (hover: hover) and (pointer: fine)': color.primary },
     },
   },
   footer: {

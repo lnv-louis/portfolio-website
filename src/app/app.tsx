@@ -1,5 +1,5 @@
 import * as stylex from "@stylexjs/stylex";
-import { LazyMotion, domAnimation } from "motion/react";
+import { LazyMotion, MotionConfig, domAnimation } from "motion/react";
 
 import { color, layout } from "@/tokens/token-consts.stylex";
 import { AgentationToolbar } from "@/components/agentation";
@@ -38,26 +38,28 @@ const pageStyles = stylex.create({
 export function App() {
   return (
     <LazyMotion features={domAnimation} strict>
-      <LenisProvider>
-        <div {...stylex.props(pageStyles.page)}>
-          <HeroSection />
-          <div {...stylex.props(pageStyles.rail)}>
-            <div {...stylex.props(pageStyles.divider)}>
-              <CapabilitiesSection />
+      <MotionConfig reducedMotion="user">
+        <LenisProvider>
+          <div {...stylex.props(pageStyles.page)}>
+            <HeroSection />
+            <div {...stylex.props(pageStyles.rail)}>
+              <div {...stylex.props(pageStyles.divider)}>
+                <CapabilitiesSection />
+              </div>
+              <div {...stylex.props(pageStyles.divider)}>
+                <CommunitySection />
+              </div>
+              <div {...stylex.props(pageStyles.divider)}>
+                <ResearchSection />
+              </div>
+              <div {...stylex.props(pageStyles.divider)}>
+                <ContactSection />
+              </div>
             </div>
-            <div {...stylex.props(pageStyles.divider)}>
-              <CommunitySection />
-            </div>
-            <div {...stylex.props(pageStyles.divider)}>
-              <ResearchSection />
-            </div>
-            <div {...stylex.props(pageStyles.divider)}>
-              <ContactSection />
-            </div>
+            <AgentationToolbar />
           </div>
-          <AgentationToolbar />
-        </div>
-      </LenisProvider>
+        </LenisProvider>
+      </MotionConfig>
     </LazyMotion>
   );
 }

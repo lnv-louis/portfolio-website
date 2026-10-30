@@ -84,7 +84,7 @@ export const productDemoStyles = stylex.create({
   },
   iconButton: {
     alignItems: 'center',
-    backgroundColor: { ':hover': overlay.hover, default: 'transparent' },
+    backgroundColor: { default: 'transparent', ':hover': { default: null, '@media (hover: hover) and (pointer: fine)': overlay.hover } },
     borderRadius: radius.md,
     color: overlay.ink,
     cursor: 'pointer',
@@ -102,7 +102,7 @@ export const productDemoStyles = stylex.create({
     gap: space.xxs,
   },
   speedButton: {
-    backgroundColor: { ':hover': overlay.hover, default: 'transparent' },
+    backgroundColor: { default: 'transparent', ':hover': { default: null, '@media (hover: hover) and (pointer: fine)': overlay.hover } },
     borderRadius: radius.md,
     color: overlay.muted,
     cursor: 'pointer',

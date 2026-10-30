@@ -1,5 +1,3 @@
-"use client";
-
 import { animate } from "motion";
 import { splitText } from "motion-plus";
 import {
@@ -27,6 +25,8 @@ const UI_TRANSITION = { stiffness: 305, damping: 33 };
 const STAGGER_RELAXED = 0.15;
 const STAGGER_BASE = 0.08;
 const TRAVEL_ENTER = 24;
+// Cap the font wait so a slow font CDN can't hold the hero invisible.
+const FONT_WAIT_MS = 1000;
 
 export type StaggerRevealTag = "div" | "section" | "header" | "article";
 
@@ -57,7 +57,10 @@ export function useStaggerReveal(): {
 
     void (async () => {
       try {
-        await document.fonts?.ready;
+        await Promise.race([
+          document.fonts?.ready,
+          new Promise((resolve) => setTimeout(resolve, FONT_WAIT_MS)),
+        ]);
         if (cancelled || ref.current !== container) return;
 
         const original =

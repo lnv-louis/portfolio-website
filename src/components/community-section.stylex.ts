@@ -73,7 +73,10 @@ export const communityStyles = stylex.create({
     lineHeight: text.leadingDisplayXs,
   },
   itemTitleLink: {
-    color: color.ink,
+    color: {
+      default: color.ink,
+      ':hover': { default: null, '@media (hover: hover) and (pointer: fine)': color.primary },
+    },
     fontFamily: text.fontDisplay,
     fontSize: {
       default: text.sizeDisplayXs,
@@ -83,9 +86,6 @@ export const communityStyles = stylex.create({
     letterSpacing: text.trackingDisplayXs,
     lineHeight: text.leadingDisplayXs,
     textDecoration: 'none',
-    ':hover': {
-      color: color.primary,
-    },
   },
   linkIcon: {
     display: 'inline-block',
@@ -93,7 +93,7 @@ export const communityStyles = stylex.create({
     verticalAlign: 'middle',
     color: {
       default: color.captionInk,
-      ':hover': color.primary,
+      ':hover': { default: null, '@media (hover: hover) and (pointer: fine)': color.primary },
     },
   },
   itemNumber: {

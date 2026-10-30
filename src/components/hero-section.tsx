@@ -35,20 +35,7 @@ const CURRENT_WORK = [
     id: 'devin',
     href: 'https://devin.ai/',
     label: 'Currently a Devin AI Ambassador.',
-    tooltip: (
-      <>
-        Frontier AI built by{' '}
-        <a
-          href="https://cognition.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          {...stylex.props(heroStyles.tooltipLink)}
-        >
-          Cognition AI
-        </a>
-        .
-      </>
-    ),
+    tooltip: <>Frontier AI built by Cognition AI.</>,
   },
   {
     id: 'eurotech',

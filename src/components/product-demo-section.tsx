@@ -1,5 +1,3 @@
-"use client";
-
 import { HugeiconsIcon } from "@hugeicons/react";
 import PauseIcon from "@hugeicons/core-free-icons/PauseIcon";
 import PlayIcon from "@hugeicons/core-free-icons/PlayIcon";
@@ -171,6 +169,9 @@ export function ProductDemoSection() {
     <section {...stylex.props(styles.section)}>
       <m.div
         ref={frameRef}
+        role="group"
+        aria-label="cf0 product film"
+        tabIndex={0}
         {...cardEnter}
         {...stylex.props(styles.frame)}
         onMouseEnter={() => setShowControls(true)}
@@ -265,6 +266,7 @@ export function ProductDemoSection() {
                       type="button"
                       onClick={() => setSpeed(speed)}
                       aria-label={`${speed}x playback speed`}
+                      aria-pressed={playbackSpeed === speed}
                       {...stylex.props(
                         styles.speedButton,
                         playbackSpeed === speed && styles.speedButtonActive,

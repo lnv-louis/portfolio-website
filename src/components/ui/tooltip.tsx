@@ -1,10 +1,8 @@
-"use client"
-
 import * as React from "react"
 import { Tooltip as TooltipPrimitive } from "@base-ui/react/tooltip"
 import * as stylex from "@stylexjs/stylex"
 
-import { color, radius, shadow, space, text } from "@/tokens/token-consts.stylex"
+import { color, motion, radius, shadow, space, text } from "@/tokens/token-consts.stylex"
 
 const styles = stylex.create({
   arrow: {
@@ -34,7 +32,7 @@ const styles = stylex.create({
     transformOrigin: "var(--transform-origin)",
     transitionProperty: "opacity, transform",
     transitionDuration: "150ms",
-    transitionTimingFunction: "ease-in-out",
+    transitionTimingFunction: motion.easeSpring,
     width: "fit-content",
     zIndex: 50,
   },
