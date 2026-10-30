@@ -20,4 +20,3 @@ Louis Le is a software engineer based in London. He builds production systems at
 
 - [GitHub](https://github.com/lnv-louis)
 - [LinkedIn](https://linkedin.com/in/le-nguyen-vu)
-- [Email](mailto:lelouis.lnv@gmail.com)

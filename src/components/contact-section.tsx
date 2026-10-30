@@ -3,7 +3,6 @@ import * as stylex from '@stylexjs/stylex'
 import { contactStyles } from '@/components/contact-section.stylex'
 
 const CONTACT_ROWS = [
-  { label: 'Email', value: 'lelouis.lnv@gmail.com', href: 'mailto:lelouis.lnv@gmail.com' },
   { label: 'GitHub', value: 'github.com/lnv-louis', href: 'https://github.com/lnv-louis' },
   { label: 'LinkedIn', value: 'linkedin.com/in/le-nguyen-vu', href: 'https://linkedin.com/in/le-nguyen-vu' },
   { label: 'X', value: 'x.com/lnv007', href: 'https://x.com/lnv007' },
@@ -44,8 +43,8 @@ export function ContactSection() {
                 <span {...stylex.props(contactStyles.contactLabel)}>{row.label}</span>
                 <a
                   href={row.href}
-                  target={row.href.startsWith('mailto:') ? undefined : '_blank'}
-                  rel={row.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   {...stylex.props(contactStyles.contactValue, contactStyles.contactLink)}
                 >
                   {row.value}
