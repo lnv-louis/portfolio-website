@@ -3,12 +3,9 @@ import * as stylex from '@stylexjs/stylex'
 import { color, layout, motion, overlay, radius, shadow, space, text } from '@/tokens/token-consts.stylex'
 
 export const productDemoStyles = stylex.create({
+  // Rendered inside CapabilitiesSection, which already owns the section padding.
   section: {
-    paddingBlock: space.x5xl,
-    paddingInline: {
-      default: space.xl,
-      '@media (min-width: 1200px)': space.x4xl,
-    },
+    width: '100%',
   },
   frame: {
     aspectRatio: '16 / 9',

@@ -57,8 +57,10 @@ export const heroStyles = stylex.create({
     width: '100%',
   },
   objectCover: {
+    height: '100%',
     objectFit: 'cover',
     objectPosition: 'center',
+    width: '100%',
   },
   content: {
     display: 'flex',
