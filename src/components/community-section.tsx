@@ -23,7 +23,7 @@ export function CommunitySection() {
       <div {...stylex.props(communityStyles.itemList)}>
         {ITEMS.map((item, i) => (
           <div
-            key={i}
+            key={item.href}
             {...stylex.props(communityStyles.item, i === 0 && communityStyles.itemFirst)}
           >
             <div {...stylex.props(communityStyles.itemHeader)}>

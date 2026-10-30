@@ -55,6 +55,8 @@
   --portfolio-font-sans: "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --portfolio-font-mono: "Geist Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
 
+  --portfolio-size-display-3xl: 60px;
+  --portfolio-size-display-2xl: 52px;
   --portfolio-size-display-xl: 44px;
   --portfolio-size-display-lg: 40px;
   --portfolio-size-display-md: 32px;
@@ -67,6 +69,8 @@
   --portfolio-size-micro: 11px;
   --portfolio-size-code: 13px;
 
+  --portfolio-leading-display-3xl: 64px;
+  --portfolio-leading-display-2xl: 56px;
   --portfolio-leading-display-xl: 48px;
   --portfolio-leading-display-lg: 44px;
   --portfolio-leading-display-md: 40px;
@@ -79,6 +83,8 @@
   --portfolio-leading-micro: 16px;
   --portfolio-leading-code: 20px;
 
+  --portfolio-tracking-display-3xl: -0.03em;
+  --portfolio-tracking-display-2xl: -0.03em;
   --portfolio-tracking-display-xl: -0.03em;
   --portfolio-tracking-display-lg: -0.028em;
   --portfolio-tracking-display-md: -0.025em;

@@ -1,16 +1,15 @@
 # Surfaces
 
-The portfolio has one surface: the homepage (`app/page.tsx`). It is
+The portfolio has one surface: the homepage (`src/app/app.tsx`). It is
 composed of sections, each in its own component file.
 
 ## Section inventory
 
 | Section | Component | ID | Purpose |
 |---|---|---|---|
-| Navigation | `site-nav.tsx` | — | Sticky nav with anchor links and CTA |
-| Hero | `hero-section.tsx` | — | Portrait, headline, subheading, socials |
-| Capabilities | `capabilities-section.tsx` | `#about` | 6-card grid of what Louis does |
-| Work | `work-section.tsx` | `#projects` | Numbered list of projects |
+| Hero | `hero-section.tsx` | — | Portrait, headline, "Currently..." links, socials |
+| Capabilities | `capabilities-section.tsx` | `#about` | AI and Real Estate headline + cf0 product film |
+| Community | `community-section.tsx` | `#community` | Open source and community roles |
 | Research | `research-section.tsx` | `#research` | ML manuscripts |
 | Contact | `contact-section.tsx` | `#contact` | Email link, socials, footer |
 

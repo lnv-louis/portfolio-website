@@ -1,19 +1,24 @@
-# Vu Le - Portfolio
+# Louis Le - Portfolio
 
-My modern developer portfolio website built with Next.js 14, showcasing full-stack engineering projects and research.
+Source for [lenguyenvu.com](https://lenguyenvu.com): a single-page portfolio about building production AI systems for real estate at [cf0.ai](https://cf0.ai).
 
 ## Tech Stack
 
-- **Framework**: [Next.js 14](https://nextjs.org/) (React, TypeScript, App Router)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/) & [GSAP](https://greensock.com/)
-- **UI Libraries**: 
-  - [Magic UI](https://magicui.design/)
-  - [React Bits](https://reactbits.dev/)
-  - [Radix UI](https://www.radix-ui.com/)
-- **Storage & Assets**: [Cloudflare R2](https://www.cloudflare.com/developer-platform/r2/) (Object Storage for large media/PDFs)
-- **Deployment**: [Vercel](https://vercel.com/)
+- **Build**: [Vite](https://vite.dev/) + React 19 + TypeScript
+- **Styling**: [StyleX](https://stylexjs.com/)
+- **Type**: [Geist](https://vercel.com/font) Sans, Mono, and Serif
+- **Motion**: [Motion](https://motion.dev/) and [Lenis](https://lenis.darkroom.engineering/)
+- **Media**: Cloudflare R2 for large media and PDFs
+- **Hosting**: Cloudflare Workers static assets
+
+## Development
+
+```bash
+bun install
+bun run dev
+bun run deploy   # build and deploy with Wrangler
+```
 
 ## License
 
-© 2025 Le Nguyen Vu. All rights reserved.
+© 2026 Le Nguyen Vu. All rights reserved.

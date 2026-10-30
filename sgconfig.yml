@@ -1,2 +1,5 @@
-rule_dirs:
+ruleDirs:
   - sg-rules
+# Parse .ts with the TSX grammar too, so one rule set covers .tsx components and .stylex.ts files.
+languageGlobs:
+  tsx: ["*.ts"]

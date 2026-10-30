@@ -70,17 +70,17 @@ export const heroStyles = stylex.create({
     color: color.ink,
     fontFamily: text.fontSerif,
     fontSize: {
-      default: text.sizeDisplayLg,
-      '@media (min-width: 960px)': text.sizeDisplayXl,
+      default: text.sizeDisplay2xl,
+      '@media (min-width: 960px)': text.sizeDisplay3xl,
     },
     fontWeight: text.weightRegular,
     letterSpacing: {
-      default: text.trackingDisplayLg,
-      '@media (min-width: 960px)': text.trackingDisplayXl,
+      default: text.trackingDisplay2xl,
+      '@media (min-width: 960px)': text.trackingDisplay3xl,
     },
     lineHeight: {
-      default: text.leadingDisplayLg,
-      '@media (min-width: 960px)': text.leadingDisplayXl,
+      default: text.leadingDisplay2xl,
+      '@media (min-width: 960px)': text.leadingDisplay3xl,
     },
     textWrap: 'balance',
   },

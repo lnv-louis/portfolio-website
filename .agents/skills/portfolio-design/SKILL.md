@@ -36,8 +36,8 @@ rendered result.
    max-width, 1px hairline borders left/right, sections divided by 1px top
    borders.
 4. **`src/components/`** — all product UI. Flat at the root, one file per
-   section: `site-nav.tsx`, `hero-section.tsx`, `capabilities-section.tsx`,
-   `work-section.tsx`, `research-section.tsx`, `contact-section.tsx`.
+   section: `hero-section.tsx`, `capabilities-section.tsx`,
+   `community-section.tsx`, `research-section.tsx`, `contact-section.tsx`.
 
 The site is **light-mode only**. StyleX + `@/src/tokens/*` is the one styling
 path. No Tailwind utility classes in components (Tailwind is retained only

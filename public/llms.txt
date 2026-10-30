@@ -1,8 +1,8 @@
 # Louis Le
 
-> AI infrastructure engineer specializing in multi-agent orchestration and LLM-powered financial systems. UCL Computer Science.
+> AI infrastructure engineer building production AI systems for real estate. UCL Computer Science.
 
-Louis Le is a software engineer based in London. He builds production systems at the intersection of AI and finance. Currently building cf0.ai, a financial intelligence platform with multi-agent orchestration across 31 financial APIs.
+Louis Le is a software engineer based in London. He builds production systems at the intersection of AI and real estate. Co-Founder & CTO of cf0.ai, where Zero lets and manages homes: it answers renters, runs viewings, finds tenants, and handles repairs after move-in.
 
 ## Projects
 

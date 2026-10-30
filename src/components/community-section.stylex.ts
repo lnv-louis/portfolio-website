@@ -22,17 +22,17 @@ export const communityStyles = stylex.create({
     color: color.ink,
     fontFamily: text.fontSerif,
     fontSize: {
-      default: text.sizeDisplayMd,
-      '@media (min-width: 960px)': text.sizeDisplayXl,
+      default: text.sizeDisplayXl,
+      '@media (min-width: 960px)': text.sizeDisplay3xl,
     },
     fontWeight: text.weightRegular,
     letterSpacing: {
-      default: text.trackingDisplayMd,
-      '@media (min-width: 960px)': text.trackingDisplayXl,
+      default: text.trackingDisplayXl,
+      '@media (min-width: 960px)': text.trackingDisplay3xl,
     },
     lineHeight: {
-      default: text.leadingDisplayMd,
-      '@media (min-width: 960px)': text.leadingDisplayXl,
+      default: text.leadingDisplayXl,
+      '@media (min-width: 960px)': text.leadingDisplay3xl,
     },
     textWrap: 'balance',
   },

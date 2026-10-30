@@ -2,6 +2,21 @@
 
 Decision log with dates and rationale. Newest first.
 
+## 2026-10-30 — Pivot to AI and Real Estate; Geist Serif headings; no navbar
+
+**Status:** accepted
+**Scope:** copy, metadata, typography, layout
+**Decision:** Positioning moves from AI and finance to AI and Real Estate
+(cf0.ai's product is Zero, which lets and manages homes). H1/H2 use Geist
+Serif Regular, self-hosted. The floating nav is removed.
+
+**Rationale:** cf0 pivoted. The site, its metadata, JSON-LD and `llms.txt`
+must describe the current work. Past finance-related work (tradingview-mcp
+contribution, FinancialPhraseBank paper) stays as historical fact.
+
+**Exceptions:** Geist Serif ships Regular only, so headings are weight 400
+until the variable font lands.
+
 ## 2026-08-20 — StyleX migration and cf0 design system adoption
 
 **Status:** accepted

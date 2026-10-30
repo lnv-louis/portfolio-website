@@ -23,7 +23,7 @@ const CURRENT_WORK = [
     id: 'cf0',
     href: 'https://cf0.ai/',
     label: 'Currently building cf0.ai',
-    tooltip: <>The AI brain for funds and family offices.</>,
+    tooltip: <>Zero lets and manages your homes.</>,
   },
   {
     id: 'hack-collective',

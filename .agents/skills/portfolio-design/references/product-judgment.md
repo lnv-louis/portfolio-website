@@ -6,7 +6,7 @@ How to make product decisions for the portfolio.
 
 The portfolio is a personal marketing surface for Louis Le, Co-Founder & CTO
 of cf0.ai. The audience is: recruiters, founders, investors, collaborators,
-and peers in AI/finance.
+and peers in AI and real estate.
 
 ## The job
 
