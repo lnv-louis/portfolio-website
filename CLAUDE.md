@@ -46,7 +46,7 @@ src/
     hero-section.tsx         # Portrait, stagger-reveal headline, "Currently..." links with tooltips, socials
     stagger-reveal.tsx       # motion + motion-plus line-by-line entrance
     capabilities-section.tsx # #about — positioning headline + product film
-    product-demo-section.tsx # cf0 product film (public/film/) with custom controls
+    product-demo-section.tsx # cf0 product film (media.lenguyenvu.com) with custom controls
     community-section.tsx    # #community — open source and community roles
     research-section.tsx     # #research — ML manuscripts (PDFs on media.lenguyenvu.com)
     contact-section.tsx      # #contact — photo, contact rows, footer
@@ -61,7 +61,6 @@ public/
   robots.txt, sitemap.xml, llms.txt
   fonts/GeistSerif-Regular.woff2
   le-nguyen-vu.webp        # Hero portrait
-  film/                    # cf0 product film (AV1 + H.264)
   zero-product-film-poster.webp  # Film poster (copied from cf0.ai/images/)
   favicon2.png
 sg-rules/                  # ast-grep design system lint rules
@@ -74,7 +73,7 @@ docs/                      # Local only (gitignored): me.md, links.md
 - **Client-rendered SPA**: `index.html` has no prerendered content; the page renders after JS loads. `wrangler.jsonc` uses `not_found_handling: single-page-application`, so any missing static file returns `index.html` with 200. Every file referenced from `<head>` or `robots.txt` must exist in `public/`.
 - **Rail layout**: 1400px max-width, 1px hairline borders left/right, sections divided by 1px top borders. Modeled on cf0.ai's page shell. No navbar.
 - **Stagger reveal**: Hero hides until `document.fonts.ready` (capped at 1s), then splits the headline into lines. Fails open. `prefers-reduced-motion` skips animation.
-- **Product film**: Self-hosted in `public/film/` (`cf0-product-film-720.av1.mp4`, `cf0-product-film-720.h264.mp4`, ~0.75 MB each, 720×406, ~130 kbps, faststart, no audio) with poster `public/zero-product-film-poster.webp`. Never point at `media.cf0.ai/film/*.<hash>.mp4`: those are cf0's immutable, content-hashed build outputs, so every re-encode or bucket move breaks them. To refresh after cf0 recuts the film, take the current 720p URLs from the cf0.ai homepage `<source>` tags, download them over the same filenames in `public/film/`, and update the `codecs` strings if they changed.
+- **Product film**: Served from the portfolio's own R2 bucket `portfolio` (LNV account, custom domain `media.lenguyenvu.com`) at stable keys `cf0-product-film-720.av1.mp4` and `cf0-product-film-720.h264.mp4` (720×406, ~130 kbps, faststart, ~0.75 MB each, no audio). Not in `public/`: Workers static assets ignore `Range` requests (always 200 full body), and Safari/iOS will not play MP4 without 206 range responses; the R2 custom domain returns 206. Never point at `media.cf0.ai/film/*.<hash>.mp4`: those are cf0's immutable, content-hashed build outputs, so every re-encode or bucket move breaks them. To refresh after cf0 recuts the film, take the current 720p URLs from the cf0.ai homepage `<source>` tags, download them, and re-upload over the same keys: `CLOUDFLARE_ACCOUNT_ID=062a91f6e4ad306625307277f1fe668b cf r2 objects put <key> --bucket-name portfolio --file <path> --content-type video/mp4`. Update the `codecs` strings if they changed. Poster: `public/zero-product-film-poster.webp`.
 - **Hover**: All `:hover` styles are gated behind `@media (hover: hover) and (pointer: fine)` inside the StyleX value so taps don't stick on touch devices.
 - **Path alias**: `@/*` resolves to `./src/*` (tsconfig + vite.config.ts + StyleX unplugin aliases).
 
