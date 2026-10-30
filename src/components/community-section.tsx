@@ -49,7 +49,7 @@ export function CommunitySection() {
           <div {...stylex.props(communityStyles.itemHeader)}>
             <h3>
               <a
-                href="https://luma.com/thehackcollective"
+                href="https://hackcollective.uk/"
                 target="_blank"
                 rel="noopener noreferrer"
                 {...stylex.props(communityStyles.itemTitleLink)}

@@ -5,6 +5,14 @@
 
 @stylex;
 
+@font-face {
+  font-family: "Geist Serif";
+  src: url("/fonts/GeistSerif-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   html {
     font-family: var(--portfolio-font-sans);
@@ -19,7 +27,12 @@
     overflow-x: hidden;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2 {
+    font-family: var(--portfolio-font-serif);
+    font-weight: var(--portfolio-weight-regular);
+  }
+
+  h3, h4, h5, h6 {
     font-family: var(--portfolio-font-display);
   }
 
@@ -34,7 +47,7 @@
 
   button {
     appearance: none;
-    backgroundColor: transparent;
+    background-color: transparent;
     border: 0;
     color: inherit;
     font: inherit;

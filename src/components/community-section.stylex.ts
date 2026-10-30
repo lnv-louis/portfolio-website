@@ -20,12 +20,12 @@ export const communityStyles = stylex.create({
   },
   heading: {
     color: color.ink,
-    fontFamily: text.fontDisplay,
+    fontFamily: text.fontSerif,
     fontSize: {
       default: text.sizeDisplayMd,
       '@media (min-width: 960px)': text.sizeDisplayXl,
     },
-    fontWeight: text.weightMedium,
+    fontWeight: text.weightRegular,
     letterSpacing: {
       default: text.trackingDisplayMd,
       '@media (min-width: 960px)': text.trackingDisplayXl,

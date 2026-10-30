@@ -50,6 +50,7 @@
   --portfolio-warning: #f59e0b;
   --portfolio-neutral-flat: #9ca3af;
 
+  --portfolio-font-serif: "Geist Serif", "Times New Roman", Times, serif;
   --portfolio-font-display: "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --portfolio-font-sans: "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --portfolio-font-mono: "Geist Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;

@@ -14,15 +14,15 @@ import { productDemoStyles as styles } from "@/components/product-demo-section.s
 
 const PRODUCT_DEMO_VIDEO_SOURCES = [
   {
-    src: "https://media.cf0.ai/film/zero-product-film-720.av1.44cfcd5249.mp4",
-    type: 'video/mp4; codecs="av01.0.05M.08"',
+    src: "https://media.cf0.ai/film/zero-product-film-720.av1.181870cb1b.mp4",
+    type: 'video/mp4; codecs="av01.0.04M.08"',
   },
   {
-    src: "https://media.cf0.ai/film/zero-product-film-720.h264.3ebe5c5cac.mp4",
-    type: 'video/mp4; codecs="avc1.64001f"',
+    src: "https://media.cf0.ai/film/zero-product-film-720.h264.15bfe753d0.mp4",
+    type: 'video/mp4; codecs="avc1.640020"',
   },
 ];
-const PRODUCT_DEMO_VIDEO_POSTER = "https://media.cf0.ai/film/zero-product-film-poster.jpg";
+const PRODUCT_DEMO_VIDEO_POSTER = "/zero-product-film-poster.webp";
 
 const cardEnter = {
   initial: { opacity: 0, y: 20 },
@@ -185,7 +185,7 @@ export function ProductDemoSection() {
       >
         <img
           src={PRODUCT_DEMO_VIDEO_POSTER}
-          alt="cf0 product preview"
+          alt="Zero managing a home after move-in."
           {...stylex.props(styles.media, styles.poster, isReady && styles.hidden)}
         />
         {isInView && (

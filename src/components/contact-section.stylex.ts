@@ -69,12 +69,12 @@ export const contactStyles = stylex.create({
   },
   heading: {
     color: color.ink,
-    fontFamily: text.fontDisplay,
+    fontFamily: text.fontSerif,
     fontSize: {
       default: text.sizeDisplayLg,
       '@media (min-width: 960px)': text.sizeDisplayXl,
     },
-    fontWeight: text.weightSemibold,
+    fontWeight: text.weightRegular,
     letterSpacing: {
       default: text.trackingDisplayLg,
       '@media (min-width: 960px)': text.trackingDisplayXl,

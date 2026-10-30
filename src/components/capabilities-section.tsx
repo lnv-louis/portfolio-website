@@ -8,7 +8,7 @@ export function CapabilitiesSection() {
     <section id="about" {...stylex.props(capsStyles.section)}>
       <div {...stylex.props(capsStyles.headingBlock)}>
         <h2 {...stylex.props(capsStyles.heading)}>
-          Building production systems at the intersection of AI and finance.
+          Building production systems at the intersection of AI and Real Estate.
         </h2>
       </div>
 

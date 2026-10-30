@@ -4,7 +4,6 @@ import { LazyMotion, domAnimation } from "motion/react";
 import { color, layout } from "@/tokens/token-consts.stylex";
 import { AgentationToolbar } from "@/components/agentation";
 import { LenisProvider } from "@/components/lenis-provider";
-import { SiteNav } from "@/components/site-nav";
 import { HeroSection } from "@/components/hero-section";
 import { CapabilitiesSection } from "@/components/capabilities-section";
 import { CommunitySection } from "@/components/community-section";
@@ -41,7 +40,6 @@ export function App() {
     <LazyMotion features={domAnimation} strict>
       <LenisProvider>
         <div {...stylex.props(pageStyles.page)}>
-          <SiteNav />
           <HeroSection />
           <div {...stylex.props(pageStyles.rail)}>
             <div {...stylex.props(pageStyles.divider)}>

@@ -27,9 +27,9 @@ const CURRENT_WORK = [
   },
   {
     id: 'hack-collective',
-    href: 'https://luma.com/thehackcollective',
+    href: 'https://hackcollective.uk/',
     label: 'Currently building The Hack Collective',
-    tooltip: <>A London hackathon community with 1,000+ members.</>,
+    tooltip: <>London&rsquo;s hackathon community with 1,100+ builders.</>,
   },
   {
     id: 'devin',
@@ -55,6 +55,12 @@ const CURRENT_WORK = [
     href: 'https://www.eurotech-federation.com/',
     label: 'Currently a EuroTech Fellow',
     tooltip: <>Batch 2 Fellow at EuroTech Federation.</>,
+  },
+  {
+    id: 'thinking-about-thinking',
+    href: 'https://www.thinkingaboutthinking.org/',
+    label: 'Currently a Thinking About Thinking Fellow',
+    tooltip: <>An invitation-only fellowship with fellows in 200+ cities.</>,
   },
 ]
 

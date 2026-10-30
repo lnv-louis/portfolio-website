@@ -59,6 +59,7 @@ export const motion = stylex.defineConsts({
 })
 
 export const text = stylex.defineConsts({
+  fontSerif: 'var(--portfolio-font-serif)',
   fontDisplay: 'var(--portfolio-font-display)',
   fontSans: 'var(--portfolio-font-sans)',
   fontMono: 'var(--portfolio-font-mono)',

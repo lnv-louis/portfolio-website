@@ -6,6 +6,7 @@ Louis Le is a software engineer based in London. He builds production systems at
 
 ## Projects
 
+- [The Hack Collective](https://hackcollective.uk/): Co-founder. London's hackathon community with 1,100+ builders.
 - [Grounded](https://github.com/lnv-louis/grounded-fact-checking): AI fact-checking platform. 1st place Lovable Hackathon. Multi-stage prompt chain with Perplexity Sonar Pro tracing claims through citation hierarchies.
 - [Dex](https://github.com/lnv-louis/dex-face-recognition): Live facial recognition for networking events. Facenet512 embeddings with RetinaFace detection. Sub-2-second identification.
 - [Homiq](https://github.com/lnv-louis/homiq-property-search-engine): AI property search engine. Infinite zoomable canvas with server-side streaming from Perplexity Sonar Pro.
