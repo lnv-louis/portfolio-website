@@ -153,8 +153,10 @@ export const contactStyles = stylex.create({
     textTransform: 'uppercase',
   },
   footerNav: {
+    columnGap: space.lg,
     display: 'flex',
-    gap: space.lg,
+    flexWrap: 'wrap',
+    rowGap: space.xs,
   },
   footerLink: {
     color: {

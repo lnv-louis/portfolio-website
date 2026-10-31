@@ -40,6 +40,7 @@ const EVENTS = [
     city: 'London',
     date: DEVIN_LOCAL.date,
     startDate: '2026-10-01',
+    endDate: '2026-10-01',
     role: 'Host, on behalf of Cognition',
     stat: `${DEVIN_LOCAL.attended} attended`,
     href: DEVIN_LOCAL.href,
@@ -117,7 +118,8 @@ export const AGENT_TOOLS: AgentTool[] = [
 function listHackathons(args: Record<string, unknown>, today: string) {
   const events = EVENTS.filter((event) => {
     if (typeof args.role === 'string' && !event.role.toLowerCase().includes(args.role)) return false
-    const upcoming = event.startDate !== null && event.startDate > today
+    // Running events (between start and end date) count as upcoming, not past.
+    const upcoming = event.endDate !== null && event.endDate >= today
     if (args.when === 'upcoming' && !upcoming) return false
     if (args.when === 'past' && upcoming) return false
     return true

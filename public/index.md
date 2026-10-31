@@ -21,7 +21,7 @@ Website: https://lenguyenvu.com · Markdown pages: [About](/about.md) · [Contac
 
 ## Building the London hackathon scenes
 
-I host, sponsor and partner on hackathons: on behalf of Cognition, and through The Hack Collective.
+I host, sponsor and partner on hackathons on behalf of Cognition, a $100B+ lab, and through The Hack Collective, the community I built: 1.2k+ members and 500+ calendar subscribers, London's most hackathon-hungry builders.
 
 | Event | Date | Role | Notes |
 | --- | --- | --- | --- |
@@ -31,6 +31,10 @@ I host, sponsor and partner on hackathons: on behalf of Cognition, and through T
 | [Hack-Nation 7th Global AI Hackathon](https://luma.com/nln5g3e0) | 3–4 Oct 2026, London hub | London hub host | 3,150 builders across 15+ hubs |
 | [Devin Local: London](https://luma.com/eveur09a) | 1 Oct 2026, London | Host, on behalf of Cognition | 202 attended; keychains designed with Devin and 3D printed on the night |
 | [Paris Builds](https://luma.com/8ucy347o) | 36 hours, Paris | Sponsor and host | 150 builders; the first Y Combinator-affiliated hackathon, held before YC Startup School Paris |
+| [HackEurope](https://www.hackeurope.com/) | 21–22 Feb 2026, Dublin, Paris and Stockholm | Community partner, The Hack Collective | 1,000 students; Europe's largest student hackathon |
+| [VC101](https://lnkd.in/ew8riMjf) | 7–8 Mar 2026, Esade Barcelona | Community partner, The Hack Collective | Europe's biggest student-led venture capital competition, with FINEDA |
+| [Student Tech Forum 2026](https://lu.ma/stf2026) | 29 Jan 2026, London | Community partner, The Hack Collective | London Venture Capital Network's day of panels and workshops |
+| [UK National Case Championship](https://newlondonschool.com/) | Final 14 Nov 2026, London | Community partner, The Hack Collective | Run by New London School |
 
 ## Hosting Devin Local as a Devin AI Ambassador
 

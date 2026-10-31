@@ -40,11 +40,15 @@ For cf0.ai's product, pricing or sign-up, go to https://cf0.ai/ instead. For the
 - [Hack-Nation 7th Global AI Hackathon, London hub](https://luma.com/nln5g3e0): 3–4 Oct 2026. London hub host; 3,150 builders across 15+ hubs.
 - [Devin Local: London](https://luma.com/eveur09a): 1 Oct 2026. Host on behalf of Cognition; 202 attended.
 - [Paris Builds](https://luma.com/8ucy347o): 36-hour hackathon in Paris. Sponsor and host; 150 builders; the first Y Combinator-affiliated hackathon, held before YC Startup School Paris.
+- [HackEurope](https://www.hackeurope.com/): 21–22 Feb 2026, Dublin, Paris and Stockholm. The Hack Collective was a community partner; 1,000 students.
+- [VC101](https://lnkd.in/ew8riMjf): 7–8 Mar 2026, Esade Barcelona. The Hack Collective partnered with FINEDA; Europe's biggest student-led VC competition.
+- [Student Tech Forum 2026](https://lu.ma/stf2026): 29 Jan 2026, London. The Hack Collective was a community partner of London Venture Capital Network's forum.
+- [UK National Case Championship](https://newlondonschool.com/): final 14 Nov 2026, London. The Hack Collective is a community partner of New London School.
 
 ## Projects
 
 - [cf0.ai](https://cf0.ai/): Co-Founder & CTO. Zero answers renters, runs viewings, finds tenants and looks after repairs after move-in.
-- [The Hack Collective](https://hackcollective.uk/): Co-founder. London's hackathon community with 1.2k+ members and 500+ calendar subscribers.
+- [The Hack Collective](https://hackcollective.uk/): The community Louis built: 1.2k+ members and 500+ calendar subscribers, London's most hackathon-hungry builders. Community partner of HackEurope, VC101, the Student Tech Forum and New London School.
 - [Grounded](https://github.com/lnv-louis/grounded-fact-checking): AI fact-checking platform. 1st place of 25+ teams at the Lovable Hackathon.
 - [Dex](https://github.com/lnv-louis/dex-face-recognition): Live facial recognition for networking events. 6th place at the Cursor London Evening Hack; identifies attendees in under 5 seconds.
 - [Homiq](https://github.com/lnv-louis/homiq-property-search-engine): AI property search engine on an infinite canvas.

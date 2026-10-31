@@ -29,6 +29,13 @@
       "height": 1201
     },
     {
+      "event": "hackeurope",
+      "name": "hackeurope-partnered-with-the-hack-collective",
+      "alt": "HackEurope film still: partnered with The Hack Collective",
+      "width": 1600,
+      "height": 900
+    },
+    {
       "event": "grok-bot-hack",
       "name": "grok-bot-hackathon-shoes-at-the-door",
       "alt": "A pile of shoes left at the door of the Grok Bot hackathon venue",
@@ -85,6 +92,13 @@
       "height": 1200
     },
     {
+      "event": "vc101",
+      "name": "vc101-the-hack-collective-partnership",
+      "alt": "VC101 x The Hack Collective partnership announcement, with FINEDA, Ennova Esade and ESFS",
+      "width": 800,
+      "height": 1000
+    },
+    {
       "event": "grok-bot-hack",
       "name": "grok-bot-hackathon-dinner-break",
       "alt": "A builder eating from a takeaway box between coding sessions",
@@ -139,6 +153,13 @@
       "alt": "A builder demoing his project on a laptop by the staircase",
       "width": 1600,
       "height": 1201
+    },
+    {
+      "event": "student-tech-forum",
+      "name": "student-tech-forum-2026-partners",
+      "alt": "Student Tech Forum 2026 card listing The Hack Collective among its partner societies",
+      "width": 800,
+      "height": 450
     },
     {
       "event": "grok-bot-hack",

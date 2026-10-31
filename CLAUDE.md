@@ -63,7 +63,7 @@ src/
     hackathon-scenes-section.tsx # #hackathons — scroll wall of curated photos (scroll-linked rows)
     devin-local-section.tsx  # #devin-local — H2 + Devin Local film (R2); ambassador work, no extra copy
     capabilities-section.tsx # #about — positioning headline + product film
-    product-demo-section.tsx # cf0 product film (media.lenguyenvu.com) with custom controls
+    film-player.tsx          # FilmPlayer: shared film player (autoplay muted in view, click/play turns sound on, custom controls); films in src/content/films.ts
     community-section.tsx    # #community — open source and community roles
     research-section.tsx     # #research — ML manuscripts (PDFs on media.lenguyenvu.com)
     contact-section.tsx      # #contact — photo, contact rows, footer

@@ -1,7 +1,8 @@
 import * as stylex from '@stylexjs/stylex'
 
 import { capsStyles } from '@/components/capabilities-section.stylex'
-import { ProductDemoSection } from '@/components/product-demo-section'
+import { FilmPlayer } from '@/components/film-player'
+import { CF0_FILM } from '@/content/films'
 
 export function CapabilitiesSection() {
   return (
@@ -12,7 +13,7 @@ export function CapabilitiesSection() {
         </h2>
       </div>
 
-      <ProductDemoSection />
+      <FilmPlayer film={CF0_FILM} />
     </section>
   )
 }

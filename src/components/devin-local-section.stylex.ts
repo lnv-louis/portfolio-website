@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
 
-import { color, radius, shadow, space, text } from '@/tokens/token-consts.stylex'
+import { color, space, text } from '@/tokens/token-consts.stylex'
 
 export const devinStyles = stylex.create({
   section: {
@@ -31,14 +31,5 @@ export const devinStyles = stylex.create({
     },
     maxWidth: '18ch',
     textWrap: 'balance',
-  },
-  film: {
-    aspectRatio: '848 / 480',
-    backgroundColor: color.ink,
-    borderRadius: radius.card,
-    boxShadow: shadow.s2,
-    display: 'block',
-    height: 'auto',
-    width: '100%',
   },
 })
