@@ -103,6 +103,11 @@ for (const f of curation.films) {
   const work = await mkdtemp(join(tmpdir(), "hackathon-film-"));
   try {
     const mp4 = join(work, `${f.name}.mp4`);
+    // Copied streams must match the H.264 + AAC codecs declared in src/content/films.ts.
+    const codecs = (await $`ffprobe -v error -show_entries stream=codec_name -of csv=p=0 ${join(SRC, f.source)}`.text())
+      .trim()
+      .split("\n");
+    if (codecs.join(",") !== "h264,aac") throw new Error(`${f.source}: expected h264,aac streams, got ${codecs.join(",")}`);
     await $`ffmpeg -v error -y -i ${join(SRC, f.source)} -c copy -movflags +faststart ${mp4}`;
     const poster = join(work, "poster.jpg");
     await $`ffmpeg -v error -y -ss 1 -i ${mp4} -frames:v 1 -q:v 3 ${poster}`;
