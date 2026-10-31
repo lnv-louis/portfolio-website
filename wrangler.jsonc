@@ -12,9 +12,9 @@
     // so missing files (sitemaps, .well-known/*) aren't answered with the homepage.
     "not_found_handling": "404-page",
     "html_handling": "auto-trailing-slash",
-    // The Worker sees every request (MCP, markdown negotiation, markdown 404s) and
-    // passes anything it doesn't handle straight to the assets binding.
-    "run_worker_first": true
+    // The Worker runs only for pages (markdown negotiation, Link/Vary headers) and /mcp.
+    // Images, fonts and scripts go straight to the CDN and never count as Worker requests.
+    "run_worker_first": ["/", "/about", "/contact", "/privacy", "/developers", "/mcp", "/mcp/*"]
   },
   "build": {
     "command": "bun run build",

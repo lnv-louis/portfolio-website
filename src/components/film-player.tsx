@@ -30,7 +30,8 @@ const cardEnter = {
 
 const PLAYBACK_SPEEDS = [0.5, 1, 1.5, 2] as const;
 // Events that count as user activation for media; scrolling does not.
-const ACTIVATION_EVENTS = ["pointerdown", "keydown", "touchend"] as const;
+// Gestures that grant audio permission once they complete (a press alone does not).
+const ACTIVATION_EVENTS = ["click", "keydown", "touchend"] as const;
 
 function formatTime(seconds: number): string {
   if (!Number.isFinite(seconds)) return "0:00";
@@ -95,10 +96,10 @@ function CustomSlider({
 }
 
 // Sound preference shared by every FilmPlayer on the page. Sound is on by default;
-// muting any film turns it off for all of them. `activated` flips on the visitor's
-// first click, tap or keypress anywhere on the page: browsers refuse audio until then,
-// so films that had to start muted unmute the moment it happens.
-const sound = { wanted: true, activated: false };
+// muting any film turns it off for all of them. `gestures` counts clicks, taps and
+// keypresses anywhere on the page: browsers refuse audio until one has happened, so a
+// film that had to start muted retries sound after each one until it sticks.
+const sound = { wanted: true, gestures: 0 };
 let soundSnapshot = { ...sound };
 const soundListeners = new Set<() => void>();
 function updateSound(patch: Partial<typeof sound>) {
@@ -110,11 +111,9 @@ function setSoundWanted(wanted: boolean) {
   updateSound({ wanted });
 }
 if (typeof window !== "undefined") {
-  const activate = () => {
-    updateSound({ activated: true });
-    for (const type of ACTIVATION_EVENTS) window.removeEventListener(type, activate, true);
-  };
-  for (const type of ACTIVATION_EVENTS) window.addEventListener(type, activate, true);
+  // Deferred so a film's own click handler sees the state the visitor clicked on.
+  const onGesture = () => setTimeout(() => updateSound({ gestures: sound.gestures + 1 }));
+  for (const type of ACTIVATION_EVENTS) window.addEventListener(type, onGesture, true);
 }
 function useSound() {
   return useSyncExternalStore(
@@ -136,7 +135,7 @@ export function FilmPlayer({ film }: { film: Film }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const isInView = useInView(frameRef, { once: true, margin: "200px" });
   const isVisible = useInView(frameRef, { amount: 0.5 });
-  const { wanted: wantsSound, activated } = useSound();
+  const { wanted: wantsSound, gestures } = useSound();
   // A pause the visitor chose; scrolling back into view shouldn't override it.
   const pausedByUser = useRef(false);
   const [isReady, setIsReady] = useState(false);
@@ -169,7 +168,7 @@ export function FilmPlayer({ film }: { film: Film }) {
       setIsMuted(true);
       void video.play().catch(() => {});
     });
-  }, [isVisible, wantsSound, activated, isInView]);
+  }, [isVisible, wantsSound, gestures, isInView]);
 
   function unmute(video: HTMLVideoElement) {
     video.muted = false;
