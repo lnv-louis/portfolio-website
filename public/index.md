@@ -42,7 +42,7 @@ I host, sponsor and partner on hackathons on behalf of Cognition, a $100B+ lab, 
 
 ## Building production systems at the intersection of AI and Real Estate
 
-At cf0.ai, Zero answers renters, runs viewings, finds tenants and looks after repairs and residents after move-in. [Product film](https://media.lenguyenvu.com/cf0-product-film-720.h264.mp4).
+At cf0.ai, Zero answers renters, runs viewings, finds tenants and looks after repairs and residents after move-in. [Product film](https://media.lenguyenvu.com/cf0-product-film-1080.h264.mp4).
 
 ## Open source and community
 
