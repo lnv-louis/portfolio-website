@@ -129,10 +129,7 @@ export const scenesStyles = stylex.create({
   events: {
     display: 'grid',
     gap: 0,
-    gridTemplateColumns: {
-      default: '1fr',
-      '@media (min-width: 960px)': 'repeat(3, 1fr)',
-    },
+    gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
     listStyle: 'none',
     margin: 0,
     padding: 0,

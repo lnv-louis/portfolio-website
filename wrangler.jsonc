@@ -3,8 +3,7 @@
   "name": "lenguyenvu",
   "account_id": "062a91f6e4ad306625307277f1fe668b",
   "compatibility_date": "2026-08-20",
-  // The Worker only runs for page routes (markdown negotiation, Link/Vary headers).
-  // Every other path goes straight to static assets.
+  // src/worker.ts: MCP server, markdown negotiation, Link/Vary headers, markdown 404s.
   "main": "src/worker.ts",
   "assets": {
     "directory": "./dist",
@@ -13,7 +12,9 @@
     // so missing files (sitemaps, .well-known/*) aren't answered with the homepage.
     "not_found_handling": "404-page",
     "html_handling": "auto-trailing-slash",
-    "run_worker_first": ["/", "/about", "/contact", "/privacy", "/index.html", "/about.html", "/contact.html", "/privacy.html"]
+    // The Worker sees every request (MCP, markdown negotiation, markdown 404s) and
+    // passes anything it doesn't handle straight to the assets binding.
+    "run_worker_first": true
   },
   "build": {
     "command": "bun run build",

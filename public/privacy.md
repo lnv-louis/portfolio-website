@@ -1,3 +1,10 @@
+---
+title: "Privacy | Louis Le"
+description: "Privacy policy for lenguyenvu.com: no accounts, no forms, no cookies."
+canonical: https://lenguyenvu.com/privacy
+last_updated: 2026-10-31
+---
+
 # Privacy
 
 lenguyenvu.com is a personal website. It has no accounts, no forms, no newsletter and no advertising. It sets no cookies and stores nothing in your browser.

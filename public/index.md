@@ -1,3 +1,10 @@
+---
+title: "Louis Le (Le Nguyen Vu) | AI and Real Estate, cf0.ai"
+description: "Louis Le is Co-Founder & CTO of cf0.ai, building production AI systems for real estate, and co-founder of The Hack Collective, London's hackathon community."
+canonical: https://lenguyenvu.com/
+last_updated: 2026-10-31
+---
+
 # Louis Le (Le Nguyen Vu)
 
 Software engineer in London building production AI systems for real estate. Co-Founder & CTO of [cf0.ai](https://cf0.ai/), co-founder of [The Hack Collective](https://hackcollective.uk/), and a Computer Science student at University College London.
@@ -18,14 +25,16 @@ I host, sponsor and partner on hackathons: on behalf of Cognition, and through T
 
 | Event | Date | Role | Notes |
 | --- | --- | --- | --- |
+| [ImpactHack 2027](https://impact-hack.com/) | 13–14 Feb 2027, Bristol and Mumbai | Partner and sponsor for The Hack Collective | 350+ students across two campuses |
+| [Imperial BioHack x Anthropic](https://luma.com/m21rdpv1) | 28–29 Nov 2026, London | Sponsor, on behalf of Cognition | 48 hours, 120 builders, biotech challenges |
 | [Grok Bot Community Engineering Hackathon](https://luma.com/wn0h6ffm) | 22 Oct 2026, London | Co-host for The Hack Collective | Cursor, Supabase, Cognee, Zero and SpaceXAI as partners |
 | [Hack-Nation 7th Global AI Hackathon](https://luma.com/nln5g3e0) | 3–4 Oct 2026, London hub | London hub host | 3,150 builders across 15+ hubs |
 | [Devin Local: London](https://luma.com/eveur09a) | 1 Oct 2026, London | Host, on behalf of Cognition | 202 attended; keychains designed with Devin and 3D printed on the night |
 | [Paris Builds](https://luma.com/8ucy347o) | 36 hours, Paris | Sponsor | Y Combinator as partners |
 
-## Hosting Devin Local for Cognition
+## Hosting Devin Local as a Devin AI Ambassador
 
-Cognition is the lab behind Devin, the AI software engineer. As a Devin AI Ambassador, I hosted Devin Local: London on 1 October 2026 in a London cafe, where 202 engineers, designers and founders built with Devin. The challenge was to design a keychain with Devin, print it on the night's 3D printers, some provided by Muon, and vote on the best one. Everyone left with $200 of Devin Max. [Film](https://media.lenguyenvu.com/devin-local-london.mp4).
+[Film: Devin Local: London](https://media.lenguyenvu.com/devin-local-london.mp4), hosted on behalf of Cognition on 1 October 2026.
 
 ## Building production systems at the intersection of AI and Real Estate
 

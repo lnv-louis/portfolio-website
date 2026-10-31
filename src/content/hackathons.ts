@@ -28,6 +28,22 @@ export const HACKATHON_COMMUNITY = {
 
 export const HACKATHON_EVENTS: HackathonEvent[] = [
   {
+    name: 'ImpactHack 2027',
+    city: 'Bristol and Mumbai',
+    date: '13–14 Feb 2027',
+    role: 'Partner and sponsor for The Hack Collective',
+    stat: '350+ students across two campuses',
+    href: 'https://impact-hack.com/',
+  },
+  {
+    name: 'Imperial BioHack x Anthropic',
+    city: 'London, Imperial College',
+    date: '28–29 Nov 2026',
+    role: 'Sponsor, on behalf of Cognition',
+    stat: '48 hours, 120 builders, biotech challenges',
+    href: 'https://luma.com/m21rdpv1',
+  },
+  {
     name: 'Grok Bot Community Engineering Hackathon',
     city: 'London',
     date: '22 Oct 2026',
