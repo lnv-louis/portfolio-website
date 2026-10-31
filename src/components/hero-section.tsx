@@ -49,6 +49,12 @@ const CURRENT_WORK = [
     label: 'Currently a Thinking About Thinking Fellow.',
     tooltip: <>An invitation-only fellowship with fellows in 200+ cities.</>,
   },
+  {
+    id: 'raion',
+    href: 'https://raion.io/',
+    label: 'Currently a Raion member.',
+    tooltip: <>Raion aggregates partners for sovereign AI infrastructure.</>,
+  },
 ]
 
 function XIcon() {

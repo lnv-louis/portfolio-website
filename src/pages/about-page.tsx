@@ -37,7 +37,7 @@ export function AboutPage() {
         and Paris Builds, which I sponsored and hosted. The Hack Collective has also been a
         community partner of HackEurope, FINEDA&rsquo;s VC101, the Student Tech Forum and New London
         School. I&rsquo;m a Devin AI Ambassador, a EuroTech Fellow, a
-        Thinking About Thinking Fellow, and the 2025&ndash;2026 Nexus Labs Officer at UCL AI Society.
+        Thinking About Thinking Fellow, a Raion member, and the 2025&ndash;2026 Nexus Labs Officer at UCL AI Society.
       </p>
 
       <h2 {...stylex.props(prose.h2)}>Projects</h2>

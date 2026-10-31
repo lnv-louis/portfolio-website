@@ -11,7 +11,7 @@ I'm Louis Le (Le Nguyen Vu), a software engineer in London building production A
 
 ## Community
 
-I co-founded [The Hack Collective](https://hackcollective.uk/), London's hackathon community of 1.2k+ members and 500+ calendar subscribers. I host, sponsor and partner on hackathons: Devin Local: London and Imperial BioHack on behalf of Cognition, ImpactHack 2027 in Bristol and Mumbai for The Hack Collective, the London hub of Hack-Nation's 7th Global AI Hackathon, the Grok Bot Community Engineering Hackathon, and Paris Builds, which I sponsored and hosted. The Hack Collective has also been a community partner of HackEurope, FINEDA's VC101, the Student Tech Forum and New London School. I'm a Devin AI Ambassador, a EuroTech Fellow, a Thinking About Thinking Fellow, and the 2025–2026 Nexus Labs Officer at UCL AI Society.
+I co-founded [The Hack Collective](https://hackcollective.uk/), London's hackathon community of 1.2k+ members and 500+ calendar subscribers. I host, sponsor and partner on hackathons: Devin Local: London and Imperial BioHack on behalf of Cognition, ImpactHack 2027 in Bristol and Mumbai for The Hack Collective, the London hub of Hack-Nation's 7th Global AI Hackathon, the Grok Bot Community Engineering Hackathon, and Paris Builds, which I sponsored and hosted. The Hack Collective has also been a community partner of HackEurope, FINEDA's VC101, the Student Tech Forum and New London School. I'm a Devin AI Ambassador, a EuroTech Fellow, a Thinking About Thinking Fellow, a Raion member, and the 2025–2026 Nexus Labs Officer at UCL AI Society.
 
 ## Projects
 

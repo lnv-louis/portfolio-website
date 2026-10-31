@@ -13,6 +13,7 @@ export const PROFILE = {
     'Devin AI Ambassador',
     'EuroTech Fellow',
     'Thinking About Thinking Fellow',
+    'Raion member (sovereign AI infrastructure)',
     'BSc Computer Science, University College London (expected 2028)',
   ],
   focus: 'Production AI systems for real estate',

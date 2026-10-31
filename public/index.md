@@ -18,6 +18,7 @@ Website: https://lenguyenvu.com · Markdown pages: [About](/about.md) · [Contac
 - Devin AI Ambassador for [Cognition](https://cognition.com/), the lab behind Devin.
 - EuroTech Fellow, Batch 2, at the [EuroTech Federation](https://www.eurotech-federation.com/).
 - Thinking About Thinking Fellow at [Thinking About Thinking](https://www.thinkingaboutthinking.org/).
+- Member of [Raion](https://raion.io/), which aggregates partners for sovereign AI infrastructure.
 
 ## Building the London hackathon scenes
 
