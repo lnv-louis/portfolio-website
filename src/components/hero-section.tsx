@@ -22,13 +22,13 @@ const CURRENT_WORK = [
   {
     id: 'cf0',
     href: 'https://cf0.ai/',
-    label: 'Currently building cf0.ai',
+    label: 'Currently building cf0.ai.',
     tooltip: <>Zero lets and manages your homes.</>,
   },
   {
     id: 'hack-collective',
     href: 'https://hackcollective.uk/',
-    label: 'Currently building The Hack Collective',
+    label: 'Currently building The Hack Collective.',
     tooltip: <>London&rsquo;s hackathon community with 1.2k+ members.</>,
   },
   {
@@ -40,13 +40,13 @@ const CURRENT_WORK = [
   {
     id: 'eurotech',
     href: 'https://www.eurotech-federation.com/',
-    label: 'Currently a EuroTech Fellow',
+    label: 'Currently a EuroTech Fellow.',
     tooltip: <>Batch 2 Fellow at EuroTech Federation.</>,
   },
   {
     id: 'thinking-about-thinking',
     href: 'https://www.thinkingaboutthinking.org/',
-    label: 'Currently a Thinking About Thinking Fellow',
+    label: 'Currently a Thinking About Thinking Fellow.',
     tooltip: <>An invitation-only fellowship with fellows in 200+ cities.</>,
   },
 ]

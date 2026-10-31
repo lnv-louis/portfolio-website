@@ -1,0 +1,15 @@
+# lenguyenvu.com for developers and agents
+
+> Read-only, keyless interfaces to Louis Le's site: an MCP server, markdown pages and discovery files.
+
+## When to use
+
+Use these when an agent needs structured facts about Louis Le (roles, hackathons, contact links) rather than rendered HTML.
+
+## Interfaces
+
+- [MCP server](https://lenguyenvu.com/mcp): Streamable HTTP, JSON-RPC over POST. Tools: get_profile, list_hackathons, get_contact_links, get_page_markdown. [Server card](https://lenguyenvu.com/mcp/server-card).
+- [Developers page (markdown)](https://lenguyenvu.com/developers.md): every interface, parameters and curl examples.
+- [Agent skill](https://lenguyenvu.com/.well-known/agent-skills/louis-le/SKILL.md)
+- [ARD catalog](https://lenguyenvu.com/.well-known/ard.json)
+- [Site llms.txt](https://lenguyenvu.com/llms.txt)

@@ -2,11 +2,7 @@ import * as stylex from '@stylexjs/stylex'
 
 import { color, layout, motion, overlay, radius, shadow, space, text } from '@/tokens/token-consts.stylex'
 
-export const productDemoStyles = stylex.create({
-  // Rendered inside CapabilitiesSection, which already owns the section padding.
-  section: {
-    width: '100%',
-  },
+export const filmPlayerStyles = stylex.create({
   frame: {
     aspectRatio: '16 / 9',
     backgroundColor: color.surfaceSoft,
@@ -40,6 +36,26 @@ export const productDemoStyles = stylex.create({
   },
   videoClickable: {
     cursor: 'pointer',
+  },
+  soundButton: {
+    alignItems: 'center',
+    backdropFilter: 'blur(12px)',
+    backgroundColor: overlay.scrim,
+    borderRadius: radius.full,
+    color: overlay.ink,
+    cursor: 'pointer',
+    display: 'inline-flex',
+    fontSize: text.sizeBodySm,
+    fontWeight: text.weightMedium,
+    gap: space.xs,
+    insetBlockStart: space.sm,
+    insetInlineEnd: space.sm,
+    minHeight: '36px',
+    paddingInline: space.md,
+    position: 'absolute',
+    transform: { default: null, ':active': 'scale(0.97)' },
+    transitionDuration: motion.durationFast,
+    transitionProperty: 'transform',
   },
   controls: {
     backdropFilter: 'blur(12px)',

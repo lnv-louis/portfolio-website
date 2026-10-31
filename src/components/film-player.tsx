@@ -8,19 +8,19 @@ import * as stylex from "@stylexjs/stylex";
 import { AnimatePresence, m, useInView } from "motion/react";
 import { useRef, useState } from "react";
 
-import { productDemoStyles as styles } from "@/components/product-demo-section.stylex";
+import { filmPlayerStyles as styles } from "@/components/film-player.stylex";
 
-const PRODUCT_DEMO_VIDEO_SOURCES = [
-  {
-    src: "https://media.lenguyenvu.com/cf0-product-film-720.av1.mp4",
-    type: 'video/mp4; codecs="av01.0.04M.08, mp4a.40.2"',
-  },
-  {
-    src: "https://media.lenguyenvu.com/cf0-product-film-720.h264.mp4",
-    type: 'video/mp4; codecs="avc1.640020, mp4a.40.2"',
-  },
-];
-const PRODUCT_DEMO_VIDEO_POSTER = "/zero-product-film-poster.webp";
+export interface FilmSource {
+  src: string;
+  type: string;
+}
+
+export interface Film {
+  sources: FilmSource[];
+  poster: string;
+  // Accessible name for the player, also the poster's alt text.
+  label: string;
+}
 
 const cardEnter = {
   initial: { opacity: 0, y: 20 },
@@ -92,7 +92,9 @@ function CustomSlider({
   );
 }
 
-export function ProductDemoSection() {
+// The site's film player: autoplays muted when scrolled into view (browsers block
+// autoplay with sound), and turns the sound on at the first click, tap or play press.
+export function FilmPlayer({ film }: { film: Film }) {
   const frameRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const isInView = useInView(frameRef, { once: true, margin: "200px" });
@@ -106,11 +108,39 @@ export function ProductDemoSection() {
   const [duration, setDuration] = useState(0);
   const [playbackSpeed, setPlaybackSpeed] = useState(1);
 
+  function unmute(video: HTMLVideoElement) {
+    video.muted = false;
+    if (video.volume === 0) {
+      video.volume = 1;
+      setVolume(1);
+    }
+    setIsMuted(false);
+  }
+
   function togglePlay() {
     const video = videoRef.current;
     if (!video) return;
-    if (video.paused) video.play();
-    else video.pause();
+    if (video.paused) {
+      unmute(video);
+      void video.play();
+    } else {
+      video.pause();
+    }
+  }
+
+  // A click on a muted, playing film means "I want to hear this", not "pause".
+  function handleVideoClick() {
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.muted && !video.paused) unmute(video);
+    else togglePlay();
+  }
+
+  function turnSoundOn() {
+    const video = videoRef.current;
+    if (!video) return;
+    unmute(video);
+    if (video.paused) void video.play();
   }
 
   function toggleMute() {
@@ -166,11 +196,10 @@ export function ProductDemoSection() {
   else if (volume <= 0.5) volumeIcon = VolumeLowIcon;
 
   return (
-    <section {...stylex.props(styles.section)}>
       <m.div
         ref={frameRef}
         role="group"
-        aria-label="cf0 product film"
+        aria-label={film.label}
         tabIndex={0}
         {...cardEnter}
         {...stylex.props(styles.frame)}
@@ -185,15 +214,15 @@ export function ProductDemoSection() {
         onTouchStart={() => setShowControls(true)}
       >
         <img
-          src={PRODUCT_DEMO_VIDEO_POSTER}
-          alt="Zero managing a home after move-in."
+          src={film.poster}
+          alt={film.label}
           {...stylex.props(styles.media, styles.poster, isReady && styles.hidden)}
         />
         {isInView && (
           <video
             ref={videoRef}
             {...stylex.props(styles.media, styles.videoClickable)}
-            poster={PRODUCT_DEMO_VIDEO_POSTER}
+            poster={film.poster}
             autoPlay
             muted
             loop
@@ -203,12 +232,19 @@ export function ProductDemoSection() {
             onTimeUpdate={handleTimeUpdate}
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
-            onClick={togglePlay}
+            onClick={handleVideoClick}
           >
-            {PRODUCT_DEMO_VIDEO_SOURCES.map((source) => (
+            {film.sources.map((source) => (
               <source key={source.type} src={source.src} type={source.type} />
             ))}
           </video>
+        )}
+
+        {isInView && isMuted && (
+          <button type="button" onClick={turnSoundOn} {...stylex.props(styles.soundButton)}>
+            <HugeiconsIcon icon={VolumeMute01Icon} size={16} strokeWidth={2} />
+            Sound on
+          </button>
         )}
 
         <AnimatePresence>
@@ -281,6 +317,5 @@ export function ProductDemoSection() {
           )}
         </AnimatePresence>
       </m.div>
-    </section>
   );
 }

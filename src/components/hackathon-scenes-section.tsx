@@ -52,8 +52,7 @@ export function HackathonScenesSection() {
           Building the London hackathon scenes.
         </h2>
         <p {...stylex.props(styles.lede)}>
-          I host, sponsor and partner on hackathons: on behalf of Cognition, a $100B+ lab, and
-          through{' '}
+          I host, sponsor and partner on hackathons on behalf of Cognition, a $100B+ lab, and through{' '}
           <a
             href={HACKATHON_COMMUNITY.collective.href}
             target="_blank"
@@ -62,7 +61,8 @@ export function HackathonScenesSection() {
           >
             {HACKATHON_COMMUNITY.collective.name}
           </a>
-          , London&rsquo;s hackathon community of 1.2k+ members and 500+ calendar subscribers.
+          , the community I built: 1.2k+ members and 500+ calendar subscribers, London&rsquo;s most
+          hackathon-hungry builders.
         </p>
       </div>
 

@@ -3,6 +3,7 @@ import type { ComponentType } from "react";
 import { App } from "@/app/app";
 import { AboutPage } from "@/pages/about-page";
 import { ContactPage } from "@/pages/contact-page";
+import { DevelopersPage } from "@/pages/developers-page";
 import { NotFoundPage } from "@/pages/not-found-page";
 import { PrivacyPage } from "@/pages/privacy-page";
 
@@ -47,6 +48,14 @@ export const ROUTES: Record<string, Route> = {
     description: "Privacy policy for lenguyenvu.com: no accounts, no forms, no cookies.",
     file: "privacy.html",
     markdown: "/privacy.md",
+  },
+  "/developers": {
+    Component: DevelopersPage,
+    title: "For developers and agents | Louis Le",
+    description:
+      "Read-only interfaces to lenguyenvu.com: MCP server at /mcp, markdown versions of every page, llms.txt, WebMCP tools and discovery files.",
+    file: "developers.html",
+    markdown: "/developers.md",
   },
   "/404": {
     Component: NotFoundPage,
