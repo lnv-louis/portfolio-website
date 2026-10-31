@@ -3,8 +3,8 @@
 // - Accept: text/markdown, ?mode=agent, or an AI assistant fetching for a person
 //   (ChatGPT-User, Claude-User, Perplexity-User) get a page's markdown twin
 // - HTML pages advertise the sitemap, markdown alternate and llms.txt via Link headers
-// - 404s carry a markdown body when the client prefers markdown
-// Everything else is served by the assets binding untouched.
+// It runs only for the paths in wrangler.jsonc's run_worker_first; everything else
+// (images, fonts, scripts, unknown paths) is served straight from static assets.
 import { handleMcp, serverCard } from "@/mcp";
 
 interface Env {
