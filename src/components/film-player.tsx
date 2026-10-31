@@ -29,6 +29,8 @@ const cardEnter = {
 };
 
 const PLAYBACK_SPEEDS = [0.5, 1, 1.5, 2] as const;
+// Events that count as user activation for media; scrolling does not.
+const ACTIVATION_EVENTS = ["pointerdown", "keydown", "touchend"] as const;
 
 function formatTime(seconds: number): string {
   if (!Number.isFinite(seconds)) return "0:00";
@@ -92,35 +94,49 @@ function CustomSlider({
   );
 }
 
-// Whether the visitor has asked for sound, shared by every FilmPlayer on the page:
-// turning sound on in one film means the next film plays with sound once it's in view.
-let soundWanted = false;
+// Sound preference shared by every FilmPlayer on the page. Sound is on by default;
+// muting any film turns it off for all of them. `activated` flips on the visitor's
+// first click, tap or keypress anywhere on the page: browsers refuse audio until then,
+// so films that had to start muted unmute the moment it happens.
+const sound = { wanted: true, activated: false };
+let soundSnapshot = { ...sound };
 const soundListeners = new Set<() => void>();
-function setSoundWanted(next: boolean) {
-  soundWanted = next;
+function updateSound(patch: Partial<typeof sound>) {
+  Object.assign(sound, patch);
+  soundSnapshot = { ...sound };
   soundListeners.forEach((listener) => listener());
 }
-function useSoundWanted() {
+function setSoundWanted(wanted: boolean) {
+  updateSound({ wanted });
+}
+if (typeof window !== "undefined") {
+  const activate = () => {
+    updateSound({ activated: true });
+    for (const type of ACTIVATION_EVENTS) window.removeEventListener(type, activate, true);
+  };
+  for (const type of ACTIVATION_EVENTS) window.addEventListener(type, activate, true);
+}
+function useSound() {
   return useSyncExternalStore(
     (listener) => {
       soundListeners.add(listener);
       return () => soundListeners.delete(listener);
     },
-    () => soundWanted,
-    () => false,
+    () => soundSnapshot,
+    () => soundSnapshot,
   );
 }
 
-// The site's film player. Autoplays muted when scrolled into view (browsers block
-// autoplay with sound); the first click, tap or play press turns sound on. Sound then
-// follows the screen: only the film that's mostly in view plays audio, and films that
-// scroll away pause.
+// The site's film player. Plays with sound by default when scrolled into view; if the
+// browser refuses audio before any interaction, it plays muted and unmutes on the
+// visitor's first click, tap or keypress anywhere. Sound follows the screen: only the
+// film that's mostly in view plays audio, and films that scroll away pause.
 export function FilmPlayer({ film }: { film: Film }) {
   const frameRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const isInView = useInView(frameRef, { once: true, margin: "200px" });
   const isVisible = useInView(frameRef, { amount: 0.5 });
-  const wantsSound = useSoundWanted();
+  const { wanted: wantsSound, activated } = useSound();
   // A pause the visitor chose; scrolling back into view shouldn't override it.
   const pausedByUser = useRef(false);
   const [isReady, setIsReady] = useState(false);
@@ -133,27 +149,27 @@ export function FilmPlayer({ film }: { film: Film }) {
   const [duration, setDuration] = useState(0);
   const [playbackSpeed, setPlaybackSpeed] = useState(1);
 
-  // Play with sound only while this film is the one on screen.
+  // Play with sound only while this film is the one on screen. play() is called even
+  // when already playing: unmuting without user activation makes Chrome pause the
+  // film, and play() then rejects, so the catch falls back to muted playback.
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-    if (isVisible) {
-      video.muted = !wantsSound;
-      if (video.paused && !pausedByUser.current) {
-        video.play().catch(() => {
-          // The browser refused playback with sound: keep the film moving muted and
-          // bring the "Sound on" button back so one tap restores audio.
-          video.muted = true;
-          setIsMuted(true);
-          void video.play().catch(() => {});
-        });
-      }
-    } else {
+    if (!isVisible) {
       video.muted = true;
+      setIsMuted(true);
       if (!video.paused) video.pause();
+      return;
     }
+    video.muted = !wantsSound;
     setIsMuted(video.muted);
-  }, [isVisible, wantsSound, isInView]);
+    if (pausedByUser.current) return;
+    video.play().catch(() => {
+      video.muted = true;
+      setIsMuted(true);
+      void video.play().catch(() => {});
+    });
+  }, [isVisible, wantsSound, activated, isInView]);
 
   function unmute(video: HTMLVideoElement) {
     video.muted = false;

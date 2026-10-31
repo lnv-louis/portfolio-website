@@ -50,7 +50,7 @@ export const filmPlayerStyles = stylex.create({
     gap: space.xs,
     insetBlockStart: space.sm,
     insetInlineEnd: space.sm,
-    minHeight: '36px',
+    minHeight: '44px',
     paddingInline: space.md,
     position: 'absolute',
     transform: { default: null, ':active': 'scale(0.97)' },
@@ -79,6 +79,7 @@ export const filmPlayerStyles = stylex.create({
     color: overlay.ink,
     flexShrink: 0,
     fontSize: text.sizeCaption,
+    fontVariantNumeric: 'tabular-nums',
   },
   controlsRow: {
     alignItems: 'center',
