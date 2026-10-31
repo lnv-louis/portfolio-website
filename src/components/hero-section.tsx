@@ -66,10 +66,10 @@ export function HeroSection() {
         <div {...stylex.props(heroStyles.portrait)}>
           <div {...stylex.props(heroStyles.portraitFrame)}>
             <img
-              src="/le-nguyen-vu.webp"
-              alt="Louis Le"
-              width={360}
-              height={480}
+              src="/louis-le.webp"
+              alt="Louis Le at the Grok Bot hackathon in London"
+              width={720}
+              height={960}
               decoding="async"
               fetchPriority="high"
               {...stylex.props(heroStyles.objectCover)}

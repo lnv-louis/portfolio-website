@@ -16,3 +16,13 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://*.githubusercontent.com https://media.lenguyenvu.com; media-src 'self' https://media.lenguyenvu.com; connect-src 'self' https://media.lenguyenvu.com; frame-src 'self'; object-src 'self'; base-uri 'self'
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+/hackathons/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=2592000
+
+/*.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+
+/llms.txt
+  Content-Type: text/plain; charset=utf-8

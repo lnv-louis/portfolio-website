@@ -30,4 +30,9 @@ export default defineConfig(({ mode }) => ({
   build: {
     target: "es2022",
   },
+  // The SSR build (src/entry-server.tsx) only runs at build time to prerender pages,
+  // so bundle every dependency instead of resolving them from node_modules.
+  ssr: {
+    noExternal: true,
+  },
 }));

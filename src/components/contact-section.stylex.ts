@@ -132,6 +132,12 @@ export const contactStyles = stylex.create({
     },
   },
   footer: {
+    alignItems: 'center',
+    columnGap: space.lg,
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    rowGap: space.sm,
     borderTopColor: color.hairline,
     borderTopStyle: 'solid',
     borderTopWidth: '1px',
@@ -145,5 +151,18 @@ export const contactStyles = stylex.create({
       '@media (min-width: 1200px)': space.x4xl,
     },
     textTransform: 'uppercase',
+  },
+  footerNav: {
+    display: 'flex',
+    gap: space.lg,
+  },
+  footerLink: {
+    color: {
+      default: color.captionInk,
+      ':hover': { default: null, '@media (hover: hover) and (pointer: fine)': color.ink },
+    },
+    textDecoration: 'none',
+    transitionDuration: motion.durationFast,
+    transitionProperty: 'color',
   },
 })

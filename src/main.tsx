@@ -1,24 +1,19 @@
 import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import { createBrowserRouter, redirect, RouterProvider } from "react-router";
+import { createRoot, hydrateRoot } from "react-dom/client";
 
-import { App } from "@/app/app";
+import { registerAgentTools } from "@/app/agent-tools";
+import { Root } from "@/app/routes";
 import "@/app/globals.css";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    Component: App,
-  },
-  {
-    // Single-page site: send unknown paths home instead of the router's dev error screen.
-    path: "*",
-    loader: () => redirect("/"),
-  },
-]);
-
-createRoot(document.getElementById("root")!).render(
+const container = document.getElementById("root")!;
+const app = (
   <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>,
+    <Root pathname={location.pathname} />
+  </StrictMode>
 );
+
+// Production pages are prerendered (scripts/prerender.ts); dev serves an empty root.
+if (container.firstElementChild) hydrateRoot(container, app);
+else createRoot(container).render(app);
+
+registerAgentTools();

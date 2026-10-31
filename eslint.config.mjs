@@ -7,6 +7,8 @@ const eslintConfig = defineConfig([
   ...tseslint.configs.recommended,
   globalIgnores([
     "dist/**",
+    "dist-ssr/**",
+    ".wrangler/**",
     "node_modules/**",
     "vite.config.ts",
   ]),

@@ -174,6 +174,8 @@ export function StaggerReveal({
       ref: ref as Ref<HTMLElement>,
       id,
       className,
+      // globals.css hides this before first paint when JS runs, so prerendered text doesn't flash.
+      "data-stagger-root": "",
     },
     children,
   );

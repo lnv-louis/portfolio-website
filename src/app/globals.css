@@ -1,7 +1,7 @@
 @import "../tokens/design-tokens.css";
 @import "lenis/dist/lenis.css";
 
-@layer base, priority1, priority2, priority3, priority4;
+@layer base, priority1, priority2, priority3, priority4, priority5, priority6, priority7;
 
 @stylex;
 
@@ -42,6 +42,13 @@
     touch-action: manipulation;
   }
 
+  /* Prerendered hero: hidden until StaggerReveal measures and animates it. Fails open
+     after 3s if the bundle never runs (the animation beats the inline style). */
+  .js [data-stagger-root] {
+    visibility: hidden;
+    animation: portfolio-reveal-failsafe 0s 3s forwards;
+  }
+
   body {
     background-color: var(--portfolio-canvas);
     color: var(--portfolio-ink);
@@ -76,5 +83,11 @@
     color: inherit;
     font: inherit;
     padding: 0;
+  }
+}
+
+@keyframes portfolio-reveal-failsafe {
+  to {
+    visibility: visible;
   }
 }

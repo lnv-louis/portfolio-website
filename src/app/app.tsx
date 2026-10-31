@@ -5,6 +5,8 @@ import { color, layout } from "@/tokens/token-consts.stylex";
 import { AgentationToolbar } from "@/components/agentation";
 import { LenisProvider } from "@/components/lenis-provider";
 import { HeroSection } from "@/components/hero-section";
+import { HackathonScenesSection } from "@/components/hackathon-scenes-section";
+import { DevinLocalSection } from "@/components/devin-local-section";
 import { CapabilitiesSection } from "@/components/capabilities-section";
 import { CommunitySection } from "@/components/community-section";
 import { ResearchSection } from "@/components/research-section";
@@ -43,6 +45,12 @@ export function App() {
           <div {...stylex.props(pageStyles.page)}>
             <HeroSection />
             <div {...stylex.props(pageStyles.rail)}>
+              <div {...stylex.props(pageStyles.divider)}>
+                <HackathonScenesSection />
+              </div>
+              <div {...stylex.props(pageStyles.divider)}>
+                <DevinLocalSection />
+              </div>
               <div {...stylex.props(pageStyles.divider)}>
                 <CapabilitiesSection />
               </div>

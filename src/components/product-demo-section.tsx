@@ -13,11 +13,11 @@ import { productDemoStyles as styles } from "@/components/product-demo-section.s
 const PRODUCT_DEMO_VIDEO_SOURCES = [
   {
     src: "https://media.lenguyenvu.com/cf0-product-film-720.av1.mp4",
-    type: 'video/mp4; codecs="av01.0.04M.08"',
+    type: 'video/mp4; codecs="av01.0.04M.08, mp4a.40.2"',
   },
   {
     src: "https://media.lenguyenvu.com/cf0-product-film-720.h264.mp4",
-    type: 'video/mp4; codecs="avc1.640020"',
+    type: 'video/mp4; codecs="avc1.640020, mp4a.40.2"',
   },
 ];
 const PRODUCT_DEMO_VIDEO_POSTER = "/zero-product-film-poster.webp";

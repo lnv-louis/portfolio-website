@@ -2,6 +2,27 @@
 
 Decision log with dates and rationale. Newest first.
 
+## 2026-10-31 — Hackathon section: "Scroll wall" (decided from /proto/hackathon-scenes)
+
+**Status:** accepted
+**Scope:** `hackathon-scenes-section.tsx`, `devin-local-section.tsx`
+**Decision:** "Building the London hackathon scenes." uses the scroll wall: three rows of
+curated photos (Grok Bot, Hack-Nation London hub, Paris Builds) that translate sideways
+1:1 with page scroll (rows 1 and 3 to -30%, row 2 from -30%), split by a band of community
+numbers in Geist Serif, with the events listed below. Devin Local gets its own section with
+the film, about Devin and Cognition.
+
+**Rejected:**
+- Contact sheet (rolls, red grease-pencil keepers, loupe): strongest archive feel, but the
+  longest section on the page and read as an archive rather than a community.
+- Index (ledger + cursor-following photo stack): most restrained, but hid the photos behind
+  hover/tap, which undersells the community.
+- Flick stack (draggable deck per event): memorable, but one event at a time and 8 photos max.
+
+**Rules kept:** rows move only with scroll (no autoplay), static under reduced motion; every
+photo has its own alt text and a descriptive filename; media comes from
+`scripts/import-hackathon-media.ts` driven by `src/content/hackathon-curation.json`.
+
 ## 2026-10-30 — Pivot to AI and Real Estate; Geist Serif headings; no navbar
 
 **Status:** accepted

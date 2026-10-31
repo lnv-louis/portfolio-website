@@ -3,9 +3,17 @@
   "name": "lenguyenvu",
   "account_id": "062a91f6e4ad306625307277f1fe668b",
   "compatibility_date": "2026-08-20",
+  // The Worker only runs for page routes (markdown negotiation, Link/Vary headers).
+  // Every other path goes straight to static assets.
+  "main": "src/worker.ts",
   "assets": {
     "directory": "./dist",
-    "not_found_handling": "single-page-application"
+    "binding": "ASSETS",
+    // Real 404 status with the prerendered dist/404.html instead of an SPA fallback,
+    // so missing files (sitemaps, .well-known/*) aren't answered with the homepage.
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash",
+    "run_worker_first": ["/", "/about", "/contact", "/privacy", "/index.html", "/about.html", "/contact.html", "/privacy.html"]
   },
   "build": {
     "command": "bun run build",

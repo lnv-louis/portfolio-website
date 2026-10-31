@@ -2,33 +2,50 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <!-- Cascade layer order, declared before any stylesheet so StyleX's dev-injected
+         sheet can't put its priority layers ahead of the base reset. -->
+    <style>@layer base, priority1, priority2, priority3, priority4, priority5, priority6, priority7;</style>
+    <script>document.documentElement.classList.add("js")</script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light" />
     <meta name="theme-color" content="#f5f5f5" />
     <link rel="icon" href="/favicon2.png" type="image/png" />
-    <link rel="canonical" href="https://lenguyenvu.com/" />
-    <title>Louis Le</title>
+    <!-- Per-page fields below (title, description, canonical, og:url, alternate) are
+         rewritten for each page by scripts/prerender.ts. -->
+    <title>Louis Le (Le Nguyen Vu) | AI and Real Estate, cf0.ai</title>
     <meta
       name="description"
-      content="Co-Founder & CTO at cf0.ai. Building production AI systems for real estate: Zero, the agent that lets and manages homes."
+      content="Louis Le is Co-Founder &amp; CTO of cf0.ai, building production AI systems for real estate, and co-founder of The Hack Collective, London's hackathon community."
     />
-    <meta name="robots" content="index, follow" />
-    <meta name="googlebot" content="index, follow" />
-    <meta property="og:title" content="Louis Le | AI Infrastructure Engineer" />
+    <link rel="canonical" href="https://lenguyenvu.com/" />
+    <link rel="alternate" type="text/markdown" href="/index.md" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <meta name="author" content="Louis Le" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta property="og:site_name" content="Louis Le" />
+    <meta property="og:title" content="Louis Le (Le Nguyen Vu) | AI and Real Estate, cf0.ai" />
     <meta
       property="og:description"
-      content="Co-Founder & CTO at cf0.ai. Building production AI systems for real estate: Zero, the agent that lets and manages homes."
+      content="Louis Le is Co-Founder &amp; CTO of cf0.ai, building production AI systems for real estate, and co-founder of The Hack Collective, London's hackathon community."
     />
     <meta property="og:url" content="https://lenguyenvu.com/" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:image" content="https://lenguyenvu.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Louis Le at the Grok Bot hackathon in London" />
+    <meta property="profile:first_name" content="Louis" />
+    <meta property="profile:last_name" content="Le" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@lnv007" />
-    <meta name="twitter:title" content="Louis Le | AI Infrastructure Engineer" />
+    <meta name="twitter:title" content="Louis Le (Le Nguyen Vu) | AI and Real Estate, cf0.ai" />
     <meta
       name="twitter:description"
-      content="Co-Founder & CTO at cf0.ai. Building production AI systems for real estate: Zero, the agent that lets and manages homes."
+      content="Louis Le is Co-Founder &amp; CTO of cf0.ai, building production AI systems for real estate, and co-founder of The Hack Collective, London's hackathon community."
     />
+    <meta name="twitter:image" content="https://lenguyenvu.com/og-image.jpg" />
+    <meta name="twitter:image:alt" content="Louis Le at the Grok Bot hackathon in London" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
     <link rel="preconnect" href="https://media.lenguyenvu.com" />
@@ -40,31 +57,129 @@
       crossorigin="anonymous"
     />
     <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap"
-    />
-    <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap"
     />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Louis Le",
-        "url": "https://lenguyenvu.com",
-        "jobTitle": "Co-Founder & CTO, cf0.ai",
-        "knowsAbout": [
-          "Multi-agent orchestration",
-          "LLM systems",
-          "Real estate technology",
-          "Claude Agent SDK"
-        ],
-        "sameAs": [
-          "https://github.com/lnv-louis",
-          "https://linkedin.com/in/le-nguyen-vu",
-          "https://x.com/lnv007"
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://lenguyenvu.com/#person",
+            "name": "Louis Le",
+            "alternateName": "Le Nguyen Vu",
+            "url": "https://lenguyenvu.com/",
+            "image": "https://lenguyenvu.com/og-image.jpg",
+            "description": "Software engineer in London building production AI systems for real estate.",
+            "jobTitle": "Co-Founder & CTO",
+            "worksFor": { "@id": "https://lenguyenvu.com/#cf0" },
+            "memberOf": { "@id": "https://lenguyenvu.com/#hack-collective" },
+            "affiliation": {
+              "@type": "CollegeOrUniversity",
+              "name": "University College London",
+              "url": "https://www.ucl.ac.uk/"
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "London",
+              "addressCountry": "GB"
+            },
+            "knowsAbout": [
+              "AI agents",
+              "Real estate technology",
+              "Property management software",
+              "LLM systems",
+              "Hackathon organising",
+              "Machine learning"
+            ],
+            "sameAs": [
+              "https://github.com/lnv-louis",
+              "https://linkedin.com/in/le-nguyen-vu",
+              "https://x.com/lnv007"
+            ]
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://lenguyenvu.com/#cf0",
+            "name": "cf0.ai",
+            "url": "https://cf0.ai/",
+            "description": "Zero, the AI that lets and manages homes."
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://lenguyenvu.com/#hack-collective",
+            "name": "The Hack Collective",
+            "url": "https://hackcollective.uk/",
+            "description": "London's hackathon community.",
+            "founder": { "@id": "https://lenguyenvu.com/#person" },
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "London",
+              "addressCountry": "GB"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://lenguyenvu.com/#website",
+            "name": "Louis Le",
+            "url": "https://lenguyenvu.com/",
+            "inLanguage": "en",
+            "publisher": { "@id": "https://lenguyenvu.com/#person" }
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json" data-page="home">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "ProfilePage",
+            "@id": "https://lenguyenvu.com/#profile",
+            "url": "https://lenguyenvu.com/",
+            "name": "Louis Le (Le Nguyen Vu) | AI and Real Estate, cf0.ai",
+            "isPartOf": { "@id": "https://lenguyenvu.com/#website" },
+            "mainEntity": { "@id": "https://lenguyenvu.com/#person" },
+            "primaryImageOfPage": "https://lenguyenvu.com/og-image.jpg",
+            "dateModified": "2026-10-31"
+          },
+          {
+            "@type": "Event",
+            "name": "Devin Local: London",
+            "startDate": "2026-10-01",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "location": { "@type": "Place", "name": "London", "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" } },
+            "organizer": [{ "@type": "Organization", "name": "Cognition", "url": "https://cognition.com/" }, { "@id": "https://lenguyenvu.com/#person" }],
+            "url": "https://luma.com/eveur09a"
+          },
+          {
+            "@type": "Event",
+            "name": "Hack-Nation 7th Global AI Hackathon: London hub",
+            "startDate": "2026-10-03",
+            "endDate": "2026-10-04",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "location": { "@type": "Place", "name": "London", "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" } },
+            "organizer": { "@id": "https://lenguyenvu.com/#person" },
+            "url": "https://luma.com/nln5g3e0"
+          },
+          {
+            "@type": "Event",
+            "name": "Grok Bot Community Engineering London Hackathon",
+            "startDate": "2026-10-22",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "location": { "@type": "Place", "name": "Expedite London HQ", "address": { "@type": "PostalAddress", "streetAddress": "7 Lyric Square", "addressLocality": "London", "addressCountry": "GB" } },
+            "organizer": [{ "@id": "https://lenguyenvu.com/#person" }, { "@id": "https://lenguyenvu.com/#hack-collective" }],
+            "url": "https://luma.com/wn0h6ffm"
+          },
+          {
+            "@type": "Event",
+            "name": "Paris Builds",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "location": { "@type": "Place", "name": "Stephenson Harwood", "address": { "@type": "PostalAddress", "streetAddress": "48 Rue Cambon", "addressLocality": "Paris", "postalCode": "75001", "addressCountry": "FR" } },
+            "sponsor": { "@id": "https://lenguyenvu.com/#person" },
+            "url": "https://luma.com/8ucy347o"
+          }
         ]
       }
     </script>
