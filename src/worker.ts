@@ -56,14 +56,13 @@ export default {
     if (twin && wantsMarkdown(request, url)) {
       const markdown = await env.ASSETS.fetch(new URL(twin, url));
       if (markdown.ok) {
-        return new Response(markdown.body, {
-          headers: {
-            "Content-Type": "text/markdown; charset=utf-8",
-            "Cache-Control": "public, max-age=300",
-            Vary: "Accept",
-            Link: linkHeader(twin),
-          },
-        });
+        // Start from the asset's headers so the _headers protections (HSTS, nosniff, CSP) carry over.
+        const headers = new Headers(markdown.headers);
+        headers.set("Content-Type", "text/markdown; charset=utf-8");
+        headers.set("Cache-Control", "public, max-age=300");
+        headers.append("Vary", "Accept");
+        headers.set("Link", linkHeader(twin));
+        return new Response(markdown.body, { headers });
       }
     }
 
