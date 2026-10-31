@@ -6,7 +6,8 @@
 //
 // Photos: auto-oriented, EXIF stripped (camera, GPS), written to
 //   public/hackathons/<name>-480.webp (wall) and <name>-1600.webp (large).
-// Films: re-encoded to 720p H.264 + AAC with faststart. Workers static assets
+// Films: remuxed as-is with faststart (no re-encode, so no generation loss; the
+//   source must already be web-playable H.264 + AAC). Workers static assets
 //   ignore Range requests and Safari won't play MP4 without 206 responses, so
 //   films are served from R2 (media.lenguyenvu.com), never public/. With
 //   --upload-films the encode is uploaded to the `portfolio` bucket; the poster
@@ -102,7 +103,12 @@ for (const f of curation.films) {
   const work = await mkdtemp(join(tmpdir(), "hackathon-film-"));
   try {
     const mp4 = join(work, `${f.name}.mp4`);
-    await $`ffmpeg -v error -y -i ${join(SRC, f.source)} -vf ${"scale=min(1280\\,iw):-2,fps=30"} -c:v libx264 -preset slow -crf 28 -pix_fmt yuv420p -c:a aac -b:a 96k -movflags +faststart ${mp4}`;
+    // Copied streams must match the H.264 + AAC codecs declared in src/content/films.ts.
+    const codecs = (await $`ffprobe -v error -show_entries stream=codec_name -of csv=p=0 ${join(SRC, f.source)}`.text())
+      .trim()
+      .split("\n");
+    if (codecs.join(",") !== "h264,aac") throw new Error(`${f.source}: expected h264,aac streams, got ${codecs.join(",")}`);
+    await $`ffmpeg -v error -y -i ${join(SRC, f.source)} -c copy -movflags +faststart ${mp4}`;
     const poster = join(work, "poster.jpg");
     await $`ffmpeg -v error -y -ss 1 -i ${mp4} -frames:v 1 -q:v 3 ${poster}`;
     await $`magick ${poster} -strip -quality 78 ${join(STAGE, `${f.name}-poster.webp`)}`;
