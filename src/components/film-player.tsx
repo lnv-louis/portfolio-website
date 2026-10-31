@@ -182,7 +182,10 @@ export function FilmPlayer({ film }: { film: Film }) {
     const video = videoRef.current;
     if (!video) return;
     unmute(video);
-    if (video.paused) void video.play();
+    if (video.paused) {
+      pausedByUser.current = false;
+      void video.play();
+    }
   }
 
   function toggleMute() {
