@@ -6,7 +6,7 @@ import VolumeLowIcon from "@hugeicons/core-free-icons/VolumeLowIcon";
 import VolumeMute01Icon from "@hugeicons/core-free-icons/VolumeMute01Icon";
 import * as stylex from "@stylexjs/stylex";
 import { AnimatePresence, m, useInView } from "motion/react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 import { filmPlayerStyles as styles } from "@/components/film-player.stylex";
 
@@ -92,12 +92,37 @@ function CustomSlider({
   );
 }
 
-// The site's film player: autoplays muted when scrolled into view (browsers block
-// autoplay with sound), and turns the sound on at the first click, tap or play press.
+// Whether the visitor has asked for sound, shared by every FilmPlayer on the page:
+// turning sound on in one film means the next film plays with sound once it's in view.
+let soundWanted = false;
+const soundListeners = new Set<() => void>();
+function setSoundWanted(next: boolean) {
+  soundWanted = next;
+  soundListeners.forEach((listener) => listener());
+}
+function useSoundWanted() {
+  return useSyncExternalStore(
+    (listener) => {
+      soundListeners.add(listener);
+      return () => soundListeners.delete(listener);
+    },
+    () => soundWanted,
+    () => false,
+  );
+}
+
+// The site's film player. Autoplays muted when scrolled into view (browsers block
+// autoplay with sound); the first click, tap or play press turns sound on. Sound then
+// follows the screen: only the film that's mostly in view plays audio, and films that
+// scroll away pause.
 export function FilmPlayer({ film }: { film: Film }) {
   const frameRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const isInView = useInView(frameRef, { once: true, margin: "200px" });
+  const isVisible = useInView(frameRef, { amount: 0.5 });
+  const wantsSound = useSoundWanted();
+  // A pause the visitor chose; scrolling back into view shouldn't override it.
+  const pausedByUser = useRef(false);
   const [isReady, setIsReady] = useState(false);
   const [showControls, setShowControls] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -108,6 +133,20 @@ export function FilmPlayer({ film }: { film: Film }) {
   const [duration, setDuration] = useState(0);
   const [playbackSpeed, setPlaybackSpeed] = useState(1);
 
+  // Play with sound only while this film is the one on screen.
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (isVisible) {
+      video.muted = !wantsSound;
+      if (video.paused && !pausedByUser.current) void video.play().catch(() => {});
+    } else {
+      video.muted = true;
+      if (!video.paused) video.pause();
+    }
+    setIsMuted(video.muted);
+  }, [isVisible, wantsSound, isInView]);
+
   function unmute(video: HTMLVideoElement) {
     video.muted = false;
     if (video.volume === 0) {
@@ -115,15 +154,18 @@ export function FilmPlayer({ film }: { film: Film }) {
       setVolume(1);
     }
     setIsMuted(false);
+    setSoundWanted(true);
   }
 
   function togglePlay() {
     const video = videoRef.current;
     if (!video) return;
     if (video.paused) {
+      pausedByUser.current = false;
       unmute(video);
       void video.play();
     } else {
+      pausedByUser.current = true;
       video.pause();
     }
   }
@@ -146,12 +188,12 @@ export function FilmPlayer({ film }: { film: Film }) {
   function toggleMute() {
     const video = videoRef.current;
     if (!video) return;
-    const nextMuted = !video.muted;
-    video.muted = nextMuted;
-    setIsMuted(nextMuted);
-    if (!nextMuted && video.volume === 0) {
-      video.volume = 1;
-      setVolume(1);
+    if (video.muted) {
+      unmute(video);
+    } else {
+      video.muted = true;
+      setIsMuted(true);
+      setSoundWanted(false);
     }
   }
 
@@ -163,6 +205,7 @@ export function FilmPlayer({ film }: { film: Film }) {
     video.muted = nextVolume === 0;
     setVolume(nextVolume);
     setIsMuted(nextVolume === 0);
+    setSoundWanted(nextVolume > 0);
   }
 
   function handleTimeUpdate() {

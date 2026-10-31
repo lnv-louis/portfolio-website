@@ -10,7 +10,7 @@ import {
   StaggerRevealHeadline,
   StaggerRevealItem,
 } from '@/components/stagger-reveal'
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 
 const SOCIALS = [
   { label: 'GitHub', href: 'https://github.com/lnv-louis', icon: 'github' },
@@ -90,27 +90,28 @@ export function HeroSection() {
             as="p"
             className={stylex.props(heroStyles.subheading).className}
           >
-            {CURRENT_WORK.map((item, i) => (
-              <span key={item.id}>
-                <Tooltip>
-                  <TooltipTrigger
-                    delay={300}
-                    render={
-                      <a
-                        href={item.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        {...stylex.props(heroStyles.subheadingLink)}
-                      />
-                    }
-                  >
-                    {item.label}
-                  </TooltipTrigger>
-                  <TooltipContent>{item.tooltip}</TooltipContent>
-                </Tooltip>
-                {i < CURRENT_WORK.length - 1 && <br />}
-              </span>
-            ))}
+            <TooltipProvider>
+              {CURRENT_WORK.map((item, i) => (
+                <span key={item.id}>
+                  <Tooltip>
+                    <TooltipTrigger
+                      render={
+                        <a
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          {...stylex.props(heroStyles.subheadingLink)}
+                        />
+                      }
+                    >
+                      {item.label}
+                    </TooltipTrigger>
+                    <TooltipContent>{item.tooltip}</TooltipContent>
+                  </Tooltip>
+                  {i < CURRENT_WORK.length - 1 && <br />}
+                </span>
+              ))}
+            </TooltipProvider>
           </StaggerRevealItem>
 
           <StaggerRevealItem className={stylex.props(heroStyles.socials).className}>

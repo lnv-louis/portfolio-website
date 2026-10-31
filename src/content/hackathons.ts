@@ -4,6 +4,8 @@ export interface HackathonPhoto {
   event: string
   name: string
   alt: string
+  // false: only used where referenced by name (event tooltips), not on the photo wall.
+  wall: boolean
   width: number
   height: number
 }
@@ -21,6 +23,8 @@ export interface HackathonEvent {
   // How the event reads on the page: a linked lead, then one line of facts.
   lead: string
   detail: string
+  // Photo shown in the event's tooltip (a name from hackathon-media.json).
+  image?: string
 }
 
 export const HACKATHON_COMMUNITY = {
@@ -44,6 +48,7 @@ export const HACKATHON_EVENTS: HackathonEvent[] = [
     href: 'https://luma.com/wn0h6ffm',
     lead: 'Hosted the Grok Bot Community Engineering Hackathon.',
     detail: '180 builders, sponsored by Cursor, Supabase, Cognee, Zero and Notion.',
+    image: 'grok-bot-hackathon-group-photo',
   },
   {
     name: 'Hack-Nation 7th Global AI Hackathon',
@@ -56,6 +61,7 @@ export const HACKATHON_EVENTS: HackathonEvent[] = [
     href: 'https://luma.com/nln5g3e0',
     lead: 'Hosted the London hub of Hack-Nation’s 7th Global AI Hackathon.',
     detail: '3,150 builders across 15+ hubs.',
+    image: 'hack-nation-london-teams',
   },
   {
     name: 'Paris Builds',
@@ -68,6 +74,7 @@ export const HACKATHON_EVENTS: HackathonEvent[] = [
     href: 'https://luma.com/8ucy347o',
     lead: 'Sponsored and hosted Paris Builds.',
     detail: '150 builders at the first Y Combinator-affiliated hackathon, held before YC Startup School Paris.',
+    image: 'paris-builds-group-photo',
   },
   {
     name: 'Imperial BioHack x Anthropic',
@@ -80,6 +87,7 @@ export const HACKATHON_EVENTS: HackathonEvent[] = [
     href: 'https://luma.com/m21rdpv1',
     lead: 'Sponsoring Imperial BioHack x Anthropic for Cognition.',
     detail: '120 builders, 28–29 November.',
+    image: 'imperial-biohack-anthropic-cover',
   },
   {
     name: 'ImpactHack 2027',
@@ -92,6 +100,7 @@ export const HACKATHON_EVENTS: HackathonEvent[] = [
     href: 'https://impact-hack.com/',
     lead: 'Partnering on ImpactHack 2027 for The Hack Collective.',
     detail: '350+ students in Bristol and Mumbai.',
+    image: 'impacthack-2027-venue',
   },
   {
     name: 'HackEurope',
@@ -104,6 +113,7 @@ export const HACKATHON_EVENTS: HackathonEvent[] = [
     href: 'https://www.hackeurope.com/',
     lead: 'The Hack Collective partnered with HackEurope.',
     detail: "1,000 students in Dublin, Paris and Stockholm at Europe's largest student hackathon.",
+    image: 'hackeurope-partnered-with-the-hack-collective',
   },
   {
     name: 'VC101: The European Venture Capital Experience',
@@ -116,6 +126,7 @@ export const HACKATHON_EVENTS: HackathonEvent[] = [
     href: 'https://lnkd.in/ew8riMjf',
     lead: 'The Hack Collective partnered with FINEDA on VC101.',
     detail: "Europe's biggest student-led venture capital competition, at Esade Barcelona.",
+    image: 'vc101-the-hack-collective-partnership',
   },
   {
     name: 'Student Tech Forum 2026',
@@ -128,6 +139,7 @@ export const HACKATHON_EVENTS: HackathonEvent[] = [
     href: 'https://lu.ma/stf2026',
     lead: 'The Hack Collective partnered on the Student Tech Forum.',
     detail: "London Venture Capital Network's day of panels and workshops on UK venture capital.",
+    image: 'student-tech-forum-2026-partners',
   },
   {
     name: 'UK National Case Championship 2026',
@@ -143,7 +155,13 @@ export const HACKATHON_EVENTS: HackathonEvent[] = [
   },
 ]
 
-export const HACKATHON_PHOTOS: HackathonPhoto[] = media.photos
+const ALL_PHOTOS: HackathonPhoto[] = media.photos
+
+export const HACKATHON_PHOTOS = ALL_PHOTOS.filter((photo) => photo.wall)
+
+export function photoNamed(name: string): HackathonPhoto | undefined {
+  return ALL_PHOTOS.find((photo) => photo.name === name)
+}
 
 export function photoSrc(photo: HackathonPhoto, size: 480 | 1600) {
   return `/hackathons/${photo.name}-${size}.webp`
