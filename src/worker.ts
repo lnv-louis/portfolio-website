@@ -107,8 +107,12 @@ export default {
 
     const response = await env.ASSETS.fetch(request);
 
-    if (response.status === 404 && markdown) {
-      return withHeaders(response, { "Content-Type": "text/markdown; charset=utf-8", Vary: "Accept" }, NOT_FOUND_MARKDOWN);
+    // Both 404 variants (HTML and markdown) depend on Accept and User-Agent.
+    if (response.status === 404) {
+      if (markdown) {
+        return withHeaders(response, { "Content-Type": "text/markdown; charset=utf-8", Vary: "Accept, User-Agent" }, NOT_FOUND_MARKDOWN);
+      }
+      return withHeaders(response, { Vary: "Accept, User-Agent" });
     }
     if (!twin) return response;
     return withHeaders(response, { Vary: "Accept, User-Agent", Link: linkHeader(twin) });
