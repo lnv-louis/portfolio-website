@@ -1,0 +1,143 @@
+import * as stylex from '@stylexjs/stylex'
+
+import { color, layout, motion, space, text } from '@/tokens/token-consts.stylex'
+
+export const proseStyles = stylex.create({
+  page: {
+    backgroundColor: color.canvas,
+    minHeight: '100dvh',
+  },
+  rail: {
+    backgroundColor: color.surfaceCard,
+    borderLeftColor: color.hairlineStrong,
+    borderLeftStyle: 'solid',
+    borderLeftWidth: '1px',
+    borderRightColor: color.hairlineStrong,
+    borderRightStyle: 'solid',
+    borderRightWidth: '1px',
+    display: 'flex',
+    flexDirection: 'column',
+    marginInline: 'auto',
+    maxWidth: layout.containerWide,
+    minHeight: '100dvh',
+    width: '100%',
+  },
+  header: {
+    alignItems: 'center',
+    borderBottomColor: color.hairlineStrong,
+    borderBottomStyle: 'solid',
+    borderBottomWidth: '1px',
+    display: 'flex',
+    gap: space.lg,
+    justifyContent: 'space-between',
+    paddingBlock: space.lg,
+    paddingInline: {
+      default: space.lg,
+      '@media (min-width: 1200px)': space.x4xl,
+    },
+  },
+  home: {
+    color: color.ink,
+    fontSize: text.sizeBodyMd,
+    fontWeight: text.weightMedium,
+    textDecoration: 'none',
+  },
+  nav: {
+    display: 'flex',
+    gap: space.lg,
+  },
+  navLink: {
+    color: {
+      default: color.meta,
+      ':hover': { default: null, '@media (hover: hover) and (pointer: fine)': color.ink },
+    },
+    fontFamily: text.fontMono,
+    fontSize: text.sizeMicro,
+    letterSpacing: text.trackingAllcaps,
+    textTransform: 'uppercase',
+    transitionDuration: motion.durationFast,
+    transitionProperty: 'color',
+  },
+  navLinkCurrent: {
+    color: color.ink,
+  },
+  main: {
+    display: 'flex',
+    flex: '1',
+    flexDirection: 'column',
+    gap: space.xl,
+    maxWidth: '68ch',
+    paddingBlock: space.x5xl,
+    paddingInline: {
+      default: space.lg,
+      '@media (min-width: 1200px)': space.x4xl,
+    },
+  },
+  title: {
+    color: color.ink,
+    fontFamily: text.fontSerif,
+    fontSize: {
+      default: text.sizeDisplayXl,
+      '@media (min-width: 960px)': text.sizeDisplay3xl,
+    },
+    fontWeight: text.weightRegular,
+    letterSpacing: text.trackingDisplayXl,
+    lineHeight: {
+      default: text.leadingDisplayXl,
+      '@media (min-width: 960px)': text.leadingDisplay3xl,
+    },
+    textWrap: 'balance',
+  },
+  h2: {
+    color: color.ink,
+    fontFamily: text.fontSerif,
+    fontSize: text.sizeDisplaySm,
+    fontWeight: text.weightRegular,
+    letterSpacing: text.trackingDisplaySm,
+    lineHeight: text.leadingDisplaySm,
+    marginTop: space.lg,
+  },
+  p: {
+    color: color.body,
+    fontSize: text.sizeBodyLg,
+    lineHeight: text.leadingBodyLg,
+    textWrap: 'pretty',
+  },
+  list: {
+    color: color.body,
+    display: 'flex',
+    flexDirection: 'column',
+    fontSize: text.sizeBodyLg,
+    gap: space.xs,
+    lineHeight: text.leadingBodyLg,
+    margin: 0,
+    paddingLeft: space.lg,
+  },
+  link: {
+    color: color.ink,
+    textDecorationColor: {
+      default: color.meta,
+      ':hover': { default: null, '@media (hover: hover) and (pointer: fine)': color.primary },
+    },
+    textDecorationLine: 'underline',
+    textDecorationThickness: '1px',
+    textUnderlineOffset: '3px',
+    transitionDuration: motion.durationFast,
+    transitionProperty: 'text-decoration-color',
+  },
+  footer: {
+    borderTopColor: color.hairline,
+    borderTopStyle: 'solid',
+    borderTopWidth: '1px',
+    color: color.meta,
+    fontFamily: text.fontMono,
+    fontSize: text.sizeMicro,
+    letterSpacing: text.trackingAllcaps,
+    paddingBlock: space.lg,
+    paddingInline: {
+      default: space.lg,
+      '@media (min-width: 1200px)': space.x4xl,
+    },
+    textTransform: 'uppercase',
+  },
+})

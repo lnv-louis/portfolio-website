@@ -1,20 +1,30 @@
 # robots.txt for lenguyenvu.com
-# Last updated: 2026-02-25
+# Last updated: 2026-10-31
+#
+# Search engines, AI search, and AI assistants acting for a person: allowed.
+# Crawlers that collect data to train AI models: disallowed.
 
-# Standard search engines
-User-agent: Googlebot
+# AI search crawlers (allowed, so AI search can find and cite this site)
+User-agent: OAI-SearchBot
 Allow: /
 
-User-agent: Bingbot
+User-agent: Claude-SearchBot
 Allow: /
 
-User-agent: DuckDuckBot
+User-agent: PerplexityBot
 Allow: /
 
-User-agent: Slurp
+# User-initiated AI assistants (allowed)
+User-agent: ChatGPT-User
 Allow: /
 
-# AI training crawlers (blocked)
+User-agent: Claude-User
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# AI training crawlers (disallowed)
 User-agent: GPTBot
 Disallow: /
 
@@ -27,63 +37,22 @@ Disallow: /
 User-agent: Google-Extended
 Disallow: /
 
-User-agent: GoogleOther
-Disallow: /
-
 User-agent: Applebot-Extended
-Disallow: /
-
-User-agent: Amazonbot
 Disallow: /
 
 User-agent: Bytespider
 Disallow: /
 
-User-agent: ChatGLM-Spider
+User-agent: Amazonbot
 Disallow: /
 
 User-agent: cohere-training-data-crawler
 Disallow: /
 
-User-agent: FacebookBot
+User-agent: meta-externalagent
 Disallow: /
 
-User-agent: PanguBot
-Disallow: /
-
-User-agent: omgili
-Disallow: /
-
-User-agent: webzio-extended
-Disallow: /
-
-# AI search crawlers (blocked by default)
-User-agent: PerplexityBot
-Disallow: /
-
-User-agent: OAI-SearchBot
-Disallow: /
-
-User-agent: Claude-SearchBot
-Disallow: /
-
-User-agent: Bravebot
-Disallow: /
-
-User-agent: YouBot
-Disallow: /
-
-# User-initiated AI assistants (allowed)
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: Claude-User
-Allow: /
-
-User-agent: Perplexity-User
-Allow: /
-
-# Default
+# Everyone else, including search engines
 User-agent: *
 Allow: /
 

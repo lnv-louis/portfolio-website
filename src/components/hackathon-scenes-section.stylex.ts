@@ -1,0 +1,192 @@
+import * as stylex from '@stylexjs/stylex'
+
+import { color, motion, radius, space, text } from '@/tokens/token-consts.stylex'
+
+const HOVER = '@media (hover: hover) and (pointer: fine)'
+
+export const scenesStyles = stylex.create({
+  section: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: space.x3xl,
+    paddingBlock: space.x5xl,
+    paddingInline: {
+      default: space.lg,
+      '@media (min-width: 1200px)': space.x4xl,
+    },
+  },
+  headingBlock: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: space.lg,
+  },
+  heading: {
+    color: color.ink,
+    fontFamily: text.fontSerif,
+    fontSize: {
+      default: text.sizeDisplayXl,
+      '@media (min-width: 960px)': text.sizeDisplay3xl,
+    },
+    fontWeight: text.weightRegular,
+    letterSpacing: {
+      default: text.trackingDisplayXl,
+      '@media (min-width: 960px)': text.trackingDisplay3xl,
+    },
+    lineHeight: {
+      default: text.leadingDisplayXl,
+      '@media (min-width: 960px)': text.leadingDisplay3xl,
+    },
+    maxWidth: '18ch',
+    textWrap: 'balance',
+  },
+  lede: {
+    color: color.body,
+    fontSize: text.sizeBodyLg,
+    lineHeight: text.leadingBodyLg,
+    maxWidth: '52ch',
+    textWrap: 'pretty',
+  },
+  inlineLink: {
+    color: color.ink,
+    textDecorationColor: {
+      default: color.meta,
+      ':hover': { default: null, [HOVER]: color.primary },
+    },
+    textDecorationLine: 'underline',
+    textDecorationThickness: '1px',
+    textUnderlineOffset: '3px',
+    transitionDuration: motion.durationFast,
+    transitionProperty: 'text-decoration-color',
+  },
+  wall: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: space.xs,
+    marginInline: {
+      default: `calc(${space.lg} * -1)`,
+      '@media (min-width: 1200px)': `calc(${space.x4xl} * -1)`,
+    },
+    overflow: 'hidden',
+  },
+  row: {
+    display: 'flex',
+    gap: space.xs,
+    width: 'max-content',
+    willChange: 'transform',
+  },
+  tile: {
+    backgroundColor: color.surfaceSoft,
+    borderRadius: radius.sm,
+    flexShrink: 0,
+    height: {
+      default: '120px',
+      '@media (min-width: 960px)': '184px',
+    },
+    maxWidth: 'none',
+    objectFit: 'cover',
+    width: 'auto',
+  },
+  band: {
+    alignItems: 'baseline',
+    borderBlockColor: color.hairline,
+    borderBlockStyle: 'solid',
+    borderBlockWidth: '1px',
+    columnGap: space.x3xl,
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    margin: 0,
+    marginBlock: space.md,
+    paddingBlock: space.xl,
+    paddingInline: space.lg,
+    rowGap: space.lg,
+  },
+  bandItem: {
+    alignItems: 'baseline',
+    display: 'flex',
+    gap: space.sm,
+  },
+  bandValue: {
+    color: color.ink,
+    fontFamily: text.fontSerif,
+    fontSize: {
+      default: text.sizeDisplayXl,
+      '@media (min-width: 960px)': text.sizeDisplay3xl,
+    },
+    fontVariantNumeric: 'tabular-nums',
+    fontWeight: text.weightRegular,
+    lineHeight: 1,
+    margin: 0,
+  },
+  label: {
+    color: color.meta,
+    fontFamily: text.fontMono,
+    fontSize: text.sizeMicro,
+    letterSpacing: text.trackingAllcaps,
+    lineHeight: text.leadingMicro,
+    textTransform: 'uppercase',
+  },
+  events: {
+    display: 'grid',
+    gap: 0,
+    gridTemplateColumns: {
+      default: '1fr',
+      '@media (min-width: 960px)': 'repeat(3, 1fr)',
+    },
+    listStyle: 'none',
+    margin: 0,
+    padding: 0,
+  },
+  event: {
+    borderTopColor: color.hairline,
+    borderTopStyle: 'solid',
+    borderTopWidth: '1px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: space.sm,
+    paddingBlock: space.lg,
+    paddingInlineEnd: space.lg,
+  },
+  eventName: {
+    color: color.ink,
+    fontSize: text.sizeBodyLg,
+    fontWeight: text.weightMedium,
+    lineHeight: text.leadingBodyLg,
+    textWrap: 'balance',
+  },
+  eventStat: {
+    color: color.body,
+    fontSize: text.sizeBodySm,
+    lineHeight: text.leadingBodySm,
+  },
+  eventLink: {
+    alignSelf: 'flex-start',
+    color: {
+      default: color.ink,
+      ':hover': { default: null, [HOVER]: color.primary },
+    },
+    fontSize: text.sizeBodySm,
+    marginTop: 'auto',
+    textDecorationColor: color.hairlineStrong,
+    textDecorationLine: 'underline',
+    textUnderlineOffset: '3px',
+    transitionDuration: motion.durationFast,
+    transitionProperty: 'color',
+  },
+  linkIcon: {
+    display: 'inline-block',
+    marginLeft: space.xxs,
+    verticalAlign: 'middle',
+  },
+  srOnly: {
+    borderWidth: 0,
+    clip: 'rect(0 0 0 0)',
+    height: '1px',
+    margin: '-1px',
+    overflow: 'hidden',
+    padding: 0,
+    position: 'absolute',
+    whiteSpace: 'nowrap',
+    width: '1px',
+  },
+})
