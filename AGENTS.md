@@ -37,6 +37,8 @@ bun run import-media  # curated hackathon media -> public/hackathons/ (see src/c
 ## For agents reading the site (not the code)
 
 Use [llms.txt](https://lenguyenvu.com/llms.txt), or request any page as markdown by
-appending `.md`, sending `Accept: text/markdown`, or adding `?mode=agent`. In browsers
-with WebMCP, the page registers read-only tools: `get_profile`, `list_hackathons`,
-`get_contact_links`, `get_page_markdown`.
+appending `.md`, sending `Accept: text/markdown`, or adding `?mode=agent`. The same
+read-only tools (`get_profile`, `list_hackathons`, `get_contact_links`,
+`get_page_markdown`) are served over MCP at `https://lenguyenvu.com/mcp` and registered
+in the page via WebMCP. Discovery: `/.well-known/ard.json`, `/.well-known/ai-catalog.json`,
+`/.well-known/agent-skills/index.json`, `/.well-known/mcp/server-card.json`.

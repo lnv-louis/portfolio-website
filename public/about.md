@@ -1,10 +1,17 @@
+---
+title: "About | Louis Le"
+description: "About Louis Le: Co-Founder & CTO of cf0.ai, UCL Computer Science student, co-founder of The Hack Collective, with projects, research and community work."
+canonical: https://lenguyenvu.com/about
+last_updated: 2026-10-31
+---
+
 # About Louis Le
 
 I'm Louis Le (Le Nguyen Vu), a software engineer in London building production AI systems for real estate. I'm Co-Founder and CTO of [cf0.ai](https://cf0.ai/), where Zero lets and manages homes: it answers renters, runs viewings, finds tenants and looks after repairs after move-in. I study Computer Science at University College London (BSc, expected 2028).
 
 ## Community
 
-I co-founded [The Hack Collective](https://hackcollective.uk/), London's hackathon community of 1.2k+ members and 500+ calendar subscribers. I host, sponsor and partner on hackathons: Devin Local: London on behalf of Cognition, the London hub of Hack-Nation's 7th Global AI Hackathon, the Grok Bot Community Engineering Hackathon, and Paris Builds as a sponsor. I'm a Devin AI Ambassador, a EuroTech Fellow, a Thinking About Thinking Fellow, and the 2025–2026 Nexus Labs Officer at UCL AI Society.
+I co-founded [The Hack Collective](https://hackcollective.uk/), London's hackathon community of 1.2k+ members and 500+ calendar subscribers. I host, sponsor and partner on hackathons: Devin Local: London and Imperial BioHack on behalf of Cognition, ImpactHack 2027 in Bristol and Mumbai for The Hack Collective, the London hub of Hack-Nation's 7th Global AI Hackathon, the Grok Bot Community Engineering Hackathon, and Paris Builds, which I sponsored and hosted. I'm a Devin AI Ambassador, a EuroTech Fellow, a Thinking About Thinking Fellow, and the 2025–2026 Nexus Labs Officer at UCL AI Society.
 
 ## Projects
 

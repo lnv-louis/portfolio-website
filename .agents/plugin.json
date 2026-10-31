@@ -1,0 +1,5 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "lenguyenvu-portfolio",
+  "description": "Design skill for lenguyenvu.com: StyleX tokens, rail layout, editorial rules and decisions."
+}

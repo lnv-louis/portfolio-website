@@ -31,9 +31,10 @@ export function AboutPage() {
       <p {...stylex.props(prose.p)}>
         I co-founded <Link href="https://hackcollective.uk/">The Hack Collective</Link>, London&rsquo;s
         hackathon community of 1.2k+ members and 500+ calendar subscribers. I host, sponsor and
-        partner on hackathons: Devin Local: London on behalf of Cognition, the London hub of
+        partner on hackathons: Devin Local: London and Imperial BioHack on behalf of Cognition,
+        ImpactHack 2027 in Bristol and Mumbai for The Hack Collective, the London hub of
         Hack-Nation&rsquo;s 7th Global AI Hackathon, the Grok Bot Community Engineering Hackathon,
-        and Paris Builds as a sponsor. I&rsquo;m a Devin AI Ambassador, a EuroTech Fellow, a
+        and Paris Builds, which I sponsored and hosted. I&rsquo;m a Devin AI Ambassador, a EuroTech Fellow, a
         Thinking About Thinking Fellow, and the 2025&ndash;2026 Nexus Labs Officer at UCL AI Society.
       </p>
 

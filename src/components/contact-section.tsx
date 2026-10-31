@@ -12,6 +12,7 @@ const FOOTER_LINKS = [
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
   { href: '/privacy', label: 'Privacy' },
+  { href: 'https://github.com/lnv-louis/portfolio-website', label: 'Source' },
 ]
 
 export function ContactSection() {

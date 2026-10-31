@@ -42,7 +42,7 @@ export function App() {
     <LazyMotion features={domAnimation} strict>
       <MotionConfig reducedMotion="user">
         <LenisProvider>
-          <div {...stylex.props(pageStyles.page)}>
+          <main {...stylex.props(pageStyles.page)}>
             <HeroSection />
             <div {...stylex.props(pageStyles.rail)}>
               <div {...stylex.props(pageStyles.divider)}>
@@ -65,7 +65,7 @@ export function App() {
               </div>
             </div>
             <AgentationToolbar />
-          </div>
+          </main>
         </LenisProvider>
       </MotionConfig>
     </LazyMotion>

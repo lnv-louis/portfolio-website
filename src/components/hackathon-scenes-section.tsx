@@ -1,6 +1,4 @@
 import * as stylex from '@stylexjs/stylex'
-import { HugeiconsIcon } from '@hugeicons/react'
-import ArrowUpRight01Icon from '@hugeicons/core-free-icons/ArrowUpRight01Icon'
 import { m, useReducedMotion, useScroll, useTransform, type MotionValue } from 'motion/react'
 import { useRef } from 'react'
 
@@ -76,7 +74,7 @@ export function HackathonScenesSection() {
             <div key={stat.label} {...stylex.props(styles.bandItem)}>
               <dt {...stylex.props(styles.srOnly)}>{stat.label}</dt>
               <dd {...stylex.props(styles.bandValue)}>{stat.value}</dd>
-              <span aria-hidden="true" {...stylex.props(styles.label)}>
+              <span aria-hidden="true" {...stylex.props(styles.bandLabel)}>
                 {stat.label}
               </span>
             </div>
@@ -88,16 +86,10 @@ export function HackathonScenesSection() {
       <ul {...stylex.props(styles.events)}>
         {HACKATHON_EVENTS.map((event) => (
           <li key={event.name} {...stylex.props(styles.event)}>
-            <span {...stylex.props(styles.label)}>
-              {event.date} · {event.city}
-            </span>
-            <h3 {...stylex.props(styles.eventName)}>{event.name}</h3>
-            <span {...stylex.props(styles.label)}>{event.role}</span>
-            <p {...stylex.props(styles.eventStat)}>{event.stat}</p>
             <a href={event.href} target="_blank" rel="noopener noreferrer" {...stylex.props(styles.eventLink)}>
-              Event page
-              <HugeiconsIcon icon={ArrowUpRight01Icon} size={12} strokeWidth={1.8} {...stylex.props(styles.linkIcon)} />
-            </a>
+              {event.lead}
+            </a>{' '}
+            {event.detail}
           </li>
         ))}
       </ul>
