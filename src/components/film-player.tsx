@@ -139,7 +139,15 @@ export function FilmPlayer({ film }: { film: Film }) {
     if (!video) return;
     if (isVisible) {
       video.muted = !wantsSound;
-      if (video.paused && !pausedByUser.current) void video.play().catch(() => {});
+      if (video.paused && !pausedByUser.current) {
+        video.play().catch(() => {
+          // The browser refused playback with sound: keep the film moving muted and
+          // bring the "Sound on" button back so one tap restores audio.
+          video.muted = true;
+          setIsMuted(true);
+          void video.play().catch(() => {});
+        });
+      }
     } else {
       video.muted = true;
       if (!video.paused) video.pause();
