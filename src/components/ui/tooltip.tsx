@@ -13,6 +13,9 @@ const styles = stylex.create({
     width: "10px",
     zIndex: 50,
   },
+  arrowMedia: {
+    backgroundColor: color.surfaceCard,
+  },
   popup: {
     backgroundColor: color.ink,
     borderRadius: radius.md,
@@ -36,6 +39,17 @@ const styles = stylex.create({
     width: "fit-content",
     zIndex: 50,
   },
+  // Image previews: a light card around the media instead of the ink text bubble.
+  popupMedia: {
+    backgroundColor: color.surfaceCard,
+    borderRadius: radius.lg,
+    boxShadow: shadow.s5,
+    color: color.ink,
+    maxWidth: "none",
+    paddingBlock: space.xxs,
+    paddingInline: space.xxs,
+    textAlign: "start",
+  },
   popupHidden: {
     opacity: 0,
     transform: "scale(0.95)",
@@ -45,12 +59,18 @@ const styles = stylex.create({
 const isHidden = (status: string | undefined) =>
   status === "starting" || status === "ending"
 
+// Wrap a group of tooltips so they share timing: the first opens after `delay`,
+// neighbours open instantly while the group is warm (within `timeout` of the last close).
+function TooltipProvider({
+  delay = 200,
+  timeout = 400,
+  ...props
+}: React.ComponentProps<typeof TooltipPrimitive.Provider>) {
+  return <TooltipPrimitive.Provider data-slot="tooltip-provider" delay={delay} timeout={timeout} {...props} />
+}
+
 function Tooltip(props: React.ComponentProps<typeof TooltipPrimitive.Root>) {
-  return (
-    <TooltipPrimitive.Provider data-slot="tooltip-provider">
-      <TooltipPrimitive.Root data-slot="tooltip" {...props} />
-    </TooltipPrimitive.Provider>
-  )
+  return <TooltipPrimitive.Root data-slot="tooltip" {...props} />
 }
 
 function TooltipTrigger(
@@ -64,13 +84,16 @@ function TooltipContent({
   children,
   side = "top",
   sideOffset = 4,
+  variant = "text",
   ...props
 }: Omit<React.ComponentProps<typeof TooltipPrimitive.Popup>, "className"> & {
   align?: "start" | "center" | "end"
   side?: "top" | "bottom" | "left" | "right"
   sideOffset?: number
+  variant?: "text" | "media"
 }) {
-  const arrowSx = stylex.props(styles.arrow)
+  const media = variant === "media"
+  const arrowSx = stylex.props(styles.arrow, media && styles.arrowMedia)
 
   return (
     <TooltipPrimitive.Portal>
@@ -78,8 +101,11 @@ function TooltipContent({
         <TooltipPrimitive.Popup
           data-slot="tooltip-content"
           className={(state: { transitionStatus?: string }) =>
-            stylex.props(styles.popup, isHidden(state.transitionStatus) && styles.popupHidden)
-              .className
+            stylex.props(
+              styles.popup,
+              media && styles.popupMedia,
+              isHidden(state.transitionStatus) && styles.popupHidden,
+            ).className
           }
           {...props}
         >
@@ -91,4 +117,4 @@ function TooltipContent({
   )
 }
 
-export { Tooltip, TooltipContent, TooltipTrigger }
+export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger }

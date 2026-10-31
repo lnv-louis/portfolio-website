@@ -3,11 +3,14 @@ import { m, useReducedMotion, useScroll, useTransform, type MotionValue } from '
 import { useRef } from 'react'
 
 import { scenesStyles as styles } from '@/components/hackathon-scenes-section.stylex'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import {
   HACKATHON_COMMUNITY,
   HACKATHON_EVENTS,
   HACKATHON_PHOTOS,
+  photoNamed,
   photoSrc,
+  type HackathonEvent,
   type HackathonPhoto,
 } from '@/content/hackathons'
 
@@ -34,6 +37,33 @@ function WallRow({ photos, x }: { photos: HackathonPhoto[]; x: MotionValue<strin
         />
       ))}
     </m.div>
+  )
+}
+
+const PREVIEW_WIDTH = 280
+
+// What the event's tooltip shows: its photo, or a small type card when there isn't one.
+function EventPreview({ event }: { event: HackathonEvent }) {
+  const photo = event.image ? photoNamed(event.image) : undefined
+  if (photo) {
+    return (
+      <img
+        src={photoSrc(photo, 480)}
+        alt={photo.alt}
+        width={PREVIEW_WIDTH}
+        height={Math.round((PREVIEW_WIDTH * photo.height) / photo.width)}
+        decoding="async"
+        {...stylex.props(styles.previewImage)}
+      />
+    )
+  }
+  return (
+    <span {...stylex.props(styles.previewCard)}>
+      <span {...stylex.props(styles.previewTitle)}>{event.name}</span>
+      <span {...stylex.props(styles.label)}>
+        {event.date} · {event.city}
+      </span>
+    </span>
   )
 }
 
@@ -83,16 +113,27 @@ export function HackathonScenesSection() {
         <WallRow photos={ROWS[2]} x={reduceMotion ? '0%' : left} />
       </div>
 
-      <ul {...stylex.props(styles.events)}>
-        {HACKATHON_EVENTS.map((event) => (
-          <li key={event.name} {...stylex.props(styles.event)}>
-            <a href={event.href} target="_blank" rel="noopener noreferrer" {...stylex.props(styles.eventLink)}>
-              {event.lead}
-            </a>{' '}
-            {event.detail}
-          </li>
-        ))}
-      </ul>
+      <TooltipProvider>
+        <ul {...stylex.props(styles.events)}>
+          {HACKATHON_EVENTS.map((event) => (
+            <li key={event.name} {...stylex.props(styles.event)}>
+              <Tooltip>
+                <TooltipTrigger
+                  render={
+                    <a href={event.href} target="_blank" rel="noopener noreferrer" {...stylex.props(styles.eventLink)} />
+                  }
+                >
+                  {event.lead}
+                </TooltipTrigger>
+                <TooltipContent variant="media" side="top" align="start" sideOffset={8}>
+                  <EventPreview event={event} />
+                </TooltipContent>
+              </Tooltip>
+              <span {...stylex.props(styles.eventDetail)}>{event.detail}</span>
+            </li>
+          ))}
+        </ul>
+      </TooltipProvider>
     </section>
   )
 }

@@ -14,6 +14,7 @@
 // Portraits: cover-cropped site images (hero, OG card) written to public/.
 // Writes src/content/hackathon-media.json (names, alt text, real dimensions).
 import { mkdtemp, mkdir, readFile, rename, rm, writeFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
 import { rmSync } from "node:fs";
 import { homedir, tmpdir } from "node:os";
 import { join, resolve } from "node:path";
@@ -21,9 +22,12 @@ import { $ } from "bun";
 
 interface Curated {
   event: string;
+  // A path under the source dir, or an https:// URL (an event's own cover image).
   source: string;
   name: string;
   alt: string;
+  // false: used only where referenced by name (event tooltips), not on the photo wall.
+  wall?: boolean;
 }
 
 const ROOT = resolve(import.meta.dirname, "..");
@@ -61,14 +65,28 @@ process.on("exit", () => rmSync(STAGE, { recursive: true, force: true }));
 await rm(STAGE, { recursive: true, force: true });
 await mkdir(STAGE, { recursive: true });
 
+// Remote sources are downloaded once into a scratch file and converted like local ones.
+async function resolveSource(source: string, work: string): Promise<string> {
+  if (!source.startsWith("https://")) return join(SRC, source);
+  // Some sites reject requests without a browser-like User-Agent.
+  const res = await fetch(source, { headers: { "User-Agent": "Mozilla/5.0 (compatible; lenguyenvu-import/1.0)" } });
+  if (!res.ok) throw new Error(`import-media: ${source} returned ${res.status}`);
+  const file = join(work, `remote-${createHash("sha1").update(source).digest("hex").slice(0, 12)}`);
+  await writeFile(file, Buffer.from(await res.arrayBuffer()));
+  return file;
+}
+
+const downloads = await mkdtemp(join(tmpdir(), "hackathon-sources-"));
+process.on("exit", () => rmSync(downloads, { recursive: true, force: true }));
+
 const photos: (Omit<Curated, "source"> & { width: number; height: number })[] = [];
 for (const p of curation.photos) {
-  const src = join(SRC, p.source);
+  const src = await resolveSource(p.source, downloads);
   const large = join(STAGE, `${p.name}-1600.webp`);
   await $`magick ${src} -auto-orient -strip -resize ${"1600x1600>"} -quality 78 ${large}`;
   await $`magick ${src} -auto-orient -strip -resize ${"480x480>"} -quality 72 ${join(STAGE, `${p.name}-480.webp`)}`;
   const [width, height] = await dims(large);
-  photos.push({ event: p.event, name: p.name, alt: p.alt, width, height });
+  photos.push({ event: p.event, name: p.name, alt: p.alt, wall: p.wall ?? true, width, height });
   console.log(`photo  ${p.name} (${width}x${height})`);
 }
 

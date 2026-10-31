@@ -28,7 +28,9 @@
     { "event": "grok-bot-hack", "source": "261022 grok bot hack/DSC03210.jpg", "name": "grok-bot-hackathon-demo-on-laptop", "alt": "Two builders presenting a project on a laptop" },
     { "event": "paris-builds", "source": "paris/1783213857743.jpeg", "name": "paris-builds-lounge", "alt": "Builders relaxing in the Paris Builds venue lounge" },
     { "event": "grok-bot-hack", "source": "261022 grok bot hack/DSC02885.jpg", "name": "grok-bot-hackathon-builders-at-tables", "alt": "Builders working at long tables of laptops at the Grok Bot hackathon" },
-    { "event": "grok-bot-hack", "source": "261022 grok bot hack/DSC03270.jpg", "name": "grok-bot-hackathon-staircase-group", "alt": "Builders gathered on the staircase at the end of the Grok Bot hackathon" }
+    { "event": "grok-bot-hack", "source": "261022 grok bot hack/DSC03270.jpg", "name": "grok-bot-hackathon-staircase-group", "alt": "Builders gathered on the staircase at the end of the Grok Bot hackathon" },
+    { "event": "imperial-biohack", "source": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=800,height=420/event-social/tx/118214e6-1c81-4bc6-a13c-29c6c12f2b9b.png", "name": "imperial-biohack-anthropic-cover", "alt": "Imperial BioHack x Anthropic event cover", "wall": false },
+    { "event": "impacthack", "source": "https://impact-hack.com/assets/venue-1.webp", "name": "impacthack-2027-venue", "alt": "ImpactHack 2027 venue at Temple Quarter Enterprise Campus, Bristol", "wall": false }
   ],
   "portraits": [
     { "source": "261022 grok bot hack/DSC02884.jpg", "output": "louis-le.webp", "width": 720, "height": 960, "gravity": "center", "quality": 82 },
