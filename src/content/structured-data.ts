@@ -125,7 +125,7 @@ const HOME_GRAPH_BASE = {
       "name": "Zero by cf0.ai: product film",
       "description": "Zero, the AI that lets and manages homes: listing, letting and managing after move-in.",
       "thumbnailUrl": "https://lenguyenvu.com/zero-product-film-poster.webp",
-      "contentUrl": "https://media.lenguyenvu.com/cf0-product-film-720.h264.mp4",
+      "contentUrl": "https://media.lenguyenvu.com/cf0-product-film-1080.h264.mp4",
       "uploadDate": "2026-10-30",
       "duration": "PT45S"
     },
