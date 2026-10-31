@@ -13,7 +13,8 @@
 //   frame is written to public/hackathons/<name>-poster.webp either way.
 // Portraits: cover-cropped site images (hero, OG card) written to public/.
 // Writes src/content/hackathon-media.json (names, alt text, real dimensions).
-import { mkdtemp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { mkdtemp, mkdir, readFile, rename, rm, writeFile } from "node:fs/promises";
+import { rmSync } from "node:fs";
 import { homedir, tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { $ } from "bun";
@@ -53,15 +54,19 @@ async function dims(file: string): Promise<[number, number]> {
   return [w, h];
 }
 
-await rm(OUT, { recursive: true, force: true });
-await mkdir(OUT, { recursive: true });
+// Build into a staging directory and swap it in only after every photo and film succeeds,
+// so a missing source or failed conversion never leaves public/hackathons half-rebuilt.
+const STAGE = `${OUT}.staging`;
+process.on("exit", () => rmSync(STAGE, { recursive: true, force: true }));
+await rm(STAGE, { recursive: true, force: true });
+await mkdir(STAGE, { recursive: true });
 
 const photos: (Omit<Curated, "source"> & { width: number; height: number })[] = [];
 for (const p of curation.photos) {
   const src = join(SRC, p.source);
-  const large = join(OUT, `${p.name}-1600.webp`);
+  const large = join(STAGE, `${p.name}-1600.webp`);
   await $`magick ${src} -auto-orient -strip -resize ${"1600x1600>"} -quality 78 ${large}`;
-  await $`magick ${src} -auto-orient -strip -resize ${"480x480>"} -quality 72 ${join(OUT, `${p.name}-480.webp`)}`;
+  await $`magick ${src} -auto-orient -strip -resize ${"480x480>"} -quality 72 ${join(STAGE, `${p.name}-480.webp`)}`;
   const [width, height] = await dims(large);
   photos.push({ event: p.event, name: p.name, alt: p.alt, width, height });
   console.log(`photo  ${p.name} (${width}x${height})`);
@@ -82,7 +87,7 @@ for (const f of curation.films) {
     await $`ffmpeg -v error -y -i ${join(SRC, f.source)} -vf ${"scale=min(1280\\,iw):-2,fps=30"} -c:v libx264 -preset slow -crf 28 -pix_fmt yuv420p -c:a aac -b:a 96k -movflags +faststart ${mp4}`;
     const poster = join(work, "poster.jpg");
     await $`ffmpeg -v error -y -ss 1 -i ${mp4} -frames:v 1 -q:v 3 ${poster}`;
-    await $`magick ${poster} -strip -quality 78 ${join(OUT, `${f.name}-poster.webp`)}`;
+    await $`magick ${poster} -strip -quality 78 ${join(STAGE, `${f.name}-poster.webp`)}`;
     const [width, height] = await dims(poster);
     const key = `${f.name}.mp4`;
     if (UPLOAD) {
@@ -97,5 +102,7 @@ for (const f of curation.films) {
   }
 }
 
+await rm(OUT, { recursive: true, force: true });
+await rename(STAGE, OUT);
 await writeFile(join(ROOT, "src/content/hackathon-media.json"), JSON.stringify({ photos, films }, null, 2) + "\n");
 console.log(`\n${photos.length} photos, ${films.length} films -> public/hackathons, src/content/hackathon-media.json`);

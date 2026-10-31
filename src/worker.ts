@@ -15,13 +15,28 @@ const MARKDOWN_TWINS: Record<string, string> = {
   "/privacy": "/privacy.md",
 };
 
+// Quality (q) the Accept header gives a media type: exact match, then type/*, then */*.
+function quality(accept: string, type: string): number {
+  let best = -1;
+  let bestSpecificity = -1;
+  for (const part of accept.split(",")) {
+    const [range, ...params] = part.trim().toLowerCase().split(";");
+    const specificity = range === type ? 2 : range === `${type.split("/")[0]}/*` ? 1 : range === "*/*" ? 0 : -1;
+    if (specificity < 0 || specificity < bestSpecificity) continue;
+    const q = params.map((p) => p.trim()).find((p) => p.startsWith("q="));
+    bestSpecificity = specificity;
+    best = q ? Number(q.slice(2)) || 0 : 1;
+  }
+  return best < 0 ? 0 : best;
+}
+
 function wantsMarkdown(request: Request, url: URL): boolean {
   if (url.searchParams.get("mode") === "agent") return true;
   const accept = request.headers.get("Accept") ?? "";
-  // Prefer markdown only when the client asks for it ahead of (or instead of) HTML.
-  const md = accept.indexOf("text/markdown");
-  const html = accept.indexOf("text/html");
-  return md !== -1 && (html === -1 || md < html);
+  if (!/text\/markdown/i.test(accept)) return false;
+  // Markdown only when explicitly accepted and ranked at least as high as HTML.
+  const md = quality(accept, "text/markdown");
+  return md > 0 && md >= quality(accept, "text/html");
 }
 
 function linkHeader(markdown: string): string {

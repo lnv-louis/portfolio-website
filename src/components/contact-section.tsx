@@ -8,6 +8,12 @@ const CONTACT_ROWS = [
   { label: 'X', value: 'x.com/lnv007', href: 'https://x.com/lnv007' },
 ]
 
+const FOOTER_LINKS = [
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+  { href: '/privacy', label: 'Privacy' },
+]
+
 export function ContactSection() {
   return (
     <section id="contact" {...stylex.props(contactStyles.section)}>
@@ -55,9 +61,16 @@ export function ContactSection() {
         </div>
       </div>
 
-      <div {...stylex.props(contactStyles.footer)}>
-        &copy; 2026 Louis Le. London.
-      </div>
+      <footer {...stylex.props(contactStyles.footer)}>
+        <span>&copy; 2026 Louis Le. London.</span>
+        <nav aria-label="Pages" {...stylex.props(contactStyles.footerNav)}>
+          {FOOTER_LINKS.map((link) => (
+            <a key={link.href} href={link.href} {...stylex.props(contactStyles.footerLink)}>
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </footer>
     </section>
   )
 }
