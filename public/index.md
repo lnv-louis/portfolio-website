@@ -27,10 +27,10 @@ I host, sponsor and partner on hackathons: on behalf of Cognition, and through T
 | --- | --- | --- | --- |
 | [ImpactHack 2027](https://impact-hack.com/) | 13–14 Feb 2027, Bristol and Mumbai | Partner and sponsor for The Hack Collective | 350+ students across two campuses |
 | [Imperial BioHack x Anthropic](https://luma.com/m21rdpv1) | 28–29 Nov 2026, London | Sponsor, on behalf of Cognition | 48 hours, 120 builders, biotech challenges |
-| [Grok Bot Community Engineering Hackathon](https://luma.com/wn0h6ffm) | 22 Oct 2026, London | Co-host for The Hack Collective | Cursor, Supabase, Cognee, Zero and SpaceXAI as partners |
+| [Grok Bot Community Engineering Hackathon](https://luma.com/wn0h6ffm) | 22 Oct 2026, London | Host, for The Hack Collective | 180 builders; sponsored by Cursor, Supabase, Cognee, Zero and Notion |
 | [Hack-Nation 7th Global AI Hackathon](https://luma.com/nln5g3e0) | 3–4 Oct 2026, London hub | London hub host | 3,150 builders across 15+ hubs |
 | [Devin Local: London](https://luma.com/eveur09a) | 1 Oct 2026, London | Host, on behalf of Cognition | 202 attended; keychains designed with Devin and 3D printed on the night |
-| [Paris Builds](https://luma.com/8ucy347o) | 36 hours, Paris | Sponsor | Y Combinator as partners |
+| [Paris Builds](https://luma.com/8ucy347o) | 36 hours, Paris | Sponsor and host | 150 builders; the first Y Combinator-affiliated hackathon, held before YC Startup School Paris |
 
 ## Hosting Devin Local as a Devin AI Ambassador
 

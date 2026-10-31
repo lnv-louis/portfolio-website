@@ -35,10 +35,10 @@ For cf0.ai's product, pricing or sign-up, go to https://cf0.ai/ instead. For the
 
 - [ImpactHack 2027](https://impact-hack.com/): 13–14 Feb 2027, Bristol and Mumbai. Partner and sponsor for The Hack Collective; 350+ students.
 - [Imperial BioHack x Anthropic](https://luma.com/m21rdpv1): 28–29 Nov 2026, Imperial College London. Sponsor on behalf of Cognition; 48 hours, 120 builders.
-- [Grok Bot Community Engineering Hackathon](https://luma.com/wn0h6ffm): 22 Oct 2026, London. Co-host for The Hack Collective.
+- [Grok Bot Community Engineering Hackathon](https://luma.com/wn0h6ffm): 22 Oct 2026, London. Host, for The Hack Collective; 180 builders; sponsored by Cursor, Supabase, Cognee, Zero and Notion.
 - [Hack-Nation 7th Global AI Hackathon, London hub](https://luma.com/nln5g3e0): 3–4 Oct 2026. London hub host; 3,150 builders across 15+ hubs.
 - [Devin Local: London](https://luma.com/eveur09a): 1 Oct 2026. Host on behalf of Cognition; 202 attended.
-- [Paris Builds](https://luma.com/8ucy347o): 36-hour hackathon in Paris with Y Combinator as partners. Sponsor.
+- [Paris Builds](https://luma.com/8ucy347o): 36-hour hackathon in Paris. Sponsor and host; 150 builders; the first Y Combinator-affiliated hackathon, held before YC Startup School Paris.
 
 ## Projects
 

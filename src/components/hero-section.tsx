@@ -29,7 +29,7 @@ const CURRENT_WORK = [
     id: 'hack-collective',
     href: 'https://hackcollective.uk/',
     label: 'Currently building The Hack Collective',
-    tooltip: <>London&rsquo;s hackathon community with 1,100+ builders.</>,
+    tooltip: <>London&rsquo;s hackathon community with 1.2k+ members.</>,
   },
   {
     id: 'devin',
