@@ -27,10 +27,12 @@ export const proseStyles = stylex.create({
     borderBottomColor: color.hairlineStrong,
     borderBottomStyle: 'solid',
     borderBottomWidth: '1px',
+    columnGap: space.lg,
     display: 'flex',
-    gap: space.lg,
+    flexWrap: 'wrap',
     justifyContent: 'space-between',
     paddingBlock: space.lg,
+    rowGap: space.sm,
     paddingInline: {
       default: space.lg,
       '@media (min-width: 1200px)': space.x4xl,
@@ -41,10 +43,16 @@ export const proseStyles = stylex.create({
     fontSize: text.sizeBodyMd,
     fontWeight: text.weightMedium,
     textDecoration: 'none',
+    whiteSpace: 'nowrap',
   },
   nav: {
+    columnGap: {
+      default: space.md,
+      '@media (min-width: 720px)': space.lg,
+    },
     display: 'flex',
-    gap: space.lg,
+    flexWrap: 'wrap',
+    rowGap: space.xs,
   },
   navLink: {
     color: {
@@ -67,6 +75,7 @@ export const proseStyles = stylex.create({
     flexDirection: 'column',
     gap: space.xl,
     maxWidth: '68ch',
+    minWidth: 0,
     paddingBlock: space.x5xl,
     paddingInline: {
       default: space.lg,

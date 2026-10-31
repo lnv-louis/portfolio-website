@@ -7,6 +7,7 @@ const NAV = [
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
   { href: '/privacy', label: 'Privacy' },
+  { href: '/developers', label: 'Developers' },
 ]
 
 export function ProsePage({ path, title, children }: { path: string; title: string; children: ReactNode }) {

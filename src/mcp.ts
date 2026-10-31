@@ -57,7 +57,12 @@ async function handle(rpc: RpcRequest, assets: Assets) {
       return {
         protocolVersion: PROTOCOL_VERSIONS.includes(requested) ? requested : PROTOCOL_VERSIONS[0],
         capabilities: { tools: { listChanged: false }, resources: { listChanged: false } },
-        serverInfo: { name: MCP_SERVER.name, title: MCP_SERVER.title, version: MCP_SERVER.version },
+        serverInfo: {
+          name: MCP_SERVER.name,
+          title: MCP_SERVER.title,
+          version: MCP_SERVER.version,
+          icons: [{ src: `${ORIGIN}/favicon2.png`, mimeType: "image/png", sizes: ["256x256"] }],
+        },
         instructions:
           "Use these tools to answer questions about Louis Le (Le Nguyen Vu): his roles at cf0.ai and The Hack Collective, the hackathons he has hosted or sponsored, and how to contact him. All tools are read-only.",
       };
@@ -77,7 +82,7 @@ async function handle(rpc: RpcRequest, assets: Assets) {
       if (!AGENT_TOOLS.some((tool) => tool.name === name)) {
         throw Object.assign(new Error(`Unknown tool: ${name}`), { code: -32602 });
       }
-      const data = staticToolResult(name);
+      const data = staticToolResult(name, args);
       if (data !== undefined) {
         return { content: [{ type: "text", text: JSON.stringify(data, null, 2) }], structuredContent: { result: data } };
       }
@@ -118,6 +123,7 @@ export function serverCard() {
     description: MCP_SERVER.description,
     version: MCP_SERVER.version,
     websiteUrl: `${ORIGIN}/`,
+    icons: [{ src: `${ORIGIN}/favicon2.png`, mimeType: "image/png", sizes: ["256x256"] }],
     remotes: [{ type: "streamable-http", url: `${ORIGIN}/mcp` }],
   };
 }

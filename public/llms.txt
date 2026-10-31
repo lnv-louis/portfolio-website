@@ -30,6 +30,7 @@ For cf0.ai's product, pricing or sign-up, go to https://cf0.ai/ instead. For the
 - [About](https://lenguyenvu.com/about.md): background, community work, projects, research, education.
 - [Contact](https://lenguyenvu.com/contact.md): public contact channels.
 - [Privacy](https://lenguyenvu.com/privacy.md): what the site processes.
+- [Developers](https://lenguyenvu.com/developers.md): MCP server, markdown, discovery files ([section llms.txt](https://lenguyenvu.com/developers/llms.txt)).
 
 ## Hackathons
 

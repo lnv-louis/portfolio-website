@@ -1,3 +1,5 @@
+import { HACKATHON_EVENTS } from '@/content/hackathons'
+
 // Structured data (JSON-LD) for every page, rendered by src/document.tsx.
 // SITE_GRAPH appears on all pages; HOME_GRAPH only on the homepage, since it
 // describes what the homepage shows (profile, films, gallery, papers, events).
@@ -92,7 +94,7 @@ export const SITE_GRAPH = {
   ]
 } as const
 
-export const HOME_GRAPH = {
+const HOME_GRAPH_BASE = {
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -327,3 +329,22 @@ export const HOME_GRAPH = {
     }
   ]
 } as const
+
+// The hackathon lines on the homepage, generated from the same data the page renders.
+const HACKATHON_LIST = {
+  '@type': 'ItemList',
+  name: 'Hackathons Louis Le has hosted, sponsored or partnered on',
+  itemListOrder: 'https://schema.org/ItemListUnordered',
+  numberOfItems: HACKATHON_EVENTS.length,
+  itemListElement: HACKATHON_EVENTS.map((event, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: event.name,
+    url: event.href,
+  })),
+}
+
+export const HOME_GRAPH = {
+  ...HOME_GRAPH_BASE,
+  '@graph': [...HOME_GRAPH_BASE['@graph'], HACKATHON_LIST],
+}

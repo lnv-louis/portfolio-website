@@ -16,6 +16,7 @@ const MARKDOWN_TWINS: Record<string, string> = {
   "/about": "/about.md",
   "/contact": "/contact.md",
   "/privacy": "/privacy.md",
+  "/developers": "/developers.md",
 };
 
 // User agents that fetch a page on a person's behalf and read it as text.

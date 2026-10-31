@@ -51,7 +51,7 @@ src/
     app.tsx                # Homepage composition: hero + rail of sections
     routes.tsx             # Path -> page component + title/description/markdown twin
     agent-tools.ts         # WebMCP tools (document.modelContext)
-  pages/                   # about, contact, privacy, 404 (ProsePage layout)
+  pages/                   # about, contact, privacy, developers, 404 (ProsePage layout)
   content/
     hackathons.ts            # Hackathon + Devin Local copy and data
     hackathon-curation.json  # Hand-edited: which photos, their names and alt text
@@ -90,7 +90,7 @@ docs/                      # Local only (gitignored): me.md, links.md
 
 ## Architecture Decisions
 
-- **Prerendered pages**: `src/document.tsx` renders each page's full HTML (head metadata, JSON-LD from `src/content/structured-data.ts`, hashed assets from Vite's build manifest) and `src/entry-server.tsx` puts the app markup in `#root`; `scripts/prerender.ts` only writes the files. `index.html` is just the dev shell and client entry, so never put production metadata there. Every route renders to static HTML at build time and hydrates on the client, so crawlers and agents get content without JavaScript. `not_found_handling: 404-page` returns the prerendered 404 with a real 404 status. Adding a page: add it to `routes.tsx`, write `public/<page>.md`, add it to `sitemap.xml`, `llms.txt` and the Worker's `MARKDOWN_TWINS` + `run_worker_first` list.
+- **Prerendered pages**: `src/document.tsx` renders each page's full HTML (head metadata, JSON-LD from `src/content/structured-data.ts`, hashed assets from Vite's build manifest) and `src/entry-server.tsx` puts the app markup in `#root`; `scripts/prerender.ts` only writes the files. `index.html` is just the dev shell and client entry, so never put production metadata there. Every route renders to static HTML at build time and hydrates on the client, so crawlers and agents get content without JavaScript. `not_found_handling: 404-page` returns the prerendered 404 with a real 404 status. Adding a page: add it to `routes.tsx`, write `public/<page>.md` (with frontmatter), and add it to `sitemap.xml`, `llms.txt`, the Worker's `MARKDOWN_TWINS`, `MARKDOWN_PAGES` in `src/content/profile.ts`, and the nav lists in `prose-page.tsx` and the homepage footer.
 - **Cascade layers**: `index.html` declares `@layer base, priority1…priority7` first thing in `<head>`; without it, StyleX's dev-injected sheet orders its layers ahead of `base` and the reset overrides components in dev.
 - **Hackathon media**: never hand-copy photos. Edit `src/content/hackathon-curation.json` (source path, descriptive `name`, alt text) and run `bun run import-media`. Films go to R2 with `--upload-films` (Range support for Safari), posters to `public/hackathons/`.
 - **Rail layout**: 1400px max-width, 1px hairline borders left/right, sections divided by 1px top borders. Modeled on cf0.ai's page shell. No navbar.

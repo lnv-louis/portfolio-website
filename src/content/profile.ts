@@ -33,22 +33,25 @@ export const CONTACT = [
   { channel: 'The Hack Collective', url: 'https://hackcollective.uk/' },
 ]
 
-export const HACKATHONS = {
-  community: HACKATHON_COMMUNITY,
-  events: [
-    ...HACKATHON_EVENTS,
-    {
-      name: DEVIN_LOCAL.name,
-      city: 'London',
-      date: DEVIN_LOCAL.date,
-      role: 'Host, on behalf of Cognition',
-      stat: `${DEVIN_LOCAL.attended} attended`,
-      href: DEVIN_LOCAL.href,
-    },
-  ],
-}
+const EVENTS = [
+  ...HACKATHON_EVENTS,
+  {
+    name: DEVIN_LOCAL.name,
+    city: 'London',
+    date: DEVIN_LOCAL.date,
+    startDate: '2026-10-01',
+    role: 'Host, on behalf of Cognition',
+    stat: `${DEVIN_LOCAL.attended} attended`,
+    href: DEVIN_LOCAL.href,
+  },
+]
 
-export const MARKDOWN_PAGES = ['/index.md', '/about.md', '/contact.md', '/privacy.md'] as const
+const ROLES = ['host', 'sponsor', 'partner'] as const
+const WHEN = ['past', 'upcoming'] as const
+const SECTIONS = ['roles', 'pages'] as const
+const CHANNELS = ['LinkedIn', 'X', 'GitHub', 'The Hack Collective'] as const
+
+export const MARKDOWN_PAGES = ['/index.md', '/about.md', '/contact.md', '/privacy.md', '/developers.md'] as const
 
 export interface AgentTool {
   name: string
@@ -63,19 +66,38 @@ export const AGENT_TOOLS: AgentTool[] = [
     name: 'get_profile',
     title: 'Get profile',
     description: "Louis Le's current roles, focus, location and the site's page URLs.",
-    inputSchema: { type: 'object', properties: {}, additionalProperties: false },
+    inputSchema: {
+      type: 'object',
+      properties: {
+        section: { type: 'string', enum: [...SECTIONS], description: 'Return only the roles or only the page URLs. Omit for the full profile.' },
+      },
+      additionalProperties: false,
+    },
   },
   {
     name: 'list_hackathons',
     title: 'List hackathons',
-    description: 'Hackathons Louis Le has hosted, co-hosted or sponsored, with dates, roles and event links.',
-    inputSchema: { type: 'object', properties: {}, additionalProperties: false },
+    description: 'Hackathons Louis Le has hosted, sponsored or partnered on, with dates, roles and event links.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        role: { type: 'string', enum: [...ROLES], description: "Only events where Louis's role includes this. Omit for all." },
+        when: { type: 'string', enum: [...WHEN], description: 'Only past or only upcoming events. Omit for all.' },
+      },
+      additionalProperties: false,
+    },
   },
   {
     name: 'get_contact_links',
     title: 'Get contact links',
     description: 'Public channels for contacting Louis Le (LinkedIn, X, GitHub, The Hack Collective).',
-    inputSchema: { type: 'object', properties: {}, additionalProperties: false },
+    inputSchema: {
+      type: 'object',
+      properties: {
+        channel: { type: 'string', enum: [...CHANNELS], description: 'Return only this channel. Omit for all.' },
+      },
+      additionalProperties: false,
+    },
   },
   {
     name: 'get_page_markdown',
@@ -92,10 +114,27 @@ export const AGENT_TOOLS: AgentTool[] = [
   },
 ]
 
-// Data-only tools: the result doesn't need a fetch.
-export function staticToolResult(name: string): unknown | undefined {
-  if (name === 'get_profile') return PROFILE
-  if (name === 'list_hackathons') return HACKATHONS
-  if (name === 'get_contact_links') return CONTACT
+function listHackathons(args: Record<string, unknown>, today: string) {
+  const events = EVENTS.filter((event) => {
+    if (typeof args.role === 'string' && !event.role.toLowerCase().includes(args.role)) return false
+    const upcoming = event.startDate !== null && event.startDate > today
+    if (args.when === 'upcoming' && !upcoming) return false
+    if (args.when === 'past' && upcoming) return false
+    return true
+  })
+  return { community: HACKATHON_COMMUNITY, events }
+}
+
+// Data-only tools: the result doesn't need a fetch. `today` is an ISO date (YYYY-MM-DD).
+export function staticToolResult(name: string, args: Record<string, unknown> = {}, today = new Date().toISOString().slice(0, 10)): unknown | undefined {
+  if (name === 'get_profile') {
+    if (args.section === 'roles') return { name: PROFILE.name, roles: PROFILE.roles }
+    if (args.section === 'pages') return PROFILE.pages
+    return PROFILE
+  }
+  if (name === 'list_hackathons') return listHackathons(args, today)
+  if (name === 'get_contact_links') {
+    return typeof args.channel === 'string' ? CONTACT.filter((c) => c.channel === args.channel) : CONTACT
+  }
   return undefined
 }

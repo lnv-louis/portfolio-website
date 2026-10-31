@@ -23,7 +23,7 @@ interface ModelContext {
 const text = (value: string): ToolResult => ({ content: [{ type: "text", text: value }] });
 
 async function execute(name: string, input: Record<string, unknown>): Promise<ToolResult> {
-  const data = staticToolResult(name);
+  const data = staticToolResult(name, input);
   if (data !== undefined) return text(JSON.stringify(data, null, 2));
   const page = MARKDOWN_PAGES.find((p) => p === input.page) ?? "/index.md";
   return text(await (await fetch(page)).text());
