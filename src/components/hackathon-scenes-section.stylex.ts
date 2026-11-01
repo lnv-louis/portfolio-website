@@ -124,6 +124,7 @@ export const scenesStyles = stylex.create({
     color: color.body,
     fontSize: text.sizeBodyMd,
     lineHeight: text.leadingBodyMd,
+    textWrap: 'balance',
   },
   label: {
     color: color.meta,
