@@ -47,7 +47,7 @@
   }
 
   /* Replaces the tap highlight removed above: links dim the moment a finger lands.
-     Film buttons have their own scale press in film-player.stylex.ts. */
+     Film player buttons have their own :active press in film-player.stylex.ts. */
   @media (pointer: coarse) {
     a {
       transition: opacity var(--portfolio-duration-fast) var(--portfolio-ease-spring);

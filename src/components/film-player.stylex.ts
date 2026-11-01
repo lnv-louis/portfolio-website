@@ -98,7 +98,11 @@ export const filmPlayerStyles = stylex.create({
   },
   iconButton: {
     alignItems: 'center',
-    backgroundColor: { default: 'transparent', ':hover': { default: null, '@media (hover: hover) and (pointer: fine)': overlay.hover } },
+    backgroundColor: {
+      default: 'transparent',
+      ':hover': { default: null, '@media (hover: hover) and (pointer: fine)': overlay.hover },
+      ':active': overlay.hover,
+    },
     borderRadius: radius.md,
     color: overlay.ink,
     cursor: 'pointer',
@@ -106,7 +110,8 @@ export const filmPlayerStyles = stylex.create({
     height: space.xl,
     justifyContent: 'center',
     transitionDuration: motion.durationFast,
-    transitionProperty: 'background-color',
+    transform: { default: null, ':active': 'scale(0.97)' },
+    transitionProperty: 'background-color, transform',
     width: space.xl,
     willChange: 'transform',
   },
@@ -116,7 +121,11 @@ export const filmPlayerStyles = stylex.create({
     gap: space.xxs,
   },
   speedButton: {
-    backgroundColor: { default: 'transparent', ':hover': { default: null, '@media (hover: hover) and (pointer: fine)': overlay.hover } },
+    backgroundColor: {
+      default: 'transparent',
+      ':hover': { default: null, '@media (hover: hover) and (pointer: fine)': overlay.hover },
+      ':active': overlay.hover,
+    },
     borderRadius: radius.md,
     color: overlay.muted,
     cursor: 'pointer',
@@ -125,7 +134,8 @@ export const filmPlayerStyles = stylex.create({
     paddingBlock: space.xxs,
     paddingInline: space.xs,
     transitionDuration: motion.durationFast,
-    transitionProperty: 'background-color, color',
+    transform: { default: null, ':active': 'scale(0.97)' },
+    transitionProperty: 'background-color, color, transform',
     willChange: 'transform',
   },
   speedButtonActive: {
