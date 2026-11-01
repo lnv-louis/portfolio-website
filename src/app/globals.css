@@ -38,8 +38,24 @@
     outline-offset: 2px;
   }
 
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
   button, a, [role="button"] {
     touch-action: manipulation;
+  }
+
+  /* Replaces the tap highlight removed above: links dim the moment a finger lands.
+     Film buttons have their own scale press in film-player.stylex.ts. */
+  @media (pointer: coarse) {
+    a {
+      transition: opacity var(--portfolio-duration-fast) var(--portfolio-ease-spring);
+    }
+
+    a:active {
+      opacity: 0.6;
+    }
   }
 
   /* Prerendered hero: hidden until StaggerReveal measures and animates it. Fails open

@@ -17,3 +17,6 @@ if (container.firstElementChild) hydrateRoot(container, app);
 else createRoot(container).render(app);
 
 registerAgentTools();
+
+// iOS Safari only applies :active on touch when a touchstart listener is in the tree.
+document.addEventListener("touchstart", () => {}, { passive: true });

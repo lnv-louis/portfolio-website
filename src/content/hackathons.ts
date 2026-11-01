@@ -32,7 +32,7 @@ export const HACKATHON_COMMUNITY = {
   stats: [
     { value: '1.2k+', label: 'Hack Collective members' },
     { value: '500+', label: 'calendar subscribers' },
-    { value: '3,150', label: 'builders at Hack-Nation 07' },
+    { value: '9', label: 'events hosted, sponsored or partnered on' },
   ],
 }
 
